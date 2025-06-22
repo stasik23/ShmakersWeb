@@ -1,6 +1,29 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Mulish, Questrial, Roboto, Manrope } from 'next/font/google'
+
+const mulish = Mulish({
+  subsets: ['latin'],
+  variable: '--font-mulish',
+})
+
+const questrial = Questrial({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-questrial',
+})
+
+const roboto = Roboto({
+  weight: ['300', '400', '500', '700'],
+  subsets: ['latin'],
+  variable: '--font-roboto',
+})
+
+const manrope = Manrope({
+  subsets: ['latin'],
+  variable: '--font-manrope',
+})
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,7 +48,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${mulish.variable} ${questrial.variable} ${roboto.variable} ${manrope.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
       </body>
