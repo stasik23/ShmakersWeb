@@ -1,0 +1,1 @@
+export {FeedbackComp} from './FeedbackComp'

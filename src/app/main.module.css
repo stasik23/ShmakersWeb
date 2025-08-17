@@ -1,32 +1,39 @@
+/* main.module.css */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Montserrat:wght@600;700&display=swap');
 
+.app {
+    background-color: #0f0f1a;
+    color: white;
+    font-family: 'Manrope', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Global Container */
 .wrapper {
-    margin: 0 12%;
+    max-width: 1440px;
+    margin: 0 149.5px;
     min-height: 100vh;
 }
 
 /* Container */
 .container {
     min-height: 100vh;
-    background: #222222;
+    background: url('/BACKGROUND-MAIN.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: white;
     overflow: hidden;
     position: relative;
 }
 
-/* Background Effects */
-.backgroundGlow {
-    position: absolute;
-    inset: 0;
-    background: transparent;
-    pointer-events: none;
-}
-
 /* Banner */
 .banner {
     background: #4d4d4d;
-    font-size: 0.875rem;
+    font-size: 16px;
     color: white;
-    padding: 0.5rem 0;
+    padding: 12px 0;
     position: relative;
     z-index: 20;
     overflow: hidden;
@@ -34,7 +41,7 @@
 
 .marquee {
     display: flex;
-    animation: marquee 20s linear infinite;
+    animation: marquee 25s linear infinite;
     white-space: nowrap;
     width: max-content;
 }
@@ -52,22 +59,40 @@
 .marqueeContent {
     display: flex;
     align-items: center;
+    font-weight: 600;
     gap: 1rem;
-    padding: 0 1rem;
+    padding: 0 2rem;
     font-family: 'Manrope', sans-serif;
 }
 
 .promoTag {
     background: white;
     color: #4d4d4d;
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.25rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.375rem;
     font-size: 0.75rem;
-    font-weight: bold;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
 }
 
-.separator {
-    margin: 0 1rem;
+.bannerIcon {
+    width: 21.6px;
+    height: 21.6px;
+    color: white;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+}
+
+.bannerText {
+    font-weight: 400;
+    letter-spacing: 0.01em;
+}
+
+.promoCode {
+    color: white;
+    font-weight: 600;
+    font-style: bold;
 }
 
 /* Navigation */
@@ -75,7 +100,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 19px 2rem;
+    padding: 19px 156px;
     position: relative;
     z-index: 20;
     backdrop-filter: blur(4px);
@@ -94,20 +119,20 @@
 }
 
 .logo {
-    width: 24px;
-    height: 36px;
+    width: 36px;
+    height: 48px;
 }
 
 .navCenter {
-    display: none;
+    width: 472px;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 2rem;
-}
-
-@media (min-width: 768px) {
-    .navCenter {
-        display: flex;
-    }
+    padding-top: 10px;
+    padding-bottom: 10px;
+    gap: 28px;
+    position: relative;
 }
 
 .navButton {
@@ -118,8 +143,13 @@
     transition: color 0.3s ease;
     display: flex;
     align-items: center;
-    gap: 0.25rem;
-    font-size: 1rem;
+    gap: 0.5rem;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Manrope', sans-serif;
+    position: relative;
+    min-width: 80px;
+    justify-content: center;
 }
 
 .navButton:hover {
@@ -140,7 +170,9 @@
     color: #d1d5db;
     text-decoration: none;
     transition: color 0.3s ease;
-    font-size: 1rem;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Manrope', sans-serif;
 }
 
 .navLink:hover {
@@ -158,7 +190,7 @@
 }
 
 .socialIcon {
-    color: #c084fc;
+    color: #9B05FB;
     cursor: pointer;
     transition: all 0.3s ease;
     text-decoration: none;
@@ -169,150 +201,317 @@
     transform: scale(1.1);
 }
 
-.icon {
-    width: 36px;
+.phoneIcon {
+    width: 20.83px;
+    height: 20.83px;
+}
+
+.discordIcon {
+    width: 25px;
+    height: 19.3px;
+}
+
+.tiktokIcon {
+    width: 25px;
+    height: 25px;
+}
+
+/* Mobile Menu Button */
+.mobileMenuButton {
+    display: none;
+    background: none;
+    border: none;
+    color: #9B05FB;
+    cursor: pointer;
+    font-size: 24px;
+    padding: 8px;
+}
+
+/* Dropdown Menu */
+.dropdownMenu {
+    position: absolute;
+    top: 100%;
+    left: 25vh;
+    width: 1200px;
+    transform: translateX(-50%) translateY(-15px);
+    margin-top: 8px;
+    background: #3a3a3a;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px 12px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    backdrop-filter: blur(8px);
+}
+
+.navButton:hover .dropdownMenu,
+.dropdownMenu:hover {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(10px);
+    pointer-events: auto;
+}
+
+.coursesWrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.dropdownItem {
+    padding: 8px 16px;
+    background: #555;
+    color: white;
+    border-radius: 6px;
+    white-space: nowrap;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 500;
+}
+
+.dropdownItem:hover {
+    background: #a855f7;
+}
+
+/* Course Navigation */
+.courseNavigation {
+    background: #1a1a1a;
+    padding: 16px 156px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 15;
+}
+
+.courseContainer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    overflow: hidden;
+}
+
+.scrollButton {
+    background: #3f3f3f;
+    border: none;
+    border-radius: 8px;
+    padding: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.scrollButton:hover {
+    background: #555;
+}
+
+.scrollIcon {
+    width: 20px;
+    height: 20px;
+    color: white;
+    transition: transform 0.2s ease;
+}
+
+.coursesWrapper {
+    flex: 1;
+    overflow: hidden;
+    padding: 0 8px;
+}
+
+.coursesList {
+    display: flex;
+    gap: 8px;
+    flex-wrap: nowrap;
+    min-width: max-content;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.courseButton {
+    padding: 8px 12px;
+    background-color: #555;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    position: relative;
+    min-width: fit-content;
     height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    letter-spacing: 0.025em;
+}
+
+.courseButton:hover {
+    background-color: #777;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.courseButtonActive {
+    border: 2px solid #a259ff;
+    background-color: #444;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(162, 89, 255, 0.3);
+}
+
+.courseButtonText {
+    position: relative;
+    z-index: 10;
+    font-family: 'Manrope', sans-serif;
+    line-height: 1.2;
 }
 
 /* Main Content */
 .mainContent {
     display: flex;
     align-items: center;
-    min-height: 85vh;
-    position: relative;
+    padding: 0px 0px 0px 156px;
+    min-height: 80vh;
+    margin-bottom: 120px;
 }
 
 .leftContent {
     flex: 1;
-    padding: 2 3rem;
+    padding: 0;
     z-index: 10;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .textContainer {
-    max-width: 45vw;
+    min-width: 744px;
+    position: relative;
+    padding: 0;
 }
 
 .mainTitle {
-    font-size: 4rem;
-    font-weight: bold;
-    line-height: 1.2;
+    font-size: 58px;
+    font-weight: 600;
+    line-height: 1.23;
+    letter-spacing: 0.2;
     margin-bottom: 2rem;
     color: white;
-}
-
-@media (min-width: 768px) {
-    .mainTitle {
-        font-size: 4rem;
-    }
-}
-
-@media (min-width: 1024px) {
-    .mainTitle {
-        font-size: 4.5rem;
-    }
+    text-transform: uppercase;
+    position: relative;
+    max-width: fit-content;
+    max-width: 744px;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .highlightText {
-    color: #c084fc;
-    animation: pulse 2s ease-in-out infinite alternate;
+    color: #9B05FB;
+    line-height: 1.1;
+    letter-spacing: 2%;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    background: #9B05FB;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: textPulse 2s ease-in-out infinite alternate;
+    text-shadow: none;
 }
 
-@keyframes pulse {
+@keyframes textPulse {
     0% {
-        opacity: 1;
+        opacity: 0.8;
+        transform: scale(1);
     }
 
     100% {
-        opacity: 0.8;
+        opacity: 1;
+        transform: scale(1.02);
     }
 }
 
 .description {
-    font-size: 1.125rem;
-    color: #d1d5db;
-    margin-bottom: 3rem;
-    line-height: 1.6;
-    max-width: 36rem;
-}
-
-@media (min-width: 768px) {
-    .description {
-        font-size: 1.25rem;
-    }
+    font-size: 18px;
+    font-weight: 400;
+    color: #F0F0F5;
+    margin-bottom: 199px;
+    line-height: 1.56;
+    letter-spacing: 0.01em;
+    max-width: 744px;
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 .buttonContainer {
     display: flex;
-    flex-direction: row;
-    gap: 1rem;
-    align-items: center;
-}
-
-@media (max-width: 768px) {
-    .buttonContainer {
-        flex-direction: column;
-    }
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
 }
 
 .primaryButton {
-    position: relative;
-    background: #9333ea;
+    background: #6F1ED7;
     color: white;
-    padding: 1rem 2rem;
-    border-radius: 0.75rem;
-    font-size: 1.125rem;
-    font-weight: 600;
+    padding: 10px 16px 10px 16px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
-    transform: scale(1);
     overflow: hidden;
+    font-family: 'Manrope', sans-serif;
+    box-shadow: 0 4px 20px rgba(147, 51, 234, 0.3);
+    z-index: 1;
+    max-width: 173px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
 
 .primaryButton:hover {
-    background: #7c3aed;
-    transform: scale(1.05);
-    box-shadow: 0 25px 50px -12px rgba(168, 85, 247, 0.25);
-}
-
-.buttonText {
-    position: relative;
-    z-index: 10;
-}
-
-.buttonOverlay {
-    position: absolute;
-    inset: 0;
-    background: #c084fc;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.primaryButton:hover .buttonOverlay {
-    opacity: 1;
+    background: #7B1FA2;
+    box-shadow: 0 8px 25px rgba(147, 51, 234, 0.4);
 }
 
 .secondaryButton {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    color: #9ca3af;
-    background: rgba(17, 24, 39, 0.8);
-    padding: 1rem 1.5rem;
-    border-radius: 0.75rem;
-    backdrop-filter: blur(4px);
-    border: 1px solid rgba(55, 65, 81, 0.3);
+    height: 36px;
+    width: 360px;
+    gap: 8px;
+    color: #E5E7EB;
+    line-height: 100%;
+    letter-spacing: 2%;
+    background: #665280;
+    border: 1px solid #665280;
+    padding: 8px 12px;
+    border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-size: 1rem;
-    white-space: nowrap;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Roboto Flex', sans-serif;
 }
 
 .secondaryButton:hover {
-    color: #c084fc;
+    color: white;
     background: rgba(55, 65, 81, 0.4);
-    border-color: rgba(168, 85, 247, 0.5);
+    border: 1px solid rgba(55, 65, 81, 0.4);
 }
 
 .buttonIcon {
@@ -321,15 +520,28 @@
     transition: transform 0.3s ease;
 }
 
-.secondaryButton:hover .buttonIcon {
-    transform: scale(1.1);
-}
-
 /* 3D Scene */
 .sceneContainer {
     flex: 1;
-    height: 90vh;
+    height: 754px;
+    max-width: 1200px;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.Logo3D {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 762px;
+    height: 762px;
+    top: 50%;
+    left: -35%;
+    transform: translateY(-55%);
 }
 
 .sceneGlow {
@@ -338,4 +550,248 @@
     background: rgba(147, 51, 234, 0.3);
     opacity: 0.02;
     filter: blur(30px);
+}
+
+/* MOBILE PLATFORM STYLES - EXACT COPY FROM DESIGN */
+@media (max-width: 440px) {
+    .app {
+        background: linear-gradient(180deg, #0B0B1E 0%, #1A0D2E 100%);
+    }
+
+    .wrapper {
+        margin: 0;
+        padding: 0 20px;
+    }
+
+    .container {
+        background: none;
+        min-height: 100vh;
+    }
+
+    /* Hide banner on mobile */
+    .banner {
+        display: none;
+    }
+
+    /* Mobile Navigation - exactly like in design */
+    .nav {
+        padding: 20px 20px;
+        justify-content: space-between;
+        align-items: center;
+        background: transparent;
+    }
+
+    .navLeft .logo {
+        width: 32px;
+        height: 42px;
+    }
+
+    .navCenter {
+        display: none;
+    }
+
+    .navRight {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        width: auto;
+        padding: 0;
+    }
+
+    .mobileMenuButton {
+        display: block;
+        color: #9B05FB;
+        font-size: 24px;
+        padding: 0;
+    }
+
+    .phoneIcon, .discordIcon, .tiktokIcon {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* Main Content - exactly like in design */
+    .mainContent {
+        flex-direction: column;
+        padding: 40px 20px 0px;
+        min-height: auto;
+        margin-bottom: 0;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .leftContent {
+        width: 100%;
+        margin-bottom: 40px;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    .textContainer {
+        min-width: auto;
+        width: 100%;
+        max-width: 100%;
+        padding: 0;
+    }
+
+    /* Main Title - exactly like in design */
+    .mainTitle {
+        font-size: 32px;
+        line-height: 1.15;
+        margin-bottom: 24px;
+        max-width: 100%;
+        text-align: left;
+        font-weight: 400;
+        letter-spacing: -0.02em;
+        text-transform: none;
+        color: white;
+        font-family: 'Manrope', sans-serif;
+    }
+
+    .highlightText {
+        color: #9B05FB;
+        font-weight: 400;
+        font-family: 'Manrope', sans-serif;
+        background: linear-gradient(135deg, #9B05FB, #c084fc);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: none;
+    }
+
+    /* Description - exactly like in design */
+    .description {
+        font-size: 14px;
+        line-height: 1.5;
+        margin-bottom: 40px;
+        max-width: 100%;
+        color: rgba(240, 240, 245, 0.8);
+        font-weight: 400;
+        text-align: left;
+    }
+
+    /* Button Container - exactly like in design */
+    .buttonContainer {
+        width: 100%;
+        gap: 12px;
+        margin-bottom: 40px;
+    }
+
+    .primaryButton {
+        width: 100%;
+        max-width: 100%;
+        height: 52px;
+        font-size: 16px;
+        border-radius: 16px;
+        background: linear-gradient(135deg, #9B05FB, #7B1FA2);
+        font-weight: 500;
+        box-shadow: 0 8px 32px rgba(155, 5, 251, 0.3);
+    }
+
+    .secondaryButton {
+        width: 100%;
+        height: 52px;
+        border-radius: 16px;
+        justify-content: flex-start;
+        background: rgba(102, 82, 128, 0.4);
+        border: 1px solid rgba(102, 82, 128, 0.6);
+        backdrop-filter: blur(10px);
+        font-size: 14px;
+        font-weight: 400;
+        padding: 16px 20px;
+        gap: 12px;
+    }
+
+    .buttonIcon {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* 3D Scene - exactly like in design */
+    .sceneContainer {
+        width: 100%;
+        height: 320px;
+        position: relative;
+        overflow: visible;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .Logo3D {
+        position: relative;
+        width: 280px;
+        height: 280px;
+        top: auto;
+        left: auto;
+        transform: none;
+        margin: 0 auto;
+        display: block;
+    }
+
+    /* Platform/Pedestal exactly like in design */
+    .sceneContainer::after {
+        content: '';
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 200px;
+        height: 60px;
+        background: linear-gradient(135deg, #2A2A2A 0%, #1A1A1A 100%);
+        border-radius: 50%;
+        filter: blur(10px);
+        opacity: 0.8;
+        z-index: -1;
+    }
+
+    .sceneGlow {
+        display: none;
+    }
+
+    /* Hide course navigation on mobile */
+    .courseNavigation {
+        display: none;
+    }
+
+    /* Hide dropdown menu on mobile */
+    .dropdownMenu {
+        display: none;
+    }
+
+    /* Bottom text - exactly like in design */
+    .bottomText {
+        padding: 20px;
+        font-size: 12px;
+        line-height: 1.4;
+        color: rgba(240, 240, 245, 0.7);
+        text-align: left;
+        margin-bottom: 20px;
+        font-weight: 400;
+    }
+}
+
+/* Very small mobile devices */
+@media (max-width: 380px) {
+    .mainTitle {
+        font-size: 28px;
+    }
+
+    .description {
+        font-size: 13px;
+    }
+
+    .Logo3D {
+        width: 240px;
+        height: 240px;
+    }
+
+    .nav {
+        padding: 16px 16px;
+    }
+
+    .mainContent {
+        padding: 30px 16px 0px;
+    }
 }

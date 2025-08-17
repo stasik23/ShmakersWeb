@@ -1,0 +1,261 @@
+/* stepsgrid.module.css - Updated with mobile slider */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600&family=Manrope:wght@400;500;600;700&display=swap');
+
+.wrapper {
+    font-family: 'Manrope', sans-serif;
+    padding: 0 156px 120px 156px;
+    color: #ffffff;
+}
+
+.title {
+    font-size: 48px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    color: #F0E8FF;
+    letter-spacing: -0.02em;
+    max-width: 100%;
+    line-height: 100%;
+    font-family: 'Montserrat', sans-serif;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.featuresGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    padding: 0;
+    justify-content: center;
+}
+
+.featureCard {
+    background: #00000099;
+    box-shadow: inset 10px #4F1896;
+    border-radius: 12px;
+    padding: 20px;
+    width: 360px;
+    height: 177px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+    justify-self: center;
+}
+
+.featureCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(147, 51, 234, 0.2);
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.iconWrapper {
+    width: 40px;
+    height: 40px;
+    background: #4F1896;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: #FB9DFF;
+    transition: transform 0.3s ease;
+}
+
+.featureCard:hover .iconWrapper {
+    transform: scale(1.05);
+}
+
+.stepBadge {
+    background: #4F1896;
+    color: #FB9DFF;
+    padding: 6px 12px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.cardContent {
+    position: relative;
+    z-index: 2;
+}
+
+.cardTitle {
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Manrope', sans-serif;
+    color: #ffffff;
+    margin-bottom: 12px;
+    line-height: 100%;
+}
+
+.cardDescription {
+    font-size: 14px;
+    font-weight: 400;
+    color: #8A7898;
+    line-height: 1.36;
+    margin: 0;
+    gap: 12px;
+    letter-spacing: 2%;
+    font-family: 'Manrope', sans-serif;
+}
+
+/* Mobile Slider Styles */
+.mobileSlider {
+    display: none;
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.sliderContainer {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: center;
+}
+
+.sliderButton {
+    background: rgba(79, 24, 150, 0.3);
+    border: 1px solid rgba(79, 24, 150, 0.5);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #FB9DFF;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.sliderButton:hover {
+    background: rgba(79, 24, 150, 0.5);
+    transform: scale(1.05);
+}
+
+.slideCard {
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid #4F1896;
+    border-radius: 20px;
+    padding: 32px 24px;
+    width: 100%;
+    max-width: 320px;
+    min-height: 280px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.slideHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+}
+
+.slideIcon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: #FB9DFF;
+}
+
+.slideStep {
+    background: #4F1896;
+    color: #FB9DFF;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.slideTitle {
+    font-size: 20px;
+    font-weight: 700;
+    font-family: 'Manrope', sans-serif;
+    color: #ffffff;
+    margin-bottom: 16px;
+    line-height: 1.2;
+}
+
+.slideDescription {
+    font-size: 14px;
+    font-weight: 400;
+    color: #8A7898;
+    line-height: 1.5;
+    margin: 0;
+    font-family: 'Manrope', sans-serif;
+}
+
+/* Mobile Responsive */
+@media (max-width: 440px) {
+    .wrapper {
+        padding: 40px 20px 60px 20px;
+    }
+    
+    .title {
+        font-size: 28px;
+        white-space: normal;
+        line-height: 1.2;
+        margin-bottom: 32px;
+    }
+    
+    .featuresGrid {
+        display: none;
+    }
+    
+    .mobileSlider {
+        display: block;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 24px;
+    }
+    
+    .sliderButton {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+    
+    .slideCard {
+        max-width: 280px;
+        padding: 24px 20px;
+        min-height: 260px;
+    }
+    
+    .slideTitle {
+        font-size: 18px;
+    }
+    
+    .slideDescription {
+        font-size: 13px;
+    }
+}

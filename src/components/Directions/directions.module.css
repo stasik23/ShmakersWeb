@@ -1,0 +1,157 @@
+/* directions.module.css */
+
+.section {
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+.heading {
+    position: relative;
+    z-index: 2;
+    color: #ffffff;
+    font-size: 48px;
+    font-weight: 700;
+    text-align: center;
+    margin: 0 0 60px 0;
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.grid {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 552px;
+    height: 530px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: inset 0 5px 20px rgba(161, 67, 221, 0.3);
+    background: #110A1E;
+    backdrop-filter: blur(15px);
+    cursor: pointer;
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.card.expanded {
+    max-height: 530px;
+    transform: scale(1.02);
+    box-shadow:
+        inset 0 0 30px rgba(161, 67, 221, 0.8),
+        0 3px 30px rgba(161, 67, 221, 0.5);
+}
+
+.image {
+    width: 100%;
+    height: 265px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.card:hover .cardImage img .image {
+    transform: scale(1.05);
+    box-shadow:
+        inset 0 0 30px rgba(161, 67, 221, 0.8),
+        inset 0 3px 20px rgba(161, 67, 221, 0.5);
+}
+
+.content {
+    position: relative;
+    z-index: 10;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.heading_back {
+    background: #6A0DAD;
+    padding: 12px 20px 15px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.heading_back::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.card:hover .heading_back::before {
+    opacity: 1;
+}
+
+.cardTitle {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -0.3px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.icon {
+    font-size: 22px;
+    color: #ffffff;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.description {
+    color: #e2e8f0;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    flex-grow: 1;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.button {
+    background-color: #ffffff;
+    color: #1a1a2e;
+    border: none;
+    padding: 14px 28px 14px 28px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    align-self: flex-start;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    margin: 0 0 24px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.button:hover {
+    background-color: #f0f0f0;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
