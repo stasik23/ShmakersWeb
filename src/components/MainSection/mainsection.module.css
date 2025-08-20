@@ -1,0 +1,1280 @@
+/* main.module.css */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Montserrat:wght@600;700&display=swap');
+
+/* Global Container */
+.wrapper {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 clamp(16px, 10.4vw, 149.5px);
+    min-height: 100vh;
+}
+
+/* Container */
+.container {
+    min-height: 100vh;
+    color: white;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Banner */
+.banner {
+    display: flex;
+    align-items: center;
+    background: #4D4D4D;
+    gap: 90px;
+    height: 40px;
+    font-size: 16px;
+    color: white;
+    position: relative;
+    z-index: 20;
+    overflow: hidden;
+}
+
+.marquee {
+    display: flex;
+    align-items: center;
+    animation: marquee 25s linear infinite;
+    white-space: nowrap;
+    width: max-content;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.marqueeContent {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    gap: 1rem;
+    line-height: 100%;
+    font-size: 15px;
+    padding: 0 2rem;
+    font-family: 'Manrope', sans-serif;
+}
+
+.promoTag {
+    color: #FFFFFF;
+    padding: 0.3rem 0.6rem;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 100%;
+    letter-spacing: 2%;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+}
+
+.bannerIcon {
+    width: 24px;
+    height: 24px;
+    color: white;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+}
+
+.bannerText {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 100%;
+    letter-spacing: 0.025em;
+}
+
+.promoCode {
+    color: white;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 15px;
+    line-height: 100%;
+    letter-spacing: 2%;
+}
+
+/* Navigation */
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 19px clamp(16px, 10.8vw, 156px);
+    position: relative;
+    z-index: 20;
+    backdrop-filter: blur(4px);
+}
+
+.navLeft {
+    display: flex;
+    align-items: center;
+}
+
+.logoContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    width: 36px;
+    height: 48px;
+}
+
+.navCenter {
+    width: clamp(300px, 32.8vw, 472px);
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    gap: clamp(12px, 2vw, 28px);
+    position: relative;
+}
+
+.navButton {
+    color: #d1d5db;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Manrope', sans-serif;
+    position: relative;
+    min-width: 80px;
+    justify-content: center;
+}
+
+.navButton:hover {
+    color: white;
+}
+
+.navButton:hover .dropdownIcon {
+    transform: rotate(180deg);
+}
+
+.dropdownIcon {
+    width: 1rem;
+    height: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.navLink {
+    color: #d1d5db;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Manrope', sans-serif;
+}
+
+.navLink:hover {
+    color: #c084fc;
+}
+
+.navRight {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 0 12px 0 0;
+    width: 124px;
+    height: 36px;
+}
+
+.socialIcon {
+    color: #9B05FB;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.socialIcon:hover {
+    color: #ddd6fe;
+    transform: scale(1.1);
+}
+
+.phoneIcon {
+    width: 20.83px;
+    height: 20.83px;
+}
+
+.discordIcon {
+    width: 25px;
+    height: 19.3px;
+}
+
+.tiktokIcon {
+    width: 25px;
+    height: 25px;
+}
+
+/* Mobile Menu Button */
+.mobileMenuButton {
+    display: none;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Burger Menu Icon Button */
+.burgerMenuButton {
+    display: none;
+    width: 36px;
+    height: 36px;
+    opacity: 1;
+    background: none;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.burgerMenuButton:hover {
+    transform: scale(1.05);
+}
+
+.burgerMenuIcon {
+    width: 20px;
+    height: 20px;
+    color: #9B05FB;
+}
+
+/* Dropdown Menu */
+.dropdownMenu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: clamp(600px, 78vw, 1128px);
+    max-width: calc(100vw - 32px);
+    transform: translateX(-50%) translateY(-15px);
+    margin-top: 8px;
+    background: #1a1a1a;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    backdrop-filter: blur(8px);
+}
+
+.navButton:hover .dropdownMenu,
+.dropdownMenu:hover {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(10px);
+    pointer-events: auto;
+}
+
+
+
+.coursesWrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.dropdownItem {
+    padding: 8px 16px;
+    background: #555;
+    color: white;
+    border-radius: 6px;
+    white-space: nowrap;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 500;
+}
+
+.dropdownItem:hover {
+    background: #a855f7;
+}
+
+
+
+.courseContainer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    overflow: hidden;
+}
+
+.scrollButton {
+    background: #2a2a2a;
+    border: none;
+    border-radius: 8px;
+    padding: 0;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.scrollButton:hover {
+    background: #555;
+}
+
+.scrollIcon {
+    width: 20px;
+    height: 20px;
+    color: white;
+    transition: transform 0.2s ease;
+}
+
+.coursesWrapper {
+    flex: 1;
+    overflow: hidden;
+    padding: 0 12px;
+}
+
+.coursesList {
+    display: flex;
+    gap: 8px;
+    flex-wrap: nowrap;
+    min-width: max-content;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    align-items: center;
+    padding: 0;
+}
+
+.coursesList::-webkit-scrollbar {
+    display: none;
+}
+
+.courseButton {
+    padding: 8px 12px;
+    background: #4D4D4D66;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    position: relative;
+    min-width: fit-content;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    letter-spacing: 0.025em;
+    font-family: 'Manrope', sans-serif;
+}
+
+.courseButtonActive {
+    background-color: #4F1896;
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(79, 24, 150, 0.4);
+}
+
+.courseButtonText {
+    position: relative;
+    z-index: 10;
+    font-family: 'Manrope', sans-serif;
+    line-height: 1.2;
+}
+
+/* Main Content */
+.mainContent {
+    display: flex;
+    align-items: center;
+    padding: 0px 0px 0px clamp(16px, 10.8vw, 156px);
+    min-height: 80vh;
+    margin-bottom: clamp(60px, 8.3vw, 120px);
+}
+
+.mobileContent {
+    display: none;
+    /* Скрываем на десктопе по умолчанию */
+}
+
+.leftContent {
+    flex: 1;
+    padding: 0;
+    z-index: 10;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.textContainer {
+    min-width: clamp(320px, 51.7vw, 744px);
+    max-width: 744px;
+    position: relative;
+    padding: 0;
+}
+
+.mainTitle {
+    font-size: clamp(36px, 4vw, 58px);
+    font-weight: 600;
+    line-height: 1.23;
+    letter-spacing: 0.2;
+    margin-bottom: 36px;
+    color: white;
+    text-transform: uppercase;
+    position: relative;
+    max-width: fit-content;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.highlightText {
+    color: #9B05FB;
+    line-height: 1.1;
+    letter-spacing: 2%;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    background: #9B05FB;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: textPulse 2s ease-in-out infinite alternate;
+    text-shadow: none;
+}
+
+@keyframes textPulse {
+    0% {
+        opacity: 0.8;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1.02);
+    }
+}
+
+.description {
+    font-size: clamp(16px, 1.25vw, 18px);
+    font-weight: 400;
+    color: #F0F0F5;
+    margin-bottom: clamp(100px, 13.8vw, 199px);
+    line-height: 1.56;
+    letter-spacing: 0.01em;
+    max-width: 744px;
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.buttonContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.primaryButton {
+    background: #6F1ED7;
+    color: white;
+    padding: 10px 16px 10px 16px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    font-family: 'Manrope', sans-serif;
+    box-shadow: 0 4px 20px rgba(147, 51, 234, 0.3);
+    z-index: 1;
+    width: 173px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.primaryButton:hover {
+    background: #7B1FA2;
+    box-shadow: 0 8px 25px rgba(147, 51, 234, 0.4);
+}
+
+.secondaryButton {
+    display: flex;
+    align-items: center;
+    height: 36px;
+    width: clamp(280px, 25vw, 360px);
+    gap: 8px;
+    color: #E5E7EB;
+    line-height: 100%;
+    letter-spacing: 2%;
+    background: #665280;
+    border: 1px solid #665280;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: clamp(14px, 1.1vw, 16px);
+    font-weight: 400;
+    font-family: 'Roboto Flex', sans-serif;
+}
+
+.secondaryButton:hover {
+    color: white;
+    background: #7A6694;
+    border: 1px solid #7A6694;
+}
+
+.secondaryButton:active {
+    background: #523E6C;
+    border: 1px solid #F0E8FF;
+}
+
+/* Input Form Styles */
+.inputForm {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.secondaryInput {
+    height: 36px;
+    width: clamp(280px, 25vw, 360px);
+    background: #665280;
+    border: 1px solid #523E6C;
+    border-radius: 8px;
+    padding: 8px 12px;
+    color: white;
+    font-size: clamp(14px, 1.1vw, 16px);
+    font-weight: 400;
+    font-family: 'Roboto Flex', sans-serif;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.secondaryInput::placeholder {
+    color: #8C849B;
+}
+
+.buttonIcon {
+    width: 1.25rem;
+    height: 1.25rem;
+    transition: transform 0.3s ease;
+}
+
+.secondaryButtonContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.vectorbox {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+}
+
+.mngVector {
+    color: rgba(155, 5, 251, 1);
+}
+
+/* 3D Scene */
+.sceneContainer {
+    flex: 1;
+    height: clamp(400px, 52.4vw, 754px);
+    max-width: clamp(600px, 83.3vw, 1200px);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.Logo3D {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: clamp(400px, 53vw, 762px);
+    height: clamp(400px, 53vw, 762px);
+    top: 50%;
+    left: -35%;
+    transform: translateY(-55%);
+}
+
+.sceneGlow {
+    position: absolute;
+    inset: 0;
+    background: rgba(147, 51, 234, 0.3);
+    opacity: 0.02;
+    filter: blur(30px);
+}
+
+/* Mobile Menu Styles */
+.mobileMenu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 88px;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Responsive breakpoints */
+@media (min-width: 1600px) {
+    .wrapper {
+        padding: 0 clamp(149.5px, 12vw, 200px);
+        transition: padding 0.3s ease;
+    }
+    
+    .nav {
+        padding: 19px clamp(156px, 12vw, 200px);
+        transition: padding 0.3s ease;
+    }
+    
+    .mainContent {
+        padding: 0px 0px 0px clamp(156px, 12vw, 200px);
+        transition: padding 0.3s ease;
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1599px) {
+    .dropdownMenu {
+        width: clamp(800px, 85vw, 1128px);
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+    .navCenter {
+        width: clamp(250px, 40vw, 400px);
+        gap: clamp(8px, 1.5vw, 20px);
+    }
+    
+    .dropdownMenu {
+        width: clamp(600px, 90vw, 900px);
+    }
+    
+    .mainTitle {
+        font-size: clamp(32px, 5vw, 48px);
+    }
+    
+    .textContainer {
+        min-width: clamp(280px, 60vw, 600px);
+    }
+}
+
+/* Hide mobile menu on desktop */
+@media (min-width: 441px) {
+    .mobileMenu {
+        display: none;
+    }
+
+    .mobileMenuButton {
+        display: none !important;
+    }
+}
+
+.mobileMenuHeader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 16px;
+    background: #0f0f1a;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+}
+
+.mobileMenuLogo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.mobileMenuLogoIcon {
+    width: 138px;
+    height: 48px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.mobileMenuTitle {
+    color: white;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.mobileMenuIcons {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.mobileMenuCloseIcon {
+    width: 24px;
+    height: 20px;
+}
+
+.mobileMenuPhone {
+    color: #9B05FB;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.mobileMenuPhone:hover {
+    color: #9B05FB;
+    transform: scale(1.1);
+}
+
+.phoneIcon {
+    width: 20.83px;
+    height: 20.83px;
+}
+
+.mobileMenuClose {
+    background: #3a3a3a;
+    border: none;
+    color: #9B05FB;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.mobileMenuClose:hover {
+    background: #555;
+    color: #ddd6fe;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.mobileMenuContent {
+    width: 408px;
+    background: #0A0A1E;
+    border-radius: 12px;
+    padding: 19px 18px 19px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    opacity: 1;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    animation: slideIn 0.4s ease-out 0.1s both;
+}
+
+.mobileMenuButton {
+    width: 372px;
+    height: 46px;
+    color: #F0E8FF;
+    border: none;
+    background: #6F1ED7;
+    border-radius: 12px;
+    padding: 16px;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Manrope', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    opacity: 1;
+}
+
+.mobileMenuButton:hover {
+    background: #6F1ED7;
+    transform: translateY(-1px);
+}
+
+.mobileMenuButtonActive {
+    border: 2px solid #F0E8FF;
+}
+
+.mobileMenuChevron {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+    color: white;
+    flex-shrink: 0;
+    margin-left: auto;
+}
+
+.mobileMenuChevronUp {
+    transform: rotate(180deg);
+}
+
+.mobileCoursesGrid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: center;
+    padding: 14px;
+    gap: 10px;
+    border-radius: 12px;
+    max-width: 100%;
+    width: 372px;
+    height: 182px;
+}
+
+@keyframes expandCourses {
+    from {
+        opacity: 0;
+        max-height: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        max-height: 300px;
+        transform: translateY(0);
+    }
+}
+
+.mobileCourseButton {
+    background: #4F1896;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    padding: 6px 12px;
+    gap: 10px;
+    font-weight: 400;
+    line-height: 100%;
+    letter-spacing: 1%;
+    font-family: 'Manrope', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    white-space: nowrap;
+    height: 31px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobileCourseButton:hover {
+    background: #5A1A7A;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(79, 24, 150, 0.3);
+}
+
+/* MOBILE PLATFORM STYLES - EXACT COPY FROM DESIGN */
+@media (max-width: 440px) {
+    .app {
+        background: linear-gradient(180deg, #0B0B1E 0%, #1A0D2E 100%);
+    }
+
+    .wrapper {
+        margin: 0;
+        padding: 0 16px;
+    }
+
+    .container {
+        background: none;
+        min-height: 100vh;
+    }
+
+    /* Hide banner on mobile */
+    .banner {
+        display: none;
+    }
+
+    .mobileMenuCloseIcon {
+        width: 24px;
+        height: 20px;
+    }
+
+    /* Mobile Navigation - exactly like in design */
+    .nav {
+        width: 440px;
+        height: 68px;
+        justify-content: space-between;
+        opacity: 1;
+        padding: 20px 16px 20px 16px;
+        position: relative;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+    }
+
+    .navLeft {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .navLeft .logo {
+        width: 138px;
+        height: 48px;
+        content: url('/section.svg');
+        gap: 8px;
+        display: block;
+    }
+
+    .navCenter {
+        display: none;
+    }
+
+    .navRight {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 86px;
+        height: 36px;
+        gap: 14px;
+        padding: 0;
+    }
+
+    .mobileMenuButton {
+        display: flex;
+        align-items: center;
+        text-align: left;
+        justify-content: start;
+        color: #F0E8FF;
+        font-size: 16px;
+        width: 372px;
+        height: 42px;
+        cursor: pointer;
+    }
+
+    .burgerMenuButton {
+        display: flex;
+    }
+
+    .phoneIcon {
+        width: 20.83px;
+        height: 20.83px;
+        color: #9B05FB;
+    }
+
+    .discordIcon,
+    .tiktokIcon {
+        display: none;
+    }
+
+    /* Main Content - exactly like in design */
+    .mainContent {
+        flex-direction: column;
+        padding: 0;
+        min-height: auto;
+        margin-bottom: 0;
+        align-items: center;
+        text-align: center;
+        margin-top: 13px;
+        gap: 0;
+        display: flex;
+    }
+
+    /* Скрываем leftContent в мобильной версии */
+    .leftContent {
+        display: none;
+    }
+
+    /* Показываем заголовок в мобильной версии */
+    .textContainer {
+        width: 100vw;
+        height: 92px;
+        opacity: 1;
+        text-align: start;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: start;
+    }
+
+    .mainTitle {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        font-style: normal;
+        font-size: 38px;
+        line-height: 100%;
+        letter-spacing: 2%;
+        max-width: 100vw;
+        /* text-align: center; */
+        text-transform: none;
+        color: white;
+        height: 92px;
+        opacity: 1;
+        display: block;
+        flex-direction: column;
+        /* align-items: center;
+        justify-content: center; */
+        margin: 0 auto;
+        width: 408px;
+    }
+
+    .highlightText {
+        color: #9B05FB;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-style: normal;
+        font-size: 38px;
+        line-height: 100%;
+        letter-spacing: 2%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: none;
+        color: transparent;
+    }
+
+    /* 3D Scene - exactly like in design */
+    .sceneContainer {
+        width: 100%;
+        height: auto;
+        position: relative;
+        overflow: visible;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 0;
+        margin-bottom: 0;
+        min-height: 516px;
+        order: 2;
+        flex-shrink: 0;
+    }
+
+    .Logo3D {
+        position: absolute;
+        width: 516px;
+        height: 516px;
+        top: -70px;
+        left: 256px;
+        transform: translateX(-60%);
+        margin: 0;
+        display: block;
+        opacity: 1;
+        flex-shrink: 0;
+    }
+
+    .sceneGlow {
+        display: none;
+    }
+
+    /* Description Section - mobile styles */
+    .descriptionSection {
+        padding: 0 12 70px 0px;
+        margin-top: 28px;
+        margin-bottom: 0;
+        text-align: start;
+        width: 408px;
+        height: auto;
+        opacity: 1;
+        order: 3;
+        margin: 28px auto 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: start;
+        flex-shrink: 0;
+    }
+
+    .descriptionSection .description {
+        font-family: 'Manrope', sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        letter-spacing: 2%;
+        color: #EDEDED;
+        margin-bottom: 0;
+        max-width: 100%;
+        text-align: start;
+        width: 408px;
+        height: 60px;
+        opacity: 1;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+    }
+
+    .buttonContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: start;
+        width: 408px;
+        height: 94px;
+        gap: 16px;
+        margin-top: 38px;
+        margin-bottom: 0;
+        max-width: 100%;
+        opacity: 1;
+        margin-left: auto;
+        margin-right: auto;
+        order: 4;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: start;
+    }
+
+    .primaryButton {
+        width: 408px;
+        height: 42px;
+        padding: 10px 16px 10px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        font-weight: 500;
+        font-family: 'Manrope', sans-serif;
+        color: white;
+        background: #6F1ED7;
+        border-radius: 8px;
+    }
+
+    /* Hide course navigation on mobile */
+    .courseNavigation {
+        display: none;
+    }
+
+    /* Hide dropdown menu on mobile */
+    .dropdownMenu {
+        display: none;
+    }
+
+    .descriptionSection .buttonIcon {
+        width: 1.25rem;
+        height: 1.25rem;
+        transition: transform 0.3s ease;
+        color: #E5E7EB;
+    }
+}
+
+/* Very small mobile devices */
+@media (max-width: 380px) {
+    .mainTitle {
+        font-size: 28px;
+        width: 360px;
+        height: auto;
+    }
+
+    .Logo3D {
+        width: 240px;
+        height: 240px;
+    }
+
+    .nav {
+        padding: 16px 16px;
+    }
+
+    .mainContent {
+        padding: 30px 16px 0px;
+    }
+
+    .descriptionSection {
+        padding: 16px;
+        margin-bottom: 40px;
+        width: 360px;
+    }
+
+    .descriptionSection .description {
+        font-size: 13px;
+        margin-bottom: 24px;
+        width: 360px;
+    }
+
+    .descriptionSection .buttonContainer {
+        gap: 10px;
+        width: 360px;
+    }
+
+    .descriptionSection .primaryButton,
+    .descriptionSection .secondaryButton {
+        height: 48px;
+        font-size: 14px;
+        width: 360px;
+    }
+
+    .descriptionSection .secondaryButtonContainer {
+        width: 360px;
+        height: 32px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .descriptionSection .secondaryButton {
+        width: 320px;
+        height: 32px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .descriptionSection .vectorbox {
+        width: 28px;
+        height: 28px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import styles from './contact.module.css';
@@ -121,10 +122,24 @@ export const ContactComponent = () => {
 
     return (
         <div className={styles.container}>
-            <h1 className={styles.title}>Залишились запитання?</h1>
+            <motion.h1
+                className={styles.title}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+                Залишились запитання?
+            </motion.h1>
 
             <div className={styles.grid}>
-                <div className={styles.form}>
+                <motion.div
+                    className={styles.form}
+                    initial={{ opacity: 0, x: -100 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.6, delay: 0.9, ease: "easeOut" }}
+                >
                     <h2 className={styles.formTitle}>Заявка на дзвінок</h2>
                     <form className={styles.formContent} onSubmit={handleSubmit(onSubmit)}>
                         {/* Input Group */}
@@ -190,19 +205,23 @@ export const ContactComponent = () => {
                             </div>
                         )}
                     </form>
-                </div>
+                </motion.div>
 
                 <div className={styles.pricing}>
                     {/* Group Classes Card */}
-                    <div
+                    <motion.div
                         className={`${styles.card} ${isMobile && expandedCards.has('group') ? styles.expanded : ''}`}
                         onClick={() => isMobile && toggleCardExpansion('group')}
+                        initial={{ opacity: 0, x: 100 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{ duration: 0.6, delay: 0.9, ease: "easeOut" }}
                     >
                         {isMobile ? (
                             <div className={styles.content}>
-                                <img src="/image.svg" alt="Group classes" className={styles.image} />
+                                <img src="/image.svg" alt="Individual classes" className={styles.image} />
                                 <div className={styles.heading_back}>
-                                    <h1 className={styles.cardTitle}>Групові заняття</h1>
+                                    <h1 className={styles.cardTitle}>Індивідуальні заняття</h1>
                                     <div className={styles.arrowIcon}>
                                         {expandedCards.has('group') ? <FaChevronUp /> : <FaChevronDown />}
                                     </div>
@@ -241,18 +260,22 @@ export const ContactComponent = () => {
                                 </div>
                             </div>
                         )}
-                    </div>
+                    </motion.div>
 
                     {/* Individual Classes Card */}
-                    <div
+                    <motion.div
                         className={`${styles.card} ${isMobile && expandedCards.has('individual') ? styles.expanded : ''}`}
                         onClick={() => isMobile && toggleCardExpansion('individual')}
+                        initial={{ opacity: 0, x: 100 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{ duration: 0.6, delay: 1.1, ease: "easeOut" }}
                     >
                         {isMobile ? (
                             <div className={styles.content}>
-                                <img src="/image.svg" alt="Individual classes" className={styles.image} />
+                                <img src="/groupimage.svg" alt="Group classes" className={styles.image} />
                                 <div className={styles.heading_back}>
-                                    <h1 className={styles.cardTitle}>Індивідуальні заняття</h1>
+                                    <h1 className={styles.cardTitle}>Групові заняття</h1>
                                     <div className={styles.arrowIcon}>
                                         {expandedCards.has('individual') ? <FaChevronUp /> : <FaChevronDown />}
                                     </div>
@@ -270,7 +293,7 @@ export const ContactComponent = () => {
                                 <div className={styles.cardText}>
                                     <div className={styles.cardHeader}>
                                         <h3 className={styles.cardTitle}>
-                                            Індивідуальні заняття
+                                            Групові заняття
                                         </h3>
                                     </div>
                                     <div className={styles.cardBody}>
@@ -291,7 +314,7 @@ export const ContactComponent = () => {
                                 </div>
                             </div>
                         )}
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </div>

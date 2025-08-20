@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 import styles from "./directions.module.css";
 import { FaCog, FaCode, FaMicrochip, FaServer, FaGamepad, FaPalette, FaChevronDown, FaChevronUp } from "react-icons/fa";
 
@@ -59,12 +60,31 @@ export const DirectionsComp = () => {
     const [hoveredCard, setHoveredCard] = useState<number | null>(null);
     return (
         <section className={styles.section}>
-            <h2 className={styles.heading}>НАПРЯМКИ ДЛЯ РОЗВИТКУ</h2>
+            <motion.h2 
+                className={styles.heading}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+                НАПРЯМКИ ДЛЯ РОЗВИТКУ
+            </motion.h2>
             <div className={styles.grid}>
                 {cardsData.map((card, index) => (
-                    <div key={index} className={`${styles.card} ${hoveredCard == card.id ? styles.expanded : ''}`}
+                    <motion.div 
+                        key={index} 
+                        className={`${styles.card} ${hoveredCard == card.id ? styles.expanded : ''}`}
                         onMouseEnter={() => setHoveredCard(card.id)}
-                        onMouseLeave={() => setHoveredCard(null)}>
+                        onMouseLeave={() => setHoveredCard(null)}
+                        initial={{ opacity: 0, y: 80 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{ 
+                            duration: 0.6, 
+                            delay: 0.4 + (index * 0.1),
+                            ease: "easeOut" 
+                        }}
+                    >
                         <div className={styles.content}>
                             <img src={card.image} alt={card.title} className={styles.image} />
                             <div className={styles.heading_back}>
@@ -78,7 +98,7 @@ export const DirectionsComp = () => {
                                 <button className={styles.button}>Опанувати</button>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
                 ))}
             </div>
         </section>

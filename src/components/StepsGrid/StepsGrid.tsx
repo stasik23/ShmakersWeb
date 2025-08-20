@@ -7,6 +7,7 @@ import {
     FaRobot,
     FaUsers,
 } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 import styles from './stepsgrid.module.css';
 import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md';
 
@@ -76,15 +77,32 @@ export const StepsGrid = () => {
 
     return (
         <div className={styles.wrapper}>
-            <h1 className={styles.title}>
+            <motion.h1 
+                className={styles.title}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+            >
                 Що зробить твоє навчання унікальним?
-            </h1>
+            </motion.h1>
 
             <div className={styles.container}>
                 {/* Desktop Grid */}
                 <div className={styles.featuresGrid}>
-                    {featuresData.map((feature) => (
-                        <div key={feature.id} className={styles.featureCard}>
+                    {featuresData.map((feature, index) => (
+                        <motion.div 
+                            key={feature.id} 
+                            className={styles.featureCard}
+                            initial={{ opacity: 0, x: -100 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true, amount: 0.3 }}
+                            transition={{ 
+                                duration: 0.6, 
+                                delay: 0.4 + (index * 0.1),
+                                ease: "easeOut" 
+                            }}
+                        >
                             <div className={styles.cardHeader}>
                                 <div className={styles.iconWrapper}>
                                     {feature.icon}
@@ -102,7 +120,7 @@ export const StepsGrid = () => {
                                     {feature.description}
                                 </p>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
 
@@ -117,7 +135,14 @@ export const StepsGrid = () => {
                             <MdArrowBackIos className={styles.arrowIcon} />
                         </button>
 
-                        <div className={styles.slideCard}>
+                        <motion.div 
+                            key={currentSlide}
+                            className={styles.slideCard}
+                            initial={{ opacity: 0, x: -100 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true, amount: 0.3 }}
+                            transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+                        >
                             <div className={styles.slideHeader}>
                                 <div className={styles.slideIcon}>
                                     {featuresData[currentSlide].icon}
@@ -135,7 +160,7 @@ export const StepsGrid = () => {
                                     {featuresData[currentSlide].description}
                                 </p>
                             </div>
-                        </div>
+                        </motion.div>
 
                         <button
                             onClick={nextSlide}

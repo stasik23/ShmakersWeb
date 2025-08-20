@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { FaStar, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import styles from './feedback.module.css';
 
@@ -140,17 +141,33 @@ export const FeedbackComp: React.FC = () => {
     /*TODO УБРАТЬ ПАГИНАЦИЮ, СДЕЛАТЬ ОВЕРФЛОУ У. + ФИЛЬТРЫ ПО ОДНОЙ КАТЕГОРИИ. + убрать адаптив под 2к мониторы, по адаптиву ориентироватся по 1440 ширине + фикс всех стилей под фигму + ворк над футером*/
     return (
         <div className={styles.container}>
-                <h1 className={styles.title}>ВІДГУКИ ПРО НАС</h1>
+                <motion.h1 
+                    className={styles.title}
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                >
+                    ВІДГУКИ ПРО НАС
+                </motion.h1>
 
                 <div className={styles.categories}>
-                    {categories.map(category => (
-                        <button
+                    {categories.map((category, index) => (
+                        <motion.button
                             key={category}
                             className={`${styles.categoryBtn} ${selectedCategory === category ? styles.active : ''}`}
                             onClick={() => handleCategorySelect(category)}
+                            initial={{ opacity: 0, x: -50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true, amount: 0.3 }}
+                            transition={{ 
+                                duration: 0.4, 
+                                delay: 0.9 + (index * 0.1), 
+                                ease: "easeOut" 
+                            }}
                         >
                             {category}
-                        </button>
+                        </motion.button>
                     ))}
                 </div>
 
@@ -162,13 +179,24 @@ export const FeedbackComp: React.FC = () => {
                                 const isExpanded = expandedReviews.has(review.id);
                                 
                                 return (
-                                    <div key={review.id} className={styles.reviewItem}>
+                                    <motion.div 
+                                        key={review.id} 
+                                        className={styles.reviewItem}
+                                        initial={{ opacity: 0 }}
+                                        whileInView={{ opacity: 1 }}
+                                        viewport={{ once: true, amount: 0.2 }}
+                                        transition={{ duration: 0.3, delay: 1.7 + (index * 0.1), ease: "easeOut" }}
+                                    >
                                         {/* На мобильных устройствах показываем либо свернутое, либо развернутое состояние */}
                                         {isMobile ? (
                                             <>
-                                                <div 
+                                                <motion.div 
                                                     className={`${styles.reviewCard} ${isEven ? styles.even : ''} ${isExpanded ? styles.mobileExpanded : ''}`}
                                                     onClick={() => toggleReviewExpansion(review.id)}
+                                                    initial={{ opacity: 0, x: -80 }}
+                                                    whileInView={{ opacity: 1, x: 0 }}
+                                                    viewport={{ once: true, amount: 0.2 }}
+                                                    transition={{ duration: 0.5, delay: 1.7 + (index * 0.1), ease: "easeOut" }}
                                                 >
                                                     <img src={review.avatar} alt={review.name} className={styles.avatar} />
                                                     <div className={styles.reviewInfo}>
@@ -182,19 +210,31 @@ export const FeedbackComp: React.FC = () => {
                                                     <div className={styles.expandIcon}>
                                                         {isExpanded ? <FaChevronUp /> : <FaChevronDown />}
                                                     </div>
-                                                </div>
+                                                </motion.div>
                                                 
                                                 {/* Комментарий показывается только в развернутом состоянии на мобильных */}
                                                 {isExpanded && (
-                                                    <div className={`${styles.reviewComment} ${isEven ? styles.even : ''} ${styles.mobileComment}`}>
+                                                    <motion.div 
+                                                        className={`${styles.reviewComment} ${isEven ? styles.even : ''} ${styles.mobileComment}`}
+                                                        initial={{ opacity: 0, y: -20 }}
+                                                        animate={{ opacity: 1, y: 0 }}
+                                                        exit={{ opacity: 0, y: -20 }}
+                                                        transition={{ duration: 0.3, ease: "easeOut" }}
+                                                    >
                                                         <p>{review.comment}</p>
-                                                    </div>
+                                                    </motion.div>
                                                 )}
                                             </>
                                         ) : (
                                             /* На десктопе показываем как было - карточка и комментарий рядом */
                                             <>
-                                                <div className={`${styles.reviewCard} ${isEven ? styles.even : ''}`}>
+                                                <motion.div 
+                                                    className={`${styles.reviewCard} ${isEven ? styles.even : ''}`}
+                                                    initial={{ opacity: 0, x: -80 }}
+                                                    whileInView={{ opacity: 1, x: 0 }}
+                                                    viewport={{ once: true, amount: 0.2 }}
+                                                    transition={{ duration: 0.5, delay: 1.7 + (index * 0.1), ease: "easeOut" }}
+                                                >
                                                     <img src={review.avatar} alt={review.name} className={styles.avatar} />
                                                     <div className={styles.reviewInfo}>
                                                         <h3 className={styles.reviewerName}>{review.name}</h3>
@@ -203,13 +243,19 @@ export const FeedbackComp: React.FC = () => {
                                                             {renderStars(review.rating)}
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div className={`${styles.reviewComment} ${isEven ? styles.even : ''}`}>
+                                                </motion.div>
+                                                <motion.div 
+                                                    className={`${styles.reviewComment} ${isEven ? styles.even : ''}`}
+                                                    initial={{ opacity: 0, x: -80 }}
+                                                    whileInView={{ opacity: 1, x: 0 }}
+                                                    viewport={{ once: true, amount: 0.2 }}
+                                                    transition={{ duration: 0.4, delay: 1.9 + (index * 0.1), ease: "easeOut" }}
+                                                >
                                                     <p>{review.comment}</p>
-                                                </div>
+                                                </motion.div>
                                             </>
                                         )}
-                                    </div>
+                                    </motion.div>
                                 );
                             })
                         ) : (

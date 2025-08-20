@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { FaGithub, FaArrowLeft } from 'react-icons/fa';
 import styles from './studstyles.module.css';
 import { IoLogoFigma } from 'react-icons/io5';
@@ -158,32 +159,56 @@ export const StudentProjects = () => {
 
     return (
         <div className={styles.container}>
-            <h1 className={styles.title}>ПРОЄКТИ НАШИХ УЧНІВ</h1>
+            <motion.h1 
+                className={styles.title}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+                ПРОЄКТИ НАШИХ УЧНІВ
+            </motion.h1>
             <div className={styles.secContainer}>
                 {isMobile ? (
                     !showDetails ? (
                         <>
                             <div className={styles.categoriesContainer}>
                                 <div className={styles.categories}>
-                                    <button
-                                        className={`${styles.categoryBtn} ${selectedCategories.length === 0 ? styles.active : ''}`}
+                                    <motion.button
                                         onClick={clearAllCategories}
+                                        initial={{ opacity: 0, x: -50 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        viewport={{ once: true, amount: 0.3 }}
+                                        transition={{ duration: 0.5, delay: 0.9, ease: "easeOut" }}
                                     >
-                                        All
-                                    </button>
-                                    {categories.map(category => (
-                                        <button
+                                    </motion.button>
+                                    {categories.map((category, index) => (
+                                        <motion.button
                                             key={category}
                                             className={`${styles.categoryBtn} ${selectedCategories.includes(category) ? styles.active : ''}`}
                                             onClick={() => handleCategoryToggle(category)}
+                                            initial={{ opacity: 0, x: -50 }}
+                                            whileInView={{ opacity: 1, x: 0 }}
+                                            viewport={{ once: true, amount: 0.3 }}
+                                            transition={{ 
+                                                duration: 0.4, 
+                                                delay: 1.1 + (index * 0.1), 
+                                                ease: "easeOut" 
+                                            }}
                                         >
                                             {category}
-                                        </button>
+                                        </motion.button>
                                     ))}
                                 </div>
                             </div>
 
-                            <div className={styles.projectsLayout}>
+                            <motion.div 
+                                className={styles.projectsLayout}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, amount: 0.2 }}
+                                transition={{ duration: 0.6, delay: 1.1, ease: "easeOut" }}
+                            >
                                 <div className={styles.projectsList}>
                                     {filteredProjects.length > 0 ? (
                                         filteredProjects.map(project => (
@@ -205,7 +230,7 @@ export const StudentProjects = () => {
                                         </div>
                                     )}
                                 </div>
-                            </div>
+                            </motion.div>
                         </>
                     ) : (
                         /* На мобильных устройствах показываем только детали проекта на всю карточку */
@@ -259,25 +284,43 @@ export const StudentProjects = () => {
                     <>
                         <div className={styles.categoriesContainer}>
                             <div className={styles.categories}>
-                                <button
+                                <motion.button
                                     className={`${styles.categoryBtn} ${selectedCategories.length === 0 ? styles.active : ''}`}
                                     onClick={clearAllCategories}
+                                    initial={{ opacity: 0, x: -50 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true, amount: 0.3 }}
+                                    transition={{ duration: 0.5, delay: 0.9, ease: "easeOut" }}
                                 >
                                     All
-                                </button>
-                                {categories.map(category => (
-                                    <button
+                                </motion.button>
+                                {categories.map((category, index) => (
+                                    <motion.button
                                         key={category}
                                         className={`${styles.categoryBtn} ${selectedCategories.includes(category) ? styles.active : ''}`}
                                         onClick={() => handleCategoryToggle(category)}
+                                        initial={{ opacity: 0, x: -50 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        viewport={{ once: true, amount: 0.3 }}
+                                        transition={{ 
+                                            duration: 0.4, 
+                                            delay: 1.1 + (index * 0.1), 
+                                            ease: "easeOut" 
+                                        }}
                                     >
                                         {category}
-                                    </button>
+                                    </motion.button>
                                 ))}
                             </div>
                         </div>
 
-                        <div className={styles.projectsLayout}>
+                        <motion.div 
+                            className={styles.projectsLayout}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, amount: 0.2 }}
+                            transition={{ duration: 0.6, delay: 1.1, ease: "easeOut" }}
+                        >
                             <div className={styles.projectsList}>
                                 {filteredProjects.length > 0 ? (
                                     filteredProjects.map(project => (
@@ -334,7 +377,7 @@ export const StudentProjects = () => {
                                     <p>{selectedProject.detailDescription}</p>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     </>
                 )}
             </div>

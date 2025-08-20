@@ -1,38 +1,45 @@
-/* directions.module.css */
+/* directions.module.css - Updated with responsive design */
 
 .section {
     min-height: 100vh;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: clamp(40px, 5vw, 120px) clamp(16px, 2vw, 80px);
 }
 
 .heading {
     position: relative;
     z-index: 2;
     color: #ffffff;
-    font-size: 48px;
+    font-size: clamp(32px, 4vw, 48px);
     font-weight: 600;
     text-align: center;
-    margin-bottom: 70px;
+    margin-bottom: clamp(40px, 5vw, 70px);
     letter-spacing: -0.5px;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     font-family: 'Montserrat', sans-serif;
 }
 
 .grid {
+    width: 100%;
     max-width: 1440px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(clamp(400px, 35vw, 552px), 1fr));
+    gap: clamp(20px, 2.5vw, 30px);
+    padding: 0;
 }
 
 .card {
     position: relative;
-    border-radius: 12px;
+    border-radius: clamp(8px, 1vw, 12px);
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    width: 552px;
-    height: 530px;
+    width: 100%;
+    max-width: clamp(400px, 35vw, 552px);
+    height: clamp(300px, 30vw, 530px);
     display: flex;
     flex-direction: column;
     box-shadow: inset 0 5px 20px rgba(161, 67, 221, 0.3);
@@ -42,11 +49,12 @@
     animation: fadeInUp 0.6s ease forwards;
     opacity: 0;
     transform: translateY(30px);
+    margin: 0 auto;
 }
 
 .image {
     width: 100%;
-    height: 265px;
+    height: clamp(160px, 20vw, 265px);
     object-fit: cover;
     transition: transform 0.4s ease;
     position: relative;
@@ -64,8 +72,8 @@
 
 .heading_back {
     background: #6A0DAD;
-    padding: 12px 20px 15px 20px;
-    height: 53px;
+    padding: clamp(8px, 1.5vw, 12px) clamp(16px, 2vw, 20px) clamp(12px, 1.5vw, 15px) clamp(16px, 2vw, 20px);
+    height: clamp(40px, 3.5vw, 53px);
     display: flex;
     align-items: center;
     position: relative;
@@ -86,18 +94,18 @@
 
 .cardTitle {
     color: #ffffff;
-    font-size: 24px;
+    font-size: clamp(18px, 2.5vw, 24px);
     font-weight: 700;
     margin: 0;
     letter-spacing: -0.3px;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: clamp(8px, 1.5vw, 12px);
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .icon {
-    font-size: 22px;
+    font-size: clamp(16px, 2vw, 22px);
     color: #ffffff;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
@@ -120,10 +128,10 @@
 
 .description {
     color: #e2e8f0;
-    font-size: 16px;
+    font-size: clamp(14px, 1.5vw, 16px);
     line-height: 1.6;
     margin: 0;
-    padding: 20px;
+    padding: clamp(16px, 2vw, 20px);
     flex-grow: 1;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
@@ -132,17 +140,17 @@
     background-color: #F0F0F5;
     color: #110A1E;
     border: none;
-    padding: 8px 21px;
-    gap: 8px;
-    border-radius: 4px;
-    font-size: 16px;
+    padding: clamp(6px, 1.5vw, 8px) clamp(16px, 2.5vw, 21px);
+    gap: clamp(6px, 1.5vw, 8px);
+    border-radius: clamp(3px, 0.8vw, 4px);
+    font-size: clamp(14px, 1.5vw, 16px);
     font-weight: 700;
     font-family: 'Manrope', sans-serif;
     cursor: pointer;
     transition: all 0.2s ease;
     align-self: flex-start;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    margin: 0 0 24px 20px;
+    margin: 0 0 clamp(16px, 2.5vw, 24px) clamp(16px, 2vw, 20px);
     position: relative;
     overflow: hidden;
 }
@@ -159,61 +167,110 @@
     }
 }
 
-/* Mobile Responsive */
-@media (max-width: 440px) {
+/* Responsive Media Queries */
+@media (max-width: 1440px) {
+    .section {
+        padding: clamp(30px, 4vw, 80px) clamp(16px, 2vw, 60px);
+    }
     
     .heading {
-        font-size: 23px;
+        font-size: clamp(28px, 3.5vw, 40px);
+        margin-bottom: clamp(30px, 4vw, 50px);
+    }
+    
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(clamp(350px, 30vw, 480px), 1fr));
+        gap: clamp(16px, 2vw, 24px);
+    }
+    
+    .card {
+        max-width: clamp(350px, 30vw, 480px);
+        height: clamp(280px, 25vw, 400px);
+    }
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: clamp(20px, 4vw, 40px) clamp(12px, 3vw, 24px);
+    }
+    
+    .heading {
+        font-size: clamp(24px, 4vw, 32px);
+        margin-bottom: clamp(24px, 4vw, 32px);
+    }
+    
+    .grid {
+        grid-template-columns: 1fr;
+        gap: clamp(16px, 3vw, 24px);
+        padding: 0;
+    }
+    
+    .card {
+        max-width: clamp(320px, 85vw, 400px);
+        height: clamp(250px, 30vw, 320px);
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 440px) {
+    .section {
+        padding: clamp(16px, 4vw, 24px) clamp(12px, 3vw, 20px);
+    }
+    
+    .heading {
+        font-size: clamp(20px, 5vw, 28px);
         font-weight: 600;
         line-height: 1.22;
-        margin-bottom: 40px;
+        margin-bottom: clamp(24px, 4vw, 32px);
         text-align: center;
     }
     
     .grid {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: clamp(16px, 3vw, 24px);
         max-width: 100%;
+        padding: 0;
     }
     
     .card {
-        width: 408px;
-        height: 273px;
+        width: 100%;
+        max-width: clamp(300px, 85vw, 380px);
+        height: clamp(220px, 25vw, 280px);
         margin: 0 auto;
-        border-radius: 16px;
+        border-radius: clamp(12px, 2vw, 16px);
         transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
     .card.expanded {
-        height: 474px;
+        height: clamp(350px, 40vw, 450px);
     }
     
     .image {
-        height: 220px;
+        height: clamp(140px, 18vw, 200px);
     }
     
     .heading_back {
-        padding: 16px 20px;
+        padding: clamp(12px, 2.5vw, 16px) clamp(16px, 3vw, 20px);
         position: relative;
     }
     
     .cardTitle {
-        font-size: 20px;
-        gap: 8px;
+        font-size: clamp(16px, 3vw, 20px);
+        gap: clamp(6px, 1.5vw, 8px);
     }
     
     .icon {
-        font-size: 18px;
+        font-size: clamp(14px, 2.5vw, 18px);
     }
     
     .arrowIcon {
         display: block; /* Показываем стрелочку в мобильной версии */
         position: absolute;
-        right: 16px;
+        right: clamp(12px, 2.5vw, 16px);
         top: 50%;
         transform: translateY(-50%);
         color: #ffffff;
-        font-size: 16px;
+        font-size: clamp(14px, 2.5vw, 16px);
         transition: all 0.3s ease;
     }
     
@@ -226,68 +283,111 @@
     }
     
     .showDetails {
-        max-height: 202px; /* Показываем при развертывании в мобильной версии */
+        max-height: clamp(150px, 20vw, 200px); /* Показываем при развертывании в мобильной версии */
         opacity: 1;
     }
     
     .description {
-        font-size: 14px;
+        font-size: clamp(12px, 2.5vw, 14px);
         line-height: 1.5;
-        padding: 16px 20px;
+        padding: clamp(12px, 2.5vw, 16px) clamp(16px, 3vw, 20px);
         margin: 0;
     }
     
     .button {
-        font-size: 14px;
-        padding: 10px 20px;
-        margin: 0 20px 20px 20px;
-        border-radius: 8px;
+        font-size: clamp(12px, 2.5vw, 14px);
+        padding: clamp(8px, 2vw, 10px) clamp(16px, 3vw, 20px);
+        margin: 0 clamp(16px, 3vw, 20px) clamp(16px, 3vw, 20px) clamp(16px, 3vw, 20px);
+        border-radius: clamp(6px, 1.5vw, 8px);
     }
 }
 
 @media (max-width: 380px) {
+    .section {
+        padding: clamp(12px, 4vw, 20px) clamp(10px, 3vw, 16px);
+    }
+    
     .card {
-        width: 360px;
-        height: 250px;
+        width: 100%;
+        max-width: clamp(280px, 80vw, 340px);
+        height: clamp(200px, 22vw, 250px);
         transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
     .card.expanded {
-        height: 400px;
+        height: clamp(320px, 35vw, 400px);
     }
     
     .image {
-        height: 160px;
+        height: clamp(120px, 15vw, 160px);
     }
     
     .heading {
-        font-size: 24px;
-        margin-bottom: 30px;
+        font-size: clamp(18px, 5vw, 24px);
+        margin-bottom: clamp(20px, 4vw, 24px);
     }
     
     .cardTitle {
-        font-size: 18px;
+        font-size: clamp(14px, 3.5vw, 18px);
     }
     
     .arrowIcon {
         display: block; /* Показываем стрелочку в мобильной версии */
         position: absolute;
-        right: 16px;
+        right: clamp(12px, 2.5vw, 16px);
         top: 50%;
         transform: translateY(-50%);
         color: #ffffff;
-        font-size: 14px;
+        font-size: clamp(12px, 3vw, 14px);
         transition: all 0.3s ease;
     }
     
     .description {
-        font-size: 13px;
-        padding: 14px 16px;
+        font-size: clamp(11px, 3vw, 13px);
+        padding: clamp(10px, 2.5vw, 14px) clamp(12px, 3vw, 16px);
     }
     
     .button {
-        font-size: 13px;
-        padding: 8px 16px;
-        margin: 0 16px 16px 16px;
+        font-size: clamp(11px, 3vw, 13px);
+        padding: clamp(6px, 2vw, 8px) clamp(12px, 3vw, 16px);
+        margin: 0 clamp(12px, 3vw, 16px) clamp(12px, 3vw, 16px) clamp(12px, 3vw, 16px);
+    }
+}
+
+@media (min-width: 2560px) {
+    .section {
+        padding: clamp(80px, 5vw, 160px) clamp(80px, 5vw, 200px);
+    }
+    
+    .heading {
+        font-size: clamp(56px, 3vw, 72px);
+        margin-bottom: clamp(80px, 5vw, 120px);
+    }
+    
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(clamp(600px, 25vw, 800px), 1fr));
+        gap: clamp(40px, 2.5vw, 60px);
+    }
+    
+    .card {
+        max-width: clamp(600px, 25vw, 800px);
+        height: clamp(500px, 25vw, 700px);
+    }
+    
+    .image {
+        height: clamp(250px, 15vw, 350px);
+    }
+    
+    .cardTitle {
+        font-size: clamp(28px, 2vw, 36px);
+    }
+    
+    .description {
+        font-size: clamp(18px, 1.2vw, 24px);
+    }
+    
+    .button {
+        font-size: clamp(18px, 1.2vw, 24px);
+        padding: clamp(12px, 1.5vw, 20px) clamp(24px, 2.5vw, 32px);
     }
 }
