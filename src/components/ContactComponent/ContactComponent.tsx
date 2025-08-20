@@ -31,7 +31,6 @@ export const ContactComponent = () => {
         register,
         handleSubmit,
         reset,
-        watch,
         formState: { errors, isSubmitting }
     } = useForm<FormData>();
 
@@ -181,7 +180,7 @@ export const ContactComponent = () => {
                         {/* Status Messages */}
                         {submitStatus === 'success' && (
                             <div className={styles.successMessage}>
-                                ✅ Форма успішно відправлена! Ми зв'яжемося з вами найближчим часом.
+                                ✅ Форма успішно відправлена! Ми зв&apos;яжемося з вами найближчим часом.
                             </div>
                         )}
 
