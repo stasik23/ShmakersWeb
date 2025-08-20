@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./directions.module.css";
-import { FaCog, FaCode, FaMicrochip, FaServer, FaGamepad, FaPalette } from "react-icons/fa";
+import { FaCog, FaCode, FaMicrochip, FaServer, FaGamepad, FaPalette, FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 interface DirectionCardProps {
     id: number;
@@ -59,7 +59,7 @@ export const DirectionsComp = () => {
     const [hoveredCard, setHoveredCard] = useState<number | null>(null);
     return (
         <section className={styles.section}>
-            <h2 className={styles.heading}>Напрямки для розвитку</h2>
+            <h2 className={styles.heading}>НАПРЯМКИ ДЛЯ РОЗВИТКУ</h2>
             <div className={styles.grid}>
                 {cardsData.map((card, index) => (
                     <div key={index} className={`${styles.card} ${hoveredCard == card.id ? styles.expanded : ''}`}
@@ -69,9 +69,14 @@ export const DirectionsComp = () => {
                             <img src={card.image} alt={card.title} className={styles.image} />
                             <div className={styles.heading_back}>
                                 <h1 className={styles.cardTitle}>{card.title} {card.icon}</h1>
+                                <div className={styles.arrowIcon}>
+                                    {hoveredCard === card.id ? <FaChevronUp /> : <FaChevronDown />}
+                                </div>
                             </div>
-                            <p className={styles.description}>{card.description}</p>
-                            <button className={styles.button}>Опанувати</button>
+                            <div className={`${styles.details} ${hoveredCard === card.id ? styles.showDetails : ''}`}>
+                                <p className={styles.description}>{card.description}</p>
+                                <button className={styles.button}>Опанувати</button>
+                            </div>
                         </div>
                     </div>
                 ))}

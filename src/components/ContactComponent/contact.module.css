@@ -3,7 +3,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
 .container {
-    margin-top: 100px;
     font-family: 'Inter', sans-serif;
     padding: 120px 0;
     color: #ffffff;
@@ -35,7 +34,6 @@
 /* ===== ФОРМА ===== */
 .form {
     background: #121027;
-    box-shadow: inset 0px 5px 12px #4F1896;
     border-radius: 12px;
     overflow: hidden;
     width: 456px;
@@ -52,20 +50,28 @@
     height: 52px;
     font-size: 20px;
     font-weight: 700;
-    text-align: center;
+    text-align: start;
+    font-family: 'Manrope', sans-serif;
 }
 
 .formContent {
     background-color: #121027;
     padding: 24px;
     display: flex;
+    border: none;
+    box-shadow: inset 0px 0px 12px 0px #4F1896;
     flex-direction: column;
+    box-sizing: border-box;
 }
 
 .inputGroup {
     display: flex;
     flex-direction: column;
+    margin-bottom: 20px;
     gap: 10px;
+    flex-shrink: 0;
+    width: 416px;
+    height: 205px;
 }
 
 .label {
@@ -143,24 +149,68 @@
 .checkboxGroup {
     display: flex;
     align-items: flex-start;
-    gap: 12px;
-    margin: 8px 0;
+    gap: 6px;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.checkboxContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10.5px;
+    height: 68px;
+    padding: 0 8px 0 8px;
+    box-sizing: border-box;
+    flex-shrink: 0;
 }
 
 .checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
     width: 20px;
     height: 20px;
-    border: 1px solid #ffffff;
-    background: #10b981;
+    border: 2px solid #F0F0F5;
     border-radius: 4px;
+    background: transparent;
     cursor: pointer;
     flex-shrink: 0;
     margin-top: 2px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.checkbox:checked {
+    background: transparent;
+    border-color: #F0F0F5;
+}
+
+.checkbox:checked::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url('/Mark.svg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 12px;
+    height: 12px;
+    color: #67CE3E;
+}
+
+.checkbox:hover {
+    border-color: #F0F0F5;
+}
+
+.checkbox:focus {
+    outline: none;
+    box-shadow: none;
 }
 
 .checkbox:active {
-    background: #67CE3E;
-    border-color: 1px solid #F0F0F5;
+    transform: scale(0.95);
 }
 
 .checkboxLabel {
@@ -168,7 +218,9 @@
     color: #ffffff;
     font-family: 'Manrope', sans-serif;
     font-weight: 700;
-    line-height: 1.4;
+    line-height: 1.5;
+    width: 176px;
+    height: 19px;
 }
 
 .disclaimer {
@@ -176,9 +228,13 @@
     font-weight: 500;
     font-size: 14px;
     color: rgba(255, 255, 255, 0.7);
-    line-height: 1.4;
+    line-height: 100%;
+    letter-spacing: 0%;
     text-align: left;
-    padding: 10px 8px 20px 8px;
+    padding: 0;
+    margin-top: 10.5px;
+    width: 400px;
+    height: 38px;
 }
 
 .submitBtn {
@@ -187,25 +243,25 @@
     border: none;
     border-radius: 8px;
     padding: 10px 16px;
+    font-style: normal;
     width: 416px;
     height: 42px;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.submitBtn:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(107, 70, 193, 0.4);
+    letter-spacing: 2%;
+    font-family: 'Manrope', sans-serif;
+    text-align: center;
+    margin-top: 20px;
 }
 
 .submitBtn:disabled {
     opacity: 0.6;
     cursor: not-allowed;
 }
+
+
 
 /* ===== КАРТОЧКИ ЦЕН ===== */
 .pricing {
@@ -218,18 +274,17 @@
     height: 211.5px;
     width: 648px;
     background: #4F1896;
+    box-shadow: 0px 0px 12px 0px #4F1896 inset;
     border-radius: 16px;
     overflow: hidden;
     transition: transform 0.3s ease;
 }
 
-.card:hover {
-    transform: translateY(-5px);
-}
-
 .cardContent {
     display: flex;
     height: 211.5px;
+    box-shadow: 0px 0px 12px 0px #4F1896 inset;
+
 }
 
 .cardText {
@@ -239,9 +294,9 @@
 }
 
 .cardTitle {
-    background: rgba(0, 0, 0, 0.2);
+    background: transparent;
     color: #ffffff;
-    padding: 12px 20px 15px 16px;
+    padding: 0;
     margin: 0;
     gap: 10px;
     line-height: 1.25;
@@ -373,8 +428,45 @@
     transition: transform 0.3s ease;
 }
 
-.card:hover .cardImage img {
-    transform: scale(1.05);
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 12px 20px 15px 16px;
+    margin: 0;
+    position: relative;
+}
+
+.arrowIcon {
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cardDetails {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    background: #110A1E;
+    margin-top: 16px;
+    border-radius: 8px;
+}
+
+.showDetails {
+    max-height: 200px;
+    opacity: 1;
+}
+
+.cardDescription {
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 16px 20px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.9);
+    font-family: 'Manrope', sans-serif;
 }
 
 /* Status Messages */
@@ -396,4 +488,328 @@
     border-radius: 8px;
     font-size: 14px;
     text-align: center;
+}
+
+@media (max-width: 440px) {
+    .content {
+        position: relative;
+        box-shadow: 0px 0px 12px 0px #4F1896 inset;
+        z-index: 10;
+        width: 408px;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .formContent {
+        padding: 20px;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        background-color: #121027;
+        border: none;
+        box-sizing: border-box;
+        flex: 1;
+    }
+
+    .submitBtn {
+        width: 368px;
+        height: 42px;
+        margin: 0;
+    }
+
+    .inputGroup {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        flex-shrink: 0;
+        margin: 0;
+    }
+
+    .checkboxContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 10.5px;
+        padding: 0 8px 0 8px;
+        box-sizing: border-box;
+        flex-shrink: 0;
+    }
+
+    .disclaimer {
+        font-family: 'Manrope', sans-serif;
+        font-weight: 500;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.4;
+        text-align: left;
+        margin: 0;
+        padding: 0;
+    }
+
+    .input {
+        width: 368px;
+        height: 35px;
+        margin: 0;
+        display: block;
+        flex-shrink: 0;
+        background: #665280;
+        border: 1px solid #665280;
+        border-radius: 8px;
+        padding: 16px;
+        color: #ffffff;
+        font-size: 14px;
+        font-family: inherit;
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+    }
+
+    .textarea {
+        width: 368px;
+        height: 115px;
+        margin: 0;
+        display: block;
+        flex-shrink: 0;
+        background: #665280;
+        border: 1px solid #665280;
+        border-radius: 8px;
+        padding: 16px;
+        color: #ffffff;
+        font-size: 14px;
+        font-family: inherit;
+        transition: all 0.3s ease;
+        resize: none;
+        box-sizing: border-box;
+    }
+
+    .input::placeholder,
+    .textarea::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+    }
+
+    .input:focus,
+    .textarea:focus {
+        outline: none;
+        border-color: #8b5cf6;
+        background: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+    }
+
+    .inputError,
+    .textareaError {
+        border-color: #ef4444;
+        box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+    }
+
+    .error {
+        color: #ef4444;
+        font-size: 12px;
+        margin-top: 4px;
+    }
+
+    .container {
+        margin-top: 70px;
+        margin-bottom: 70px;
+        padding: 40px 0px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .title {
+        font-size: 24px;
+        margin-bottom: 32px;
+        text-align: center;
+        line-height: 1.2;
+    }
+
+    .grid {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        padding: 0;
+        max-width: 100%;
+        align-items: center;
+    }
+
+    .form {
+        width: 408px;
+        margin: 0 auto;
+        order: 1;
+        height: 447px;
+        background: #121027;
+        border-radius: 12px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        box-shadow: inset 0px 5px 12px #4F1896;
+    }
+
+    .formTitle {
+        background: #4F1896;
+        color: #ffffff;
+        padding: 12px 20px 15px 16px;
+        margin: 0;
+        height: 52px;
+        font-size: 20px;
+        font-weight: 700;
+        text-align: left;
+        font-family: 'Manrope', sans-serif;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+    }
+
+    .pricing {
+        order: 2;
+        gap: 16px;
+        width: 100%;
+        max-width: 408px;
+        margin: 0;
+    }
+
+    .card {
+        width: 408px;
+        height: 238px;
+        margin: 0 auto;
+        border-radius: 16px;
+        transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        background: #4F1896;
+        overflow: hidden;
+    }
+
+    .card.expanded {
+        height: 400px;
+    }
+
+    .image {
+        width: 408px;
+        height: 186px;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+        position: relative;
+        z-index: 1;
+    }
+
+    .heading_back {
+        background: #6A0DAD;
+        width: 408px;
+        height: 52px;
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+        justify-content: space-between;
+        box-sizing: border-box;
+    }
+
+    .cardTitle {
+        color: #ffffff;
+        font-size: 20px;
+        font-weight: 700;
+        margin: 0;
+        letter-spacing: -0.3px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        font-family: 'Manrope', sans-serif;
+        text-align: left;
+        flex: 1;
+    }
+
+    .arrowIcon {
+        color: #ffffff;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        flex-shrink: 0;
+    }
+
+    .details {
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        opacity: 0;
+        background: #110A1E;
+        padding: 0 20px;
+        flex: 1;
+        border-radius: 0 0 16px 16px;
+    }
+
+    .showDetails {
+        max-height: 200px;
+        opacity: 1;
+        padding: 16px 20px;
+        margin: 0;
+    }
+
+    .pricingInfo {
+        padding: 0;
+        height: 30px;
+    }
+
+    .pricingInfo p {
+        padding: 0 0 12px 0;
+        font-size: 16px;
+        color: #ffffff;
+        font-weight: 700;
+        line-height: 100%;
+        letter-spacing: 2%;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 0;
+    }
+
+    .pricingInfo p:last-child {
+        padding-bottom: 0;
+    }
+
+    .pricingInfo p::before {
+        content: "";
+        width: 30px;
+        height: 30px;
+        background: #4F1896;
+        border-radius: 6px;
+        background-image: url('/coins.svg');
+        background-size: 18.75px;
+        background-repeat: no-repeat;
+        background-position: center;
+        display: inline-block;
+        margin-right: 8px;
+        flex-shrink: 0;
+    }
+
+    .pricingInfo p:nth-child(2)::before {
+        content: "";
+        width: 30px;
+        height: 30px;
+        background: #4F1896;
+        border-radius: 6px;
+        background-image: url('/TimeVector.svg');
+        background-size: 18.75px;
+        background-repeat: no-repeat;
+        background-position: center;
+        display: inline-block;
+        margin-right: 8px;
+        flex-shrink: 0;
+    }
+
+    .pricingInfo p:nth-child(3)::before {
+        content: "";
+        width: 30px;
+        height: 30px;
+        background: #4F1896;
+        border-radius: 6px;
+        background-image: url('/DataVector.svg');
+        background-size: 18.75px;
+        background-repeat: no-repeat;
+        background-position: center;
+        display: inline-block;
+        margin-right: 8px;
+        flex-shrink: 0;
+    }
 }

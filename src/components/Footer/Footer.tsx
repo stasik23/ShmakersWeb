@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "./footer.module.css";
-import { FaDiscord, FaPhone } from "react-icons/fa";
-import { SiTelegram } from "react-icons/si";
+import { FaDiscord } from "react-icons/fa";
+import { SiTiktok } from "react-icons/si";
+import { RiInstagramFill, RiTelegram2Fill } from "react-icons/ri";
 
 export const Footer = () => {
     return (
@@ -20,13 +21,16 @@ export const Footer = () => {
                 
                 <div className={styles.socialIcons}>
                     <a href="#" className={styles.socialLink}>
+                        <RiTelegram2Fill className={styles.icon} />
+                    </a>
+                    <a href="#" className={styles.socialLink}>
                         <FaDiscord className={styles.icon} />
                     </a>
                     <a href="#" className={styles.socialLink}>
-                        <SiTelegram className={styles.icon} />
+                        <SiTiktok className={styles.icon} />
                     </a>
                     <a href="#" className={styles.socialLink}>
-                        <FaPhone className={styles.icon} />
+                        <RiInstagramFill className={styles.icon} />
                     </a>
                 </div>
             </div>

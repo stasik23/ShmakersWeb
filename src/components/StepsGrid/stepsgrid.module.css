@@ -40,8 +40,8 @@
     box-shadow: inset 10px #4F1896;
     border-radius: 12px;
     padding: 20px;
-    width: 360px;
-    height: 177px;
+    max-width: 360px;
+    max-height: 177px;
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
     position: relative;
@@ -127,29 +127,21 @@
 .sliderContainer {
     display: flex;
     align-items: center;
-    gap: 20px;
+    min-width: 420px;
     justify-content: center;
 }
 
 .sliderButton {
-    background: rgba(79, 24, 150, 0.3);
-    border: 1px solid rgba(79, 24, 150, 0.5);
-    border-radius: 50%;
-    width: 48px;
-    height: 48px;
+    width: 30px;
+    height: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    color: #FB9DFF;
-    font-size: 18px;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
-}
-
-.sliderButton:hover {
-    background: rgba(79, 24, 150, 0.5);
-    transform: scale(1.05);
+    color: #9B05FB;
+    background: transparent;
+    border: none;
+    padding: 0;
 }
 
 .slideCard {
@@ -212,17 +204,21 @@
     font-family: 'Manrope', sans-serif;
 }
 
+.arrowIcon { 
+    color: #9B05FB;
+}
+
 /* Mobile Responsive */
 @media (max-width: 440px) {
     .wrapper {
-        padding: 40px 20px 60px 20px;
+        padding: 40px 10px 60px 10px;
     }
     
     .title {
-        font-size: 28px;
+        font-size: 23px;
+        font-weight: 600;
         white-space: normal;
-        line-height: 1.2;
-        margin-bottom: 32px;
+        line-height: 1.17;
     }
     
     .featuresGrid {
@@ -232,23 +228,90 @@
     .mobileSlider {
         display: block;
     }
+    
+    .slideCard {
+        background: rgba(0, 0, 0, 0.6);
+        border: 2px solid #4F1896;
+        border-radius: 20px;
+        padding: 24px 20px;
+        width: 100%;
+        max-width: 360px;
+        min-height: 177px;
+        max-height: 177px;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .slideHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 20px;
+    }
+    
+    .slideIcon {
+        width: 40px;
+        height: 40px;
+        background: #4F1896;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        color: #FB9DFF;
+    }
+    
+    .slideStep {
+        background: #4F1896;
+        color: #FB9DFF;
+        padding: 8px 16px;
+        border-radius: 16px;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 1.36;
+        letter-spacing: 2%;
+    }
+    
+    .slideTitle {
+        font-size: 16px;
+        font-weight: 700;
+        font-family: 'Manrope', sans-serif;
+        color: #ffffff;
+        margin-bottom: 12px;
+        line-height: 1.2;
+    }
+    
+    .slideDescription {
+        font-size: 14px;
+        font-weight: 400;
+        color: #8A7898;
+        line-height: 1.4;
+        margin: 0;
+        font-family: 'Manrope', sans-serif;
+    }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 440px) {
     .title {
         font-size: 24px;
     }
     
     .sliderButton {
-        width: 40px;
-        height: 40px;
+        width: 30px;
+        height: 30px;
         font-size: 16px;
+        background: transparent;
+        border: none;
+        padding: 0;
     }
     
     .slideCard {
-        max-width: 280px;
+        max-width: 360px;
         padding: 24px 20px;
-        min-height: 260px;
+        min-height: 177px;
+        max-height: 177px;
     }
     
     .slideTitle {
@@ -257,5 +320,49 @@
     
     .slideDescription {
         font-size: 13px;
+    }
+}
+
+@media (max-width: 380px) {
+    .title {
+        font-size: 22px;
+        margin-bottom: 24px;
+    }
+    
+    .sliderButton {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+        background: transparent;
+        border: none;
+        padding: 0;
+    }
+    
+    .slideCard {
+        max-width: 320px;
+        padding: 20px 16px;
+        min-height: 160px;
+        max-height: 160px;
+    }
+    
+    .slideIcon {
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+    }
+    
+    .slideStep {
+        padding: 4px 10px;
+        font-size: 11px;
+    }
+    
+    .slideTitle {
+        font-size: 15px;
+        margin-bottom: 10px;
+    }
+    
+    .slideDescription {
+        font-size: 12px;
+        line-height: 1.3;
     }
 }

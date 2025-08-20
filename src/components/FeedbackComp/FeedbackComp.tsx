@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaStar } from 'react-icons/fa';
+import { FaStar, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import styles from './feedback.module.css';
 
 interface Review {
@@ -90,6 +90,20 @@ const categories = ['All', 'Web Design', 'Game Development', '3D', 'English', 'E
 
 export const FeedbackComp: React.FC = () => {
     const [selectedCategory, setSelectedCategory] = useState<string>('All');
+    const [expandedReviews, setExpandedReviews] = useState<Set<number>>(new Set());
+    const [isMobile, setIsMobile] = useState(false);
+
+    // Проверяем размер экрана при загрузке и изменении
+    React.useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth <= 440);
+        };
+        
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
 
     // Filter reviews based on selected category
     const filteredReviews = selectedCategory === 'All'
@@ -98,6 +112,18 @@ export const FeedbackComp: React.FC = () => {
 
     const handleCategorySelect = (category: string) => {
         setSelectedCategory(category);
+    };
+
+    const toggleReviewExpansion = (reviewId: number) => {
+        setExpandedReviews(prev => {
+            const newSet = new Set(prev);
+            if (newSet.has(reviewId)) {
+                newSet.delete(reviewId);
+            } else {
+                newSet.add(reviewId);
+            }
+            return newSet;
+        });
     };
 
     const renderStars = (rating: number) => {
@@ -133,21 +159,56 @@ export const FeedbackComp: React.FC = () => {
                         {filteredReviews.length > 0 ? (
                             filteredReviews.map((review, index) => {
                                 const isEven = index % 2 === 1;
+                                const isExpanded = expandedReviews.has(review.id);
+                                
                                 return (
                                     <div key={review.id} className={styles.reviewItem}>
-                                        <div className={`${styles.reviewCard} ${isEven ? styles.even : ''}`}>
-                                            <img src={review.avatar} alt={review.name} className={styles.avatar} />
-                                            <div className={styles.reviewInfo}>
-                                                <h3 className={styles.reviewerName}>{review.name}</h3>
-                                                <p className={styles.reviewerDirection}>Напрямок: {review.direction}</p>
-                                                <div className={styles.rating}>
-                                                    {renderStars(review.rating)}
+                                        {/* На мобильных устройствах показываем либо свернутое, либо развернутое состояние */}
+                                        {isMobile ? (
+                                            <>
+                                                <div 
+                                                    className={`${styles.reviewCard} ${isEven ? styles.even : ''} ${isExpanded ? styles.mobileExpanded : ''}`}
+                                                    onClick={() => toggleReviewExpansion(review.id)}
+                                                >
+                                                    <img src={review.avatar} alt={review.name} className={styles.avatar} />
+                                                    <div className={styles.reviewInfo}>
+                                                        <h3 className={styles.reviewerName}>{review.name}</h3>
+                                                        <p className={styles.reviewerDirection}>Напрямок: {review.direction}</p>
+                                                        <div className={styles.rating}>
+                                                            {renderStars(review.rating)}
+                                                        </div>
+                                                    </div>
+                                                    {/* Иконка для переключения состояния */}
+                                                    <div className={styles.expandIcon}>
+                                                        {isExpanded ? <FaChevronUp /> : <FaChevronDown />}
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div className={`${styles.reviewComment} ${isEven ? styles.even : ''}`}>
-                                            <p>{review.comment}</p>
-                                        </div>
+                                                
+                                                {/* Комментарий показывается только в развернутом состоянии на мобильных */}
+                                                {isExpanded && (
+                                                    <div className={`${styles.reviewComment} ${isEven ? styles.even : ''} ${styles.mobileComment}`}>
+                                                        <p>{review.comment}</p>
+                                                    </div>
+                                                )}
+                                            </>
+                                        ) : (
+                                            /* На десктопе показываем как было - карточка и комментарий рядом */
+                                            <>
+                                                <div className={`${styles.reviewCard} ${isEven ? styles.even : ''}`}>
+                                                    <img src={review.avatar} alt={review.name} className={styles.avatar} />
+                                                    <div className={styles.reviewInfo}>
+                                                        <h3 className={styles.reviewerName}>{review.name}</h3>
+                                                        <p className={styles.reviewerDirection}>Напрямок: {review.direction}</p>
+                                                        <div className={styles.rating}>
+                                                            {renderStars(review.rating)}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className={`${styles.reviewComment} ${isEven ? styles.even : ''}`}>
+                                                    <p>{review.comment}</p>
+                                                </div>
+                                            </>
+                                        )}
                                     </div>
                                 );
                             })

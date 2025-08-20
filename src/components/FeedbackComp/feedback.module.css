@@ -17,7 +17,7 @@
     letter-spacing: 4%;
     text-transform: uppercase;
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
     color: #ffffff;
     letter-spacing: 0.02em;
     font-family: 'Montserrat', sans-serif;
@@ -178,6 +178,15 @@
     margin: 0;
 }
 
+.expandIcon {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: auto;
+    padding-right: 12px;
+}
+
 .noReviews {
     padding: 40px;
     text-align: center;
@@ -193,11 +202,11 @@
     .title {
         font-size: clamp(32px, 5vw, 48px);
     }
-    
+
     .categories {
         padding: 0 20px;
     }
-    
+
     .reviewsContainer {
         padding: 0 20px;
     }
@@ -207,14 +216,154 @@
     .reviewItem {
         flex-direction: column;
     }
-    
+
     .reviewCard {
         border-radius: 16px 16px 0 0;
         min-width: auto;
         width: 100%;
     }
-    
+
     .reviewComment {
         border-radius: 0 0 16px 16px;
+    }
+}
+
+/* Мобильная адаптация для телефонов */
+@media (max-width: 440px) {
+    .container {
+        width: 100vw;
+        padding: 40px 0 0 0;
+    }
+
+    .title {
+        margin-bottom: 40px;
+    }
+
+    .categories {
+        padding: 0;
+        flex-wrap: nowrap;
+        padding-bottom: 8px;
+        padding: 0;
+        margin: 0 0 34px 0;
+        max-width: 408px;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .categories::-webkit-scrollbar {
+        display: none;
+    }
+
+    .categoryBtn {
+        font-size: 16px;
+        border-radius: 4px;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    .reviewItem {
+        flex-direction: column;
+        gap: 8px;
+        /* Отступ между reviewCard и reviewComment */
+    }
+
+    .reviewCard {
+        border-radius: 12px;
+        width: 408px;
+        height: 83px;
+        /* Высота в свернутом состоянии */
+        padding: 12px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .reviewsContainer {
+        padding: 0;
+        max-height: 412px;
+    }
+
+    .reviewCard.mobileExpanded {
+        border-radius: 12px 12px 0 0;
+    }
+
+    .reviewComment {
+        border-radius: 0 0 12px 12px;
+        width: 408px;
+        padding: 20px 24px;
+        display: none;
+        /* По умолчанию скрыт */
+    }
+
+    .reviewComment.mobileComment {
+        display: flex;
+        /* Показывается только в развернутом состоянии */
+        align-items: center;
+    }
+
+    .reviewInfo {
+        flex: 1;
+        margin-right: 12px;
+    }
+
+    .avatar {
+        width: 48px;
+        height: 48px;
+        margin-bottom: 0;
+        margin-right: 12px;
+    }
+
+    .reviewerName {
+        font-size: 18px;
+        margin-bottom: 4px;
+    }
+
+    .reviewerDirection {
+        font-size: 12px;
+        margin-bottom: 8px;
+    }
+
+    .rating {
+        gap: 2px;
+    }
+
+    .star {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+@media (max-width: 380px) {
+
+    .reviewCard,
+    .reviewComment {
+        width: 360px;
+    }
+
+    .reviewCard {
+        height: 75px;
+        padding: 10px;
+    }
+
+    .avatar {
+        width: 44px;
+        height: 44px;
+    }
+
+    .reviewerName {
+        font-size: 16px;
+    }
+
+    .reviewerDirection {
+        font-size: 11px;
+    }
+
+    .categoryBtn {
+        padding: 6px 12px;
+        font-size: 14px;
     }
 }

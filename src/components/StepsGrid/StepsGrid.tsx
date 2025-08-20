@@ -6,10 +6,9 @@ import {
     FaFolder,
     FaRobot,
     FaUsers,
-    FaChevronLeft,
-    FaChevronRight
 } from 'react-icons/fa';
 import styles from './stepsgrid.module.css';
+import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md';
 
 interface FeatureCard {
     id: number;
@@ -80,7 +79,7 @@ export const StepsGrid = () => {
             <h1 className={styles.title}>
                 Що зробить твоє навчання унікальним?
             </h1>
-            
+
             <div className={styles.container}>
                 {/* Desktop Grid */}
                 <div className={styles.featuresGrid}>
@@ -94,7 +93,7 @@ export const StepsGrid = () => {
                                     {feature.step}
                                 </div>
                             </div>
-                            
+
                             <div className={styles.cardContent}>
                                 <h3 className={styles.cardTitle}>
                                     {feature.title}
@@ -110,12 +109,12 @@ export const StepsGrid = () => {
                 {/* Mobile Slider */}
                 <div className={styles.mobileSlider}>
                     <div className={styles.sliderContainer}>
-                        <button 
+                        <button
                             onClick={prevSlide}
                             className={styles.sliderButton}
                             aria-label="Previous slide"
                         >
-                            <FaChevronLeft />
+                            <MdArrowBackIos className={styles.arrowIcon} />
                         </button>
 
                         <div className={styles.slideCard}>
@@ -127,7 +126,7 @@ export const StepsGrid = () => {
                                     {featuresData[currentSlide].step}
                                 </div>
                             </div>
-                            
+
                             <div>
                                 <h3 className={styles.slideTitle}>
                                     {featuresData[currentSlide].title}
@@ -138,25 +137,13 @@ export const StepsGrid = () => {
                             </div>
                         </div>
 
-                        <button 
+                        <button
                             onClick={nextSlide}
                             className={styles.sliderButton}
                             aria-label="Next slide"
                         >
-                            <FaChevronRight />
+                            <MdArrowForwardIos className={styles.arrowIcon} />
                         </button>
-                    </div>
-
-                    {/* Dots indicator */}
-                    <div className={styles.dotsContainer}>
-                        {featuresData.map((_, index) => (
-                            <button
-                                key={index}
-                                onClick={() => setCurrentSlide(index)}
-                                className={`${styles.dot} ${currentSlide === index ? styles.dotActive : ''}`}
-                                aria-label={`Go to slide ${index + 1}`}
-                            />
-                        ))}
                     </div>
                 </div>
             </div>

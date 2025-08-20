@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaGithub, FaArrowLeft } from 'react-icons/fa';
 import styles from './studstyles.module.css';
 import { IoLogoFigma } from 'react-icons/io5';
 
@@ -27,7 +27,7 @@ const projectsData: Project[] = [
         avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80',
         githubUrl: 'https://github.com',
         liveUrl: 'https://formify.com',
-        detailDescription: 'Formify — це гнучкий вебконструктор форм, який дозволяє швидко створювати інтерактивні форми без глибоких знань програмування. Підтримується валідація полів, автозбереження даних, інтеграція з API та адаптивний дизайн. Користувачі можуть проектувати контактні форми, опитування чи реєстрації. Formify ідеально підходить для стартапів, фрілансерів і команд, що прагнуть заощадити час на розробці типових рішень.'
+        detailDescription: 'Formify — це гнучкий вебконструктор форм, який дозволяє швидко створювати інтерактивні форми без глибоких знань програмування. Підтримується валідація полів, автозбереження даних, інтеграція з API та адаптивний дизайн. Користувачі можуть проектувати контактні форми, опитування чи реєстрації.'
     },
     {
         id: 2,
@@ -114,22 +114,39 @@ const categories = ['Web Design', 'Web Development', 'Game Development', 'Math',
 export const StudentProjects = () => {
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
     const [selectedProject, setSelectedProject] = useState<Project>(projectsData[0]);
+    const [showDetails, setShowDetails] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
 
-    const filteredProjects = selectedCategories.length === 0 
-        ? projectsData 
+    // Проверяем размер экрана при загрузке и изменении
+    React.useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth <= 440);
+        };
+
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
+    const filteredProjects = selectedCategories.length === 0
+        ? projectsData
         : projectsData.filter(project => selectedCategories.includes(project.category));
 
     const handleProjectSelect = (project: Project) => {
         setSelectedProject(project);
+        setShowDetails(true);
+    };
+
+    const handleBackToList = () => {
+        setShowDetails(false);
     };
 
     const handleCategoryToggle = (category: string) => {
         setSelectedCategories(prev => {
             if (prev.includes(category)) {
-                // Убираем категорию из выбранных
                 return prev.filter(cat => cat !== category);
             } else {
-                // Добавляем категорию к выбранным
                 return [...prev, category];
             }
         });
@@ -141,86 +158,187 @@ export const StudentProjects = () => {
 
     return (
         <div className={styles.container}>
-            <h1 className={styles.title}>Проекти наших учнів</h1>
-            
-            <div className={styles.categoriesContainer}>
-                <div className={styles.categories}>
-                    <button
-                        className={`${styles.categoryBtn} ${selectedCategories.length === 0 ? styles.active : ''}`}
-                        onClick={clearAllCategories}
-                    >
-                        All
-                    </button>
-                    {categories.map(category => (
-                        <button
-                            key={category}
-                            className={`${styles.categoryBtn} ${selectedCategories.includes(category) ? styles.active : ''}`}
-                            onClick={() => handleCategoryToggle(category)}
-                        >
-                            {category}
-                        </button>
-                    ))}
-                </div>
-            </div>
-
-            <div className={styles.projectsLayout}>
-                <div className={styles.projectsList}>
-                    {filteredProjects.length > 0 ? (
-                        filteredProjects.map(project => (
-                            <div
-                                key={project.id}
-                                className={`${styles.projectCard} ${selectedProject.id === project.id ? styles.selected : ''}`}
-                                onClick={() => handleProjectSelect(project)}
-                            >
-                                <img src={project.avatar} alt={`${project.name} avatar`} className={styles.avatar} />
-                                <div className={styles.projectInfo}>
-                                    <h3 className={styles.projectName}>{project.name}</h3>
-                                    <p className={styles.projectDescription}>{project.description}</p>
+            <h1 className={styles.title}>ПРОЄКТИ НАШИХ УЧНІВ</h1>
+            <div className={styles.secContainer}>
+                {isMobile ? (
+                    !showDetails ? (
+                        <>
+                            <div className={styles.categoriesContainer}>
+                                <div className={styles.categories}>
+                                    <button
+                                        className={`${styles.categoryBtn} ${selectedCategories.length === 0 ? styles.active : ''}`}
+                                        onClick={clearAllCategories}
+                                    >
+                                        All
+                                    </button>
+                                    {categories.map(category => (
+                                        <button
+                                            key={category}
+                                            className={`${styles.categoryBtn} ${selectedCategories.includes(category) ? styles.active : ''}`}
+                                            onClick={() => handleCategoryToggle(category)}
+                                        >
+                                            {category}
+                                        </button>
+                                    ))}
                                 </div>
                             </div>
-                        ))
+
+                            <div className={styles.projectsLayout}>
+                                <div className={styles.projectsList}>
+                                    {filteredProjects.length > 0 ? (
+                                        filteredProjects.map(project => (
+                                            <div
+                                                key={project.id}
+                                                className={`${styles.projectCard} ${selectedProject.id === project.id ? styles.selected : ''}`}
+                                                onClick={() => handleProjectSelect(project)}
+                                            >
+                                                <img src={project.avatar} alt={`${project.name} avatar`} className={styles.avatar} />
+                                                <div className={styles.projectInfo}>
+                                                    <h3 className={styles.projectName}>{project.name}</h3>
+                                                    <p className={styles.projectDescription}>{project.description}</p>
+                                                </div>
+                                            </div>
+                                        ))
+                                    ) : (
+                                        <div className={styles.noProjects}>
+                                            <p>Проекти за вибраними категоріями не знайдено</p>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        </>
                     ) : (
-                        <div className={styles.noProjects}>
-                            <p>Проекти за вибраними категоріями не знайдено</p>
-                        </div>
-                    )}
-                </div>
+                        /* На мобильных устройствах показываем только детали проекта на всю карточку */
+                        <div className={styles.projectDetails}>
+                            <div className={styles.detailsHeader}>
+                                <div className={styles.headerContainer}>
+                                    <FaArrowLeft 
+                                        className={styles.backArrow} 
+                                        onClick={handleBackToList}
+                                        style={{ cursor: 'pointer' }}
+                                    />
+                                    <span className={styles.projectTitle}>{selectedProject.name}</span>
+                                </div>
+                            </div>
 
-                <div className={styles.projectDetails}>
-                    <div className={styles.detailsHeader}>
-                        <h2 className={styles.detailsTitle}>{selectedProject.name}</h2>
-                        <div className={styles.projectTags}>
-                            {selectedProject.tags.map(tag => (
-                                <span key={tag} className={styles.tag}>{tag}</span>
-                            ))}
-                        </div>
-                    </div>
+                            <div className={styles.projectPreview}>
+                                <img
+                                    src={selectedProject.image}
+                                    alt={selectedProject.name}
+                                    className={styles.previewImage}
+                                />
+                            </div>
 
-                    <div className={styles.projectPreview}>
-                        <img 
-                            src={selectedProject.image} 
-                            alt={selectedProject.name}
-                            className={styles.previewImage}
-                        />
-                        <div className={styles.projectLinks}>
-                            {selectedProject.githubUrl && (
-                                <a href={selectedProject.githubUrl} target="_blank" rel="noopener noreferrer" className={styles.projectLink}>
-                                    <FaGithub className={styles.fagithub} />
-                                </a>
-                            )}
-                            {selectedProject.liveUrl && (
-                                <a href={selectedProject.liveUrl} target="_blank" rel="noopener noreferrer" className={styles.projectLink}>
-                                    <IoLogoFigma className={styles.fafigma} />
-                                </a>
-                            )}
-                        </div>
-                    </div>
+                            <div className={styles.linksAndTagsSection}>
+                                <div className={styles.projectLinks}>
+                                    {selectedProject.githubUrl && (
+                                        <a href={selectedProject.githubUrl} target="_blank" rel="noopener noreferrer" className={styles.projectLink}>
+                                            <FaGithub className={styles.linkIcon} />
+                                        </a>
+                                    )}
+                                    {selectedProject.liveUrl && (
+                                        <a href={selectedProject.liveUrl} target="_blank" rel="noopener noreferrer" className={styles.projectLink}>
+                                            <IoLogoFigma className={styles.linkIcon} />
+                                        </a>
+                                    )}
+                                </div>
+                                <div className={styles.projectTags}>
+                                    {selectedProject.tags.map(tag => (
+                                        <span key={tag} className={styles.tag}>{tag}</span>
+                                    ))}
+                                </div>
+                            </div>
 
-                    <div className={styles.projectDescription}>
-                        <p>{selectedProject.detailDescription}</p>
-                    </div>
-                </div>
+                            <div className={styles.projectDescription}>
+                                <p>{selectedProject.detailDescription}</p>
+                            </div>
+                        </div>
+                    )
+                ) : (
+                    /* На десктопе показываем как было изначально - категории, список и детали одновременно */
+                    <>
+                        <div className={styles.categoriesContainer}>
+                            <div className={styles.categories}>
+                                <button
+                                    className={`${styles.categoryBtn} ${selectedCategories.length === 0 ? styles.active : ''}`}
+                                    onClick={clearAllCategories}
+                                >
+                                    All
+                                </button>
+                                {categories.map(category => (
+                                    <button
+                                        key={category}
+                                        className={`${styles.categoryBtn} ${selectedCategories.includes(category) ? styles.active : ''}`}
+                                        onClick={() => handleCategoryToggle(category)}
+                                    >
+                                        {category}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className={styles.projectsLayout}>
+                            <div className={styles.projectsList}>
+                                {filteredProjects.length > 0 ? (
+                                    filteredProjects.map(project => (
+                                        <div
+                                            key={project.id}
+                                            className={`${styles.projectCard} ${selectedProject.id === project.id ? styles.selected : ''}`}
+                                            onClick={() => handleProjectSelect(project)}
+                                        >
+                                            <img src={project.avatar} alt={`${project.name} avatar`} className={styles.avatar} />
+                                            <div className={styles.projectInfo}>
+                                                <h3 className={styles.projectName}>{project.name}</h3>
+                                                <p className={styles.projectDescription}>{project.description}</p>
+                                            </div>
+                                        </div>
+                                    ))
+                                ) : (
+                                    <div className={styles.noProjects}>
+                                        <p>Проекти за вибраними категоріями не знайдено</p>
+                                    </div>
+                                )}
+                            </div>
+
+                            <div className={styles.projectDetails}>
+                                <div className={styles.detailsHeader}>
+                                    <h2 className={styles.detailsTitle}>{selectedProject.name}</h2>
+                                    <div className={styles.projectTags}>
+                                        {selectedProject.tags.map(tag => (
+                                            <span key={tag} className={styles.tag}>{tag}</span>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <div className={styles.projectPreview}>
+                                    <img
+                                        src={selectedProject.image}
+                                        alt={selectedProject.name}
+                                        className={styles.previewImage}
+                                    />
+                                    <div className={styles.projectLinks}>
+                                        {selectedProject.githubUrl && (
+                                            <a href={selectedProject.githubUrl} target="_blank" rel="noopener noreferrer" className={styles.projectLink}>
+                                                <FaGithub className={styles.fagithub} />
+                                            </a>
+                                        )}
+                                        {selectedProject.liveUrl && (
+                                            <a href={selectedProject.liveUrl} target="_blank" rel="noopener noreferrer" className={styles.projectLink}>
+                                                <IoLogoFigma className={styles.fafigma} />
+                                            </a>
+                                        )}
+                                    </div>
+                                </div>
+
+                                <div className={styles.projectDescription}>
+                                    <p>{selectedProject.detailDescription}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </>
+                )}
             </div>
+
         </div>
     );
 };

@@ -86,32 +86,127 @@
 .socialIcons {
     display: flex;
     align-items: center;
-    gap: 16px;
+    height: 50px;
+    gap: 10px;
 }
 
 .socialLink {
-    width: 44px;
-    height: 44px;
-    background: rgba(139, 92, 246, 0.1);
-    border: 2px solid rgba(139, 92, 246, 0.3);
-    border-radius: 12px;
+    width: 36px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #8b5cf6;
     text-decoration: none;
     transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
 }
 
 .socialLink:hover {
-    background: rgba(139, 92, 246, 0.2);
-    border-color: #8b5cf6;
     color: #ffffff;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3);
 }
 
 .icon {
-    font-size: 20px;
+    font-size: 30px;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 440px) {
+    .footer {
+        height: 368px;
+        width: 100%;
+        border-top: 2px solid;
+        border-image-source: linear-gradient(180deg, #4F1896 -1.25%, rgba(79, 24, 150, 0) 2.5%);
+        box-shadow: 0px -11px 31px 0px #4F1896;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .container {
+        flex-direction: column;
+        gap: 0;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+        max-width: none;
+    }
+
+    .logo {
+        width: 408px;
+        height: 48px;
+        padding: 20px 16px 30px 16px;
+        justify-content: start;
+        gap: 10px;
+        box-sizing: border-box;
+    }
+
+    .brandName {
+        font-size: 20px;
+        font-weight: 700;
+        color: #ffffff;
+    }
+
+    .navigation {
+        flex-direction: column;
+        gap: 6px;
+        width: 124px;
+        height: 170px;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+
+    .navLink {
+        font-size: 16px;
+        color: #ffffff;
+        text-align: center;
+        width: 100%;
+        padding: 8px 0;
+    }
+
+    .navLink::after {
+        display: none;
+    }
+
+    .navLink:hover {
+        transform: none;
+    }
+
+    .socialIcons {
+        gap: 20px;
+        width: 174px;
+        height: 50px;
+        padding-bottom: 20px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .socialLink {
+        width: 30px;
+        height: 30px;
+        background: none;
+        border: none;
+        border-radius: 6px;
+        color: #9B05FB;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .socialLink:hover {
+        background: #4F1896;
+        border: none;
+        transform: none;
+        box-shadow: none;
+    }
+
+    .icon {
+        width: 30px;
+        height: 30px;
+        border: none;
+        color: #9B05FB;
+    }
 }

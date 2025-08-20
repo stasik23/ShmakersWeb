@@ -30,10 +30,13 @@
 
 /* Banner */
 .banner {
-    background: #4d4d4d;
+    display: flex;
+    align-items: center;
+    background: #4D4D4D;
+    gap: 90px;
+    height: 40px;
     font-size: 16px;
     color: white;
-    padding: 12px 0;
     position: relative;
     z-index: 20;
     overflow: hidden;
@@ -41,6 +44,7 @@
 
 .marquee {
     display: flex;
+    align-items: center;
     animation: marquee 25s linear infinite;
     white-space: nowrap;
     width: max-content;
@@ -61,38 +65,47 @@
     align-items: center;
     font-weight: 600;
     gap: 1rem;
+    line-height: 100%;
+    font-size: 15px;
     padding: 0 2rem;
     font-family: 'Manrope', sans-serif;
 }
 
 .promoTag {
-    background: white;
-    color: #4d4d4d;
+    color: #FFFFFF;
     padding: 0.3rem 0.6rem;
-    border-radius: 0.375rem;
-    font-size: 0.75rem;
-    font-weight: 700;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 100%;
+    letter-spacing: 2%;
     text-transform: uppercase;
     letter-spacing: 0.025em;
 }
 
 .bannerIcon {
-    width: 21.6px;
-    height: 21.6px;
+    width: 24px;
+    height: 24px;
     color: white;
     margin-right: 0.5rem;
     vertical-align: middle;
 }
 
 .bannerText {
+    font-family: 'Manrope', sans-serif;
     font-weight: 400;
-    letter-spacing: 0.01em;
+    font-size: 15px;
+    line-height: 100%;
+    letter-spacing: 0.025em;
 }
 
 .promoCode {
     color: white;
-    font-weight: 600;
-    font-style: bold;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 15px;
+    line-height: 100%;
+    letter-spacing: 2%;
 }
 
 /* Navigation */
@@ -183,14 +196,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 22px;
-    padding: 0 22px;
+    gap: 12px;
+    padding: 0;
     width: 124px;
     height: 36px;
 }
 
 .socialIcon {
     color: #9B05FB;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     transition: all 0.3s ease;
     text-decoration: none;
@@ -221,28 +239,51 @@
     display: none;
     background: none;
     border: none;
-    color: #9B05FB;
+    padding: 0;
+    margin: 0;
+}
+
+/* Burger Menu Icon Button */
+.burgerMenuButton {
+    display: none;
+    width: 36px;
+    height: 36px;
+    opacity: 1;
+    background: none;
+    border: none;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 24px;
-    padding: 8px;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.burgerMenuButton:hover {
+    transform: scale(1.05);
+}
+
+.burgerMenuIcon {
+    width: 20px;
+    height: 20px;
+    color: #9B05FB;
 }
 
 /* Dropdown Menu */
 .dropdownMenu {
     position: absolute;
     top: 100%;
-    left: 25vh;
-    width: 1200px;
+    left: 30vh;
+    width: 1128px;
     transform: translateX(-50%) translateY(-15px);
     margin-top: 8px;
-    background: #3a3a3a;
-    border-radius: 8px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    background: #1a1a1a;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 8px 12px;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px;
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -257,6 +298,8 @@
     transform: translateX(-50%) translateY(10px);
     pointer-events: auto;
 }
+
+
 
 .coursesWrapper::-webkit-scrollbar {
     display: none;
@@ -279,14 +322,7 @@
     background: #a855f7;
 }
 
-/* Course Navigation */
-.courseNavigation {
-    background: #1a1a1a;
-    padding: 16px 156px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    position: relative;
-    z-index: 15;
-}
+
 
 .courseContainer {
     display: flex;
@@ -296,10 +332,10 @@
 }
 
 .scrollButton {
-    background: #3f3f3f;
+    background: #2a2a2a;
     border: none;
     border-radius: 8px;
-    padding: 8px;
+    padding: 0;
     cursor: pointer;
     transition: background 0.3s;
     width: 32px;
@@ -324,7 +360,7 @@
 .coursesWrapper {
     flex: 1;
     overflow: hidden;
-    padding: 0 8px;
+    padding: 0 12px;
 }
 
 .coursesList {
@@ -336,11 +372,17 @@
     scroll-behavior: smooth;
     -ms-overflow-style: none;
     scrollbar-width: none;
+    align-items: center;
+    padding: 0;
+}
+
+.coursesList::-webkit-scrollbar {
+    display: none;
 }
 
 .courseButton {
     padding: 8px 12px;
-    background-color: #555;
+    background: #4D4D4D66;
     color: white;
     border: none;
     border-radius: 6px;
@@ -356,19 +398,14 @@
     justify-content: center;
     font-weight: 500;
     letter-spacing: 0.025em;
-}
-
-.courseButton:hover {
-    background-color: #777;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    font-family: 'Manrope', sans-serif;
 }
 
 .courseButtonActive {
-    border: 2px solid #a259ff;
-    background-color: #444;
+    background-color: #4F1896;
+    color: white;
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(162, 89, 255, 0.3);
+    box-shadow: 0 2px 8px rgba(79, 24, 150, 0.4);
 }
 
 .courseButtonText {
@@ -385,6 +422,11 @@
     padding: 0px 0px 0px 156px;
     min-height: 80vh;
     margin-bottom: 120px;
+}
+
+.mobileContent {
+    display: none;
+    /* Скрываем на десктопе по умолчанию */
 }
 
 .leftContent {
@@ -475,7 +517,7 @@
     font-family: 'Manrope', sans-serif;
     box-shadow: 0 4px 20px rgba(147, 51, 234, 0.3);
     z-index: 1;
-    max-width: 173px;
+    width: 173px;
     height: 42px;
     display: flex;
     align-items: center;
@@ -510,14 +552,65 @@
 
 .secondaryButton:hover {
     color: white;
-    background: rgba(55, 65, 81, 0.4);
-    border: 1px solid rgba(55, 65, 81, 0.4);
+    background: #7A6694;
+    border: 1px solid #7A6694;
+}
+
+.secondaryButton:active {
+    background: #523E6C;
+    border: 1px solid #F0E8FF;
+}
+
+/* Input Form Styles */
+.inputForm {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.secondaryInput {
+    height: 36px;
+    width: 360px;
+    background: #665280;
+    border: 1px solid #523E6C;
+    border-radius: 8px;
+    padding: 8px 12px;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Roboto Flex', sans-serif;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.secondaryInput::placeholder {
+    color: #8C849B;
 }
 
 .buttonIcon {
     width: 1.25rem;
     height: 1.25rem;
     transition: transform 0.3s ease;
+}
+
+.secondaryButtonContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.vectorbox {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+}
+
+.mngVector {
+    color: rgba(155, 5, 251, 1);
 }
 
 /* 3D Scene */
@@ -552,6 +645,249 @@
     filter: blur(30px);
 }
 
+/* Mobile Menu Styles */
+.mobileMenu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 88px;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Hide mobile menu on desktop */
+@media (min-width: 441px) {
+    .mobileMenu {
+        display: none;
+    }
+
+    .mobileMenuButton {
+        display: none !important;
+    }
+}
+
+.mobileMenuHeader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 16px;
+    background: #0f0f1a;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+}
+
+.mobileMenuLogo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.mobileMenuLogoIcon {
+    width: 138px;
+    height: 48px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.mobileMenuTitle {
+    color: white;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.mobileMenuIcons {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.mobileMenuCloseIcon {
+    width: 24px;
+    height: 20px;
+}
+
+.mobileMenuPhone {
+    color: #9B05FB;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.mobileMenuPhone:hover {
+    color: #9B05FB;
+    transform: scale(1.1);
+}
+
+.mobileMenuClose {
+    background: #3a3a3a;
+    border: none;
+    color: #9B05FB;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.mobileMenuClose:hover {
+    background: #555;
+    color: #ddd6fe;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.mobileMenuContent {
+    width: 408px;
+    background: #0A0A1E;
+    border-radius: 12px;
+    padding: 19px 18px 19px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    opacity: 1;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    animation: slideIn 0.4s ease-out 0.1s both;
+}
+
+.mobileMenuButton {
+    width: 372px;
+    height: 46px;
+    color: #F0E8FF;
+    border: none;
+    background: #6F1ED7;
+    border-radius: 12px;
+    padding: 16px;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Manrope', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    opacity: 1;
+}
+
+.mobileMenuButton:hover {
+    background: #6F1ED7;
+    transform: translateY(-1px);
+}
+
+.mobileMenuButtonActive {
+    border: 2px solid #F0E8FF;
+}
+
+.mobileMenuChevron {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+    color: white;
+    flex-shrink: 0;
+    margin-left: auto;
+}
+
+.mobileMenuChevronUp {
+    transform: rotate(180deg);
+}
+
+.mobileCoursesGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 10px;
+    padding: 14px;
+    animation: expandCourses 0.3s ease-out;
+    width: 100%;
+    max-width: 372px;
+}
+
+@keyframes expandCourses {
+    from {
+        opacity: 0;
+        max-height: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        max-height: 300px;
+        transform: translateY(0);
+    }
+}
+
+.mobileCourseButton {
+    background: #4F1896;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    padding: 6px 12px;
+    gap: 10px;
+    font-weight: 400;
+    line-height: 100%;
+    letter-spacing: 1%;
+    font-family: 'Manrope', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    white-space: nowrap;
+    height: 31px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobileCourseButton:hover {
+    background: #5A1A7A;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(79, 24, 150, 0.3);
+}
+
 /* MOBILE PLATFORM STYLES - EXACT COPY FROM DESIGN */
 @media (max-width: 440px) {
     .app {
@@ -560,7 +896,7 @@
 
     .wrapper {
         margin: 0;
-        padding: 0 20px;
+        padding: 0 16px;
     }
 
     .container {
@@ -573,17 +909,37 @@
         display: none;
     }
 
+    .mobileMenuCloseIcon {
+        width: 24px;
+        height: 20px;
+    }
+
     /* Mobile Navigation - exactly like in design */
     .nav {
-        padding: 20px 20px;
+        width: 440px;
+        height: 68px;
         justify-content: space-between;
+        opacity: 1;
+        padding: 20px 16px 20px 16px;
+        position: relative;
+        margin: 0 auto;
+        display: flex;
         align-items: center;
-        background: transparent;
+        box-sizing: border-box;
+    }
+
+    .navLeft {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
     }
 
     .navLeft .logo {
-        width: 32px;
-        height: 42px;
+        width: 138px;
+        height: 48px;
+        content: url('/section.svg');
+        gap: 8px;
+        display: block;
     }
 
     .navCenter {
@@ -592,162 +948,210 @@
 
     .navRight {
         display: flex;
+        justify-content: center;
         align-items: center;
-        gap: 20px;
-        width: auto;
+        width: 86px;
+        height: 36px;
+        gap: 14px;
         padding: 0;
     }
 
     .mobileMenuButton {
-        display: block;
-        color: #9B05FB;
-        font-size: 24px;
-        padding: 0;
+        display: flex;
+        align-items: center;
+        text-align: left;
+        justify-content: start;
+        color: #F0E8FF;
+        font-size: 16px;
+        width: 372px;
+        height: 36px;
+        cursor: pointer;
     }
 
-    .phoneIcon, .discordIcon, .tiktokIcon {
-        width: 20px;
-        height: 20px;
+    .burgerMenuButton {
+        display: flex;
+    }
+
+    .phoneIcon {
+        width: 20.83px;
+        height: 20.83px;
+        color: #9B05FB;
+    }
+
+    .discordIcon,
+    .tiktokIcon {
+        display: none;
     }
 
     /* Main Content - exactly like in design */
     .mainContent {
         flex-direction: column;
-        padding: 40px 20px 0px;
+        padding: 0;
         min-height: auto;
         margin-bottom: 0;
-        align-items: flex-start;
-        text-align: left;
+        align-items: center;
+        text-align: center;
+        margin-top: 13px;
+        gap: 0;
+        display: flex;
     }
 
+    /* Скрываем leftContent в мобильной версии */
     .leftContent {
-        width: 100%;
-        margin-bottom: 40px;
-        align-items: flex-start;
-        justify-content: flex-start;
+        display: none;
     }
 
+    /* Показываем заголовок в мобильной версии */
     .textContainer {
-        min-width: auto;
-        width: 100%;
-        max-width: 100%;
-        padding: 0;
+        width: 100vw;
+        height: 92px;
+        opacity: 1;
+        text-align: start;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: start;
     }
 
-    /* Main Title - exactly like in design */
     .mainTitle {
-        font-size: 32px;
-        line-height: 1.15;
-        margin-bottom: 24px;
-        max-width: 100%;
-        text-align: left;
-        font-weight: 400;
-        letter-spacing: -0.02em;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        font-style: normal;
+        font-size: 38px;
+        line-height: 100%;
+        letter-spacing: 2%;
+        max-width: 100vw;
+        text-align: center;
         text-transform: none;
         color: white;
-        font-family: 'Manrope', sans-serif;
+        height: 92px;
+        opacity: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        width: 408px;
     }
 
     .highlightText {
         color: #9B05FB;
-        font-weight: 400;
-        font-family: 'Manrope', sans-serif;
-        background: linear-gradient(135deg, #9B05FB, #c084fc);
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-style: normal;
+        font-size: 38px;
+        line-height: 100%;
+        letter-spacing: 2%;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
         animation: none;
-    }
-
-    /* Description - exactly like in design */
-    .description {
-        font-size: 14px;
-        line-height: 1.5;
-        margin-bottom: 40px;
-        max-width: 100%;
-        color: rgba(240, 240, 245, 0.8);
-        font-weight: 400;
-        text-align: left;
-    }
-
-    /* Button Container - exactly like in design */
-    .buttonContainer {
-        width: 100%;
-        gap: 12px;
-        margin-bottom: 40px;
-    }
-
-    .primaryButton {
-        width: 100%;
-        max-width: 100%;
-        height: 52px;
-        font-size: 16px;
-        border-radius: 16px;
-        background: linear-gradient(135deg, #9B05FB, #7B1FA2);
-        font-weight: 500;
-        box-shadow: 0 8px 32px rgba(155, 5, 251, 0.3);
-    }
-
-    .secondaryButton {
-        width: 100%;
-        height: 52px;
-        border-radius: 16px;
-        justify-content: flex-start;
-        background: rgba(102, 82, 128, 0.4);
-        border: 1px solid rgba(102, 82, 128, 0.6);
-        backdrop-filter: blur(10px);
-        font-size: 14px;
-        font-weight: 400;
-        padding: 16px 20px;
-        gap: 12px;
-    }
-
-    .buttonIcon {
-        width: 20px;
-        height: 20px;
+        color: transparent;
     }
 
     /* 3D Scene - exactly like in design */
     .sceneContainer {
         width: 100%;
-        height: 320px;
+        height: auto;
         position: relative;
         overflow: visible;
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-top: 20px;
+        margin-top: 0;
+        margin-bottom: 0;
+        min-height: 516px;
+        order: 2;
+        flex-shrink: 0;
     }
 
     .Logo3D {
-        position: relative;
-        width: 280px;
-        height: 280px;
-        top: auto;
-        left: auto;
-        transform: none;
-        margin: 0 auto;
-        display: block;
-    }
-
-    /* Platform/Pedestal exactly like in design */
-    .sceneContainer::after {
-        content: '';
         position: absolute;
-        bottom: -20px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 200px;
-        height: 60px;
-        background: linear-gradient(135deg, #2A2A2A 0%, #1A1A1A 100%);
-        border-radius: 50%;
-        filter: blur(10px);
-        opacity: 0.8;
-        z-index: -1;
+        width: 516px;
+        height: 516px;
+        top: 13px;
+        left: 256px;
+        transform: translateX(-60%);
+        margin: 0;
+        display: block;
+        opacity: 1;
+        flex-shrink: 0;
     }
 
     .sceneGlow {
         display: none;
+    }
+
+    /* Description Section - mobile styles */
+    .descriptionSection {
+        padding: 0 12 70px 0px;
+        margin-top: 28px;
+        margin-bottom: 0;
+        text-align: start;
+        width: 408px;
+        height: auto;
+        opacity: 1;
+        order: 3;
+        margin: 28px auto 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: start;
+        flex-shrink: 0;
+    }
+
+    .descriptionSection .description {
+        font-family: 'Manrope', sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        letter-spacing: 2%;
+        color: #EDEDED;
+        margin-bottom: 0;
+        max-width: 100%;
+        text-align: start;
+        width: 408px;
+        height: 60px;
+        opacity: 1;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+    }
+
+    .buttonContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: start;
+        width: 408px;
+        height: 94px;
+        gap: 16px;
+        margin-top: 38px;
+        margin-bottom: 0;
+        max-width: 100%;
+        opacity: 1;
+        margin-left: auto;
+        margin-right: auto;
+        order: 4;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: start;
+    }
+
+    .primaryButton {
+        width: 408px;
+        height: 42px;
+        padding: 10px 16px 10px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        font-weight: 500;
+        font-family: 'Manrope', sans-serif;
+        color: white;
+        background: #6F1ED7;
+        border-radius: 8px;
     }
 
     /* Hide course navigation on mobile */
@@ -760,15 +1164,11 @@
         display: none;
     }
 
-    /* Bottom text - exactly like in design */
-    .bottomText {
-        padding: 20px;
-        font-size: 12px;
-        line-height: 1.4;
-        color: rgba(240, 240, 245, 0.7);
-        text-align: left;
-        margin-bottom: 20px;
-        font-weight: 400;
+    .descriptionSection .buttonIcon {
+        width: 1.25rem;
+        height: 1.25rem;
+        transition: transform 0.3s ease;
+        color: #E5E7EB;
     }
 }
 
@@ -776,10 +1176,8 @@
 @media (max-width: 380px) {
     .mainTitle {
         font-size: 28px;
-    }
-
-    .description {
-        font-size: 13px;
+        width: 360px;
+        height: auto;
     }
 
     .Logo3D {
@@ -793,5 +1191,50 @@
 
     .mainContent {
         padding: 30px 16px 0px;
+    }
+
+    .descriptionSection {
+        padding: 16px;
+        margin-bottom: 40px;
+        width: 360px;
+    }
+
+    .descriptionSection .description {
+        font-size: 13px;
+        margin-bottom: 24px;
+        width: 360px;
+    }
+
+    .descriptionSection .buttonContainer {
+        gap: 10px;
+        width: 360px;
+    }
+
+    .descriptionSection .primaryButton,
+    .descriptionSection .secondaryButton {
+        height: 48px;
+        font-size: 14px;
+        width: 360px;
+    }
+
+    .descriptionSection .secondaryButtonContainer {
+        width: 360px;
+        height: 32px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .descriptionSection .secondaryButton {
+        width: 320px;
+        height: 32px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .descriptionSection .vectorbox {
+        width: 28px;
+        height: 28px;
+        margin-left: auto;
+        margin-right: auto;
     }
 }

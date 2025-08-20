@@ -10,11 +10,12 @@
     z-index: 2;
     color: #ffffff;
     font-size: 48px;
-    font-weight: 700;
+    font-weight: 600;
     text-align: center;
-    margin: 0 0 60px 0;
+    margin-bottom: 70px;
     letter-spacing: -0.5px;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    font-family: 'Montserrat', sans-serif;
 }
 
 .grid {
@@ -43,14 +44,6 @@
     transform: translateY(30px);
 }
 
-.card.expanded {
-    max-height: 530px;
-    transform: scale(1.02);
-    box-shadow:
-        inset 0 0 30px rgba(161, 67, 221, 0.8),
-        0 3px 30px rgba(161, 67, 221, 0.5);
-}
-
 .image {
     width: 100%;
     height: 265px;
@@ -58,13 +51,6 @@
     transition: transform 0.4s ease;
     position: relative;
     z-index: 1;
-}
-
-.card:hover .cardImage img .image {
-    transform: scale(1.05);
-    box-shadow:
-        inset 0 0 30px rgba(161, 67, 221, 0.8),
-        inset 0 3px 20px rgba(161, 67, 221, 0.5);
 }
 
 .content {
@@ -79,6 +65,9 @@
 .heading_back {
     background: #6A0DAD;
     padding: 12px 20px 15px 20px;
+    height: 53px;
+    display: flex;
+    align-items: center;
     position: relative;
     overflow: hidden;
 }
@@ -86,10 +75,6 @@
 .heading_back::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
     background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -117,6 +102,22 @@
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
 
+.arrowIcon {
+    display: none; /* Скрываем стрелочку в десктопной версии */
+}
+
+.details {
+    max-height: none; /* Убираем ограничение высоты в десктопной версии */
+    overflow: visible; /* Показываем содержимое */
+    opacity: 1; /* Всегда видимо */
+    transition: none; /* Убираем анимацию */
+}
+
+.showDetails {
+    max-height: none;
+    opacity: 1;
+}
+
 .description {
     color: #e2e8f0;
     font-size: 16px;
@@ -128,13 +129,15 @@
 }
 
 .button {
-    background-color: #ffffff;
-    color: #1a1a2e;
+    background-color: #F0F0F5;
+    color: #110A1E;
     border: none;
-    padding: 14px 28px 14px 28px;
+    padding: 8px 21px;
+    gap: 8px;
     border-radius: 4px;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 700;
+    font-family: 'Manrope', sans-serif;
     cursor: pointer;
     transition: all 0.2s ease;
     align-self: flex-start;
@@ -153,5 +156,138 @@
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 440px) {
+    
+    .heading {
+        font-size: 23px;
+        font-weight: 600;
+        line-height: 1.22;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+    
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        max-width: 100%;
+    }
+    
+    .card {
+        width: 408px;
+        height: 273px;
+        margin: 0 auto;
+        border-radius: 16px;
+        transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .card.expanded {
+        height: 474px;
+    }
+    
+    .image {
+        height: 220px;
+    }
+    
+    .heading_back {
+        padding: 16px 20px;
+        position: relative;
+    }
+    
+    .cardTitle {
+        font-size: 20px;
+        gap: 8px;
+    }
+    
+    .icon {
+        font-size: 18px;
+    }
+    
+    .arrowIcon {
+        display: block; /* Показываем стрелочку в мобильной версии */
+        position: absolute;
+        right: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #ffffff;
+        font-size: 16px;
+        transition: all 0.3s ease;
+    }
+    
+    .details {
+        max-height: 0; /* Скрываем по умолчанию в мобильной версии */
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        opacity: 0;
+        background: #110A1E;
+    }
+    
+    .showDetails {
+        max-height: 202px; /* Показываем при развертывании в мобильной версии */
+        opacity: 1;
+    }
+    
+    .description {
+        font-size: 14px;
+        line-height: 1.5;
+        padding: 16px 20px;
+        margin: 0;
+    }
+    
+    .button {
+        font-size: 14px;
+        padding: 10px 20px;
+        margin: 0 20px 20px 20px;
+        border-radius: 8px;
+    }
+}
+
+@media (max-width: 380px) {
+    .card {
+        width: 360px;
+        height: 250px;
+        transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .card.expanded {
+        height: 400px;
+    }
+    
+    .image {
+        height: 160px;
+    }
+    
+    .heading {
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+    
+    .cardTitle {
+        font-size: 18px;
+    }
+    
+    .arrowIcon {
+        display: block; /* Показываем стрелочку в мобильной версии */
+        position: absolute;
+        right: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #ffffff;
+        font-size: 14px;
+        transition: all 0.3s ease;
+    }
+    
+    .description {
+        font-size: 13px;
+        padding: 14px 16px;
+    }
+    
+    .button {
+        font-size: 13px;
+        padding: 8px 16px;
+        margin: 0 16px 16px 16px;
     }
 }
