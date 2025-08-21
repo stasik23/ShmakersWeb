@@ -38,7 +38,6 @@ export const ContactComponent = () => {
     const onInvalid = (err: FieldErrors<FormData>) => {
         console.log('⛔ Помилки валідації:', err);
         setSubmitStatus('error');
-        // покажемо першу помилку користувачу
         const firstError = Object.values(err)[0];
         setErrorMessage(
             (typeof firstError?.message === 'string' && firstError.message) ||
@@ -46,50 +45,12 @@ export const ContactComponent = () => {
         );
     };
 
-    // const onSubmit = async (data: FormData) => {
-    //     setSubmitStatus('loading');
-    //     setErrorMessage('');
-
-    //     try {
-    //         const response = await fetch('/api/process-form', {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json'
-    //             },
-    //             body: JSON.stringify(data)
-    //         });
-
-    //         if (!response.ok) {
-    //             const errorData = await response.json();
-    //             throw new Error(errorData.message || 'Failed to submit form');
-    //         }
-
-    //         const result = await response.json();
-    //         console.log('Form successfully submitted!', result);
-    //         setSubmitStatus('success');
-    //         reset();
-
-    //         setTimeout(() => {
-    //             setSubmitStatus('idle');
-    //         }, 5000);
-
-    //     } catch (error) {
-    //         console.error('Error submitting form:', error);
-    //         setSubmitStatus('error');
-
-    //         if (error instanceof Error) {
-    //             setErrorMessage(error.message);
-    //         } else {
-    //             setErrorMessage('Помилка при відправці форми. Спробуйте ще раз.');
-    //         }
-    //     }
-    // };
     const onSubmit = async (data: FormData) => {
         setSubmitStatus('loading');
         setErrorMessage('');
 
         try {
-            const response = await fetch('http://localhost:3001/process-form', {
+            const response = await fetch('https://telegram-bot-topaz-one.vercel.app/api/process-form', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data),
