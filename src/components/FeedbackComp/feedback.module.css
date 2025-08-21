@@ -198,59 +198,34 @@
     margin: 0;
 }
 
-@media (max-width: 1440px) {
-    .title {
-        font-size: clamp(32px, 5vw, 48px);
-    }
-
-    .categories {
-        padding: 0 20px;
-    }
-
-    .reviewsContainer {
-        padding: 0 20px;
-    }
-}
-
-@media (max-width: 768px) {
-    .reviewItem {
-        flex-direction: column;
-    }
-
-    .reviewCard {
-        border-radius: 16px 16px 0 0;
-        min-width: auto;
-        width: 100%;
-    }
-
-    .reviewComment {
-        border-radius: 0 0 16px 16px;
-    }
-}
-
 /* Мобильная адаптация для телефонов */
 @media (max-width: 440px) {
     .container {
-        width: 100%;
-        max-width: 408px;
-        padding: 20px 16px;
-        margin: 0 auto;
+        padding: 40px 0 0 0;
     }
 
     .title {
-        margin-bottom: 32px;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 600;
+        font-size: 23px;
+        line-height: 100%;
+        letter-spacing: 4%;
+        text-align: center;
+        text-transform: uppercase;
+
+        margin-bottom: 40px;
     }
 
     .categories {
         padding: 0;
         flex-wrap: nowrap;
         padding-bottom: 8px;
-        margin: 0 0 24px 0;
-        max-width: 100%;
+        padding: 0;
+        margin: 0 0 34px 0;
+        max-width: 408px;
         overflow-x: auto;
         scrollbar-width: none;
         -ms-overflow-style: none;
-        justify-content: center;
     }
 
     .categories::-webkit-scrollbar {
@@ -272,8 +247,7 @@
 
     .reviewCard {
         border-radius: 12px;
-        width: 100%;
-        max-width: 380px;
+        width: 408px;
         height: 83px;
         /* Высота в свернутом состоянии */
         padding: 12px;
@@ -283,7 +257,6 @@
         justify-content: space-between;
         cursor: pointer;
         transition: all 0.3s ease;
-        margin: 0 auto;
     }
 
     .reviewsContainer {
@@ -297,12 +270,10 @@
 
     .reviewComment {
         border-radius: 0 0 12px 12px;
-        width: 100%;
-        max-width: 380px;
+        width: 408px;
         padding: 20px 24px;
         display: none;
         /* По умолчанию скрыт */
-        margin: 0 auto;
     }
 
     .reviewComment.mobileComment {
@@ -344,14 +315,10 @@
 }
 
 @media (max-width: 380px) {
-    .container {
-        padding: 16px 12px;
-    }
 
     .reviewCard,
     .reviewComment {
-        width: 100%;
-        max-width: 340px;
+        width: 360px;
     }
 
     .reviewCard {

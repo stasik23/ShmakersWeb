@@ -25,25 +25,3 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
-
-/* Responsive container for all screen sizes */
-.responsive-container {
-  width: 100%;
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0 clamp(16px, 2vw, 40px);
-}
-
-/* Flexible spacing for different screen sizes */
-.flexible-spacing {
-  padding: clamp(20px, 3vw, 60px) clamp(16px, 2vw, 40px);
-}
-
-/* Responsive typography */
-.responsive-text {
-  font-size: clamp(16px, 1.5vw, 24px);
-}
-
-.responsive-heading {
-  font-size: clamp(24px, 3vw, 48px);
-}

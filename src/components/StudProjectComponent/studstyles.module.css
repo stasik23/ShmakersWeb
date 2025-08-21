@@ -6,8 +6,7 @@
 .container {
     font-family: 'Inter', sans-serif;
     padding: 120px 0;
-    margin-bottom: 240px;
-    height: 100vh;
+    height: 872px;
     color: #ffffff;
 }
 
@@ -408,12 +407,10 @@
 /* Mobile Responsive */
 @media (max-width: 440px) {
     .container {
-        padding: 40px 16px 40px 16px;
-        width: 100%;
-        max-width: 412px;
-        height: auto;
-        min-height: 634px;
-        margin: 0 auto 80px auto;
+        padding: 70px 0 70px 0;
+        width: 412px;
+        height: 634px;
+        margin: 0 0 160px 0;
         box-sizing: border-box;
     }
 
@@ -459,7 +456,7 @@
         padding: 0;
         box-shadow: none;
         max-width: 100%;
-        margin: 0 auto;
+        margin: 0;
     }
 
     .projectsList {
@@ -642,12 +639,9 @@
 
 @media (max-width: 380px) {
     .container {
-        width: 100%;
-        max-width: 360px;
-        height: auto;
-        min-height: 712px;
-        padding: 40px 12px 40px 12px;
-        margin: 0 auto;
+        width: 360px;
+        height: 712px;
+        padding: 70px 16px 70px 16px;
     }
 
     .secContainer {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { useForm } from 'react-hook-form';
+import { FieldErrors, useForm } from 'react-hook-form';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import styles from './contact.module.css';
 
@@ -35,8 +35,55 @@ export const ContactComponent = () => {
         formState: { errors, isSubmitting }
     } = useForm<FormData>();
 
+    const onInvalid = (err: FieldErrors<FormData>) => {
+        console.log('⛔ Помилки валідації:', err);
+        setSubmitStatus('error');
+        // покажемо першу помилку користувачу
+        const firstError = Object.values(err)[0];
+        setErrorMessage(
+            (typeof firstError?.message === 'string' && firstError.message) ||
+            'Перевірте поля форми.'
+        );
+    };
 
+    // const onSubmit = async (data: FormData) => {
+    //     setSubmitStatus('loading');
+    //     setErrorMessage('');
 
+    //     try {
+    //         const response = await fetch('/api/process-form', {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json'
+    //             },
+    //             body: JSON.stringify(data)
+    //         });
+
+    //         if (!response.ok) {
+    //             const errorData = await response.json();
+    //             throw new Error(errorData.message || 'Failed to submit form');
+    //         }
+
+    //         const result = await response.json();
+    //         console.log('Form successfully submitted!', result);
+    //         setSubmitStatus('success');
+    //         reset();
+
+    //         setTimeout(() => {
+    //             setSubmitStatus('idle');
+    //         }, 5000);
+
+    //     } catch (error) {
+    //         console.error('Error submitting form:', error);
+    //         setSubmitStatus('error');
+
+    //         if (error instanceof Error) {
+    //             setErrorMessage(error.message);
+    //         } else {
+    //             setErrorMessage('Помилка при відправці форми. Спробуйте ще раз.');
+    //         }
+    //     }
+    // };
     const onSubmit = async (data: FormData) => {
         setSubmitStatus('loading');
         setErrorMessage('');
@@ -44,36 +91,27 @@ export const ContactComponent = () => {
         try {
             const response = await fetch('http://localhost:3000/process-form', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
             });
 
             if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.message || 'Failed to submit form');
+                const text = await response.text();
+                console.error('Server returned non-JSON:', text);
+                throw new Error('Failed to submit form');
             }
 
             const result = await response.json();
-            console.log('Form successfully submitted!', result);
+            console.log('✅ Form successfully submitted!', result);
+
             setSubmitStatus('success');
             reset();
 
-            // Auto-hide success message after 5 seconds
-            setTimeout(() => {
-                setSubmitStatus('idle');
-            }, 5000);
-
-        } catch (error) {
-            console.error('Error submitting form:', error);
+            setTimeout(() => setSubmitStatus('idle'), 5000);
+        } catch (err) {
+            console.error('❌ Error submitting form:', err);
             setSubmitStatus('error');
-
-            if (error instanceof Error) {
-                setErrorMessage(error.message);
-            } else {
-                setErrorMessage('Помилка при відправці форми. Спробуйте ще раз.');
-            }
+            setErrorMessage(err instanceof Error ? err.message : 'Помилка при відправці форми. Спробуйте ще раз.');
         }
     };
 
@@ -141,20 +179,20 @@ export const ContactComponent = () => {
                     transition={{ duration: 0.6, delay: 0.9, ease: "easeOut" }}
                 >
                     <h2 className={styles.formTitle}>Заявка на дзвінок</h2>
-                    <form className={styles.formContent} onSubmit={handleSubmit(onSubmit)}>
+                    <form className={styles.formContent} onSubmit={handleSubmit(onSubmit, onInvalid)}>
                         {/* Input Group */}
                         <div className={styles.inputGroup}>
                             <input
                                 className={`${styles.input} ${errors.name ? styles.inputError : ''}`}
                                 placeholder="Запитайте Менеджера"
-                                disabled={isSubmitting}
+                                // disabled={isSubmitting}
                                 {...register('name', validationRules.name)}
                             />
                             {errors.name && <span className={styles.error}>{errors.name.message}</span>}
                             <input
                                 className={`${styles.input} ${errors.phone ? styles.inputError : ''}`}
                                 placeholder="Номер Телефону"
-                                disabled={isSubmitting}
+                                // disabled={isSubmitting}
                                 {...register('phone', validationRules.phone)}
                             />
                             {errors.phone && <span className={styles.error}>{errors.phone.message}</span>}
@@ -162,7 +200,7 @@ export const ContactComponent = () => {
                                 className={`${styles.textarea} ${errors.message ? styles.textareaError : ''}`}
                                 rows={3}
                                 placeholder="Коментар"
-                                disabled={isSubmitting}
+                                // disabled={isSubmitting}
                                 {...register('message', validationRules.message)}
                             />
                             {errors.message && <span className={styles.error}>{errors.message.message}</span>}
@@ -175,12 +213,14 @@ export const ContactComponent = () => {
                                     type="checkbox"
                                     id="agreeToDataProcessing"
                                     className={styles.checkbox}
-                                    disabled={isSubmitting}
                                     {...register('agreeToDataProcessing', { required: "Потрібно погодитися на обробку даних" })}
                                 />
                                 <label htmlFor="agreeToDataProcessing" className={styles.checkboxLabel}>
                                     Згоден на обробку даних
                                 </label>
+                                {errors.agreeToDataProcessing && (
+                                    <span className={styles.error}>{errors.agreeToDataProcessing.message as string}</span>
+                                )}
                             </div>
                             <p className={styles.disclaimer}>
                                 *Ви можете повернути кошти за перші 4 уроки або продовжити навчання
@@ -188,7 +228,7 @@ export const ContactComponent = () => {
                         </div>
 
                         {/* Submit Button */}
-                        <button type="submit" className={styles.submitBtn} disabled={isSubmitting}>
+                        <button type="submit" onClick={handleSubmit(onSubmit, onInvalid)} disabled={isSubmitting} className={styles.submitBtn}>
                             {submitStatus === 'loading' ? 'Відправляється...' : 'Надіслати'}
                         </button>
 
