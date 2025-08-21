@@ -89,7 +89,7 @@ export const ContactComponent = () => {
         setErrorMessage('');
 
         try {
-            const response = await fetch('http://localhost:3000/process-form', {
+            const response = await fetch('http://localhost:3001/process-form', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data),
