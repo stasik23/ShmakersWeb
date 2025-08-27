@@ -24,6 +24,7 @@
 }
 
 .categories {
+    height: 33px;
     display: flex;
     justify-content: start;
     gap: 12px;
@@ -35,15 +36,16 @@
 }
 
 .categoryBtn {
+    height: 31px;
     background: #523E6C;
-    color: #ffffff;
+    color: #F0E8FF;
     padding: 4px 12px;
     border-radius: 4px;
     font-size: 18px;
-    line-height: .9;
+    line-height: 100%;
     letter-spacing: 2%;
     font-weight: 600;
-    font-family: 'Mulish', sans-serif;
+    font-family: 'Manrope', sans-serif;
     cursor: pointer;
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
@@ -55,6 +57,7 @@
 }
 
 .categoryBtn.active {
+    height: 33px;
     background: #6F1ED7;
 }
 
@@ -247,7 +250,7 @@
 
     .reviewCard {
         border-radius: 12px;
-        width: 408px;
+        width: 380px;
         height: 83px;
         /* Высота в свернутом состоянии */
         padding: 12px;

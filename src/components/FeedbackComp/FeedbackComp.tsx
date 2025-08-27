@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaStar, FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import styles from './feedback.module.css';
+import { IoStarSharp } from 'react-icons/io5';
 
 interface Review {
     id: number;
@@ -87,7 +88,7 @@ const reviewsData: Review[] = [
     }
 ];
 
-const categories = ['All', 'Web Design', 'Game Development', '3D', 'English', 'Embedded', 'Front End', 'Back End'];
+const categories = [ 'Web Design', 'Game Development', '3D', 'English', 'Embedded', 'Front End', 'Back End'];
 
 export const FeedbackComp: React.FC = () => {
     const [selectedCategory, setSelectedCategory] = useState<string>('All');
@@ -129,7 +130,7 @@ export const FeedbackComp: React.FC = () => {
 
     const renderStars = (rating: number) => {
         return Array.from({ length: 5 }, (_, index) => (
-            <FaStar
+            <IoStarSharp
                 key={index}
                 className={`star ${index < rating ? 'filled' : ''}`}
                 fill={index < rating ? '#FCD34D' : 'transparent'}

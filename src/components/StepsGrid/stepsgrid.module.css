@@ -61,7 +61,7 @@
 .cardHeader {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     margin-bottom: clamp(16px, 2vw, 20px);
     position: relative;
     z-index: 2;
@@ -87,36 +87,44 @@
 .stepBadge {
     background: #4F1896;
     color: #FB9DFF;
-    padding: clamp(4px, 1vw, 6px) clamp(8px, 1.5vw, 12px);
-    border-radius: clamp(12px, 1.5vw, 16px);
-    font-size: clamp(10px, 1vw, 12px);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 16px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: 2%;
 }
 
 .cardContent {
     position: relative;
     z-index: 2;
+    gap: 12px;
+    padding: 0;
 }
 
 .cardTitle {
-    font-size: clamp(14px, 1.5vw, 16px);
+    font-size: 16px;
     font-weight: 700;
     font-family: 'Manrope', sans-serif;
-    color: #ffffff;
-    margin-bottom: clamp(8px, 1.5vw, 12px);
+    color: #F0E8FF;
+    letter-spacing: 2%;
+    margin: 0;
+    padding: 0 0 12px 0;
     line-height: 100%;
 }
 
 .cardDescription {
-    font-size: clamp(12px, 1.2vw, 14px);
+    height: 38px;
+    font-size: 14px;
     font-weight: 400;
-    color: #8A7898;
-    line-height: 1.36;
+    color: #8C849B;
+    line-height: 100%;
     margin: 0;
-    gap: clamp(8px, 1.5vw, 12px);
     letter-spacing: 2%;
+    padding: 0;
     font-family: 'Manrope', sans-serif;
 }
 

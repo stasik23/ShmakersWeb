@@ -77,7 +77,7 @@ export const StepsGrid = () => {
 
     return (
         <div className={styles.wrapper}>
-            <motion.h1 
+            <motion.h2 
                 className={styles.title}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -85,7 +85,7 @@ export const StepsGrid = () => {
                 transition={{ duration: 0.8, ease: "easeOut" }}
             >
                 Що зробить твоє навчання унікальним?
-            </motion.h1>
+            </motion.h2>
 
             <div className={styles.container}>
                 {/* Desktop Grid */}

@@ -284,16 +284,6 @@ export const StudentProjects = () => {
                     <>
                         <div className={styles.categoriesContainer}>
                             <div className={styles.categories}>
-                                <motion.button
-                                    className={`${styles.categoryBtn} ${selectedCategories.length === 0 ? styles.active : ''}`}
-                                    onClick={clearAllCategories}
-                                    initial={{ opacity: 0, x: -50 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true, amount: 0.3 }}
-                                    transition={{ duration: 0.5, delay: 0.9, ease: "easeOut" }}
-                                >
-                                    All
-                                </motion.button>
                                 {categories.map((category, index) => (
                                     <motion.button
                                         key={category}

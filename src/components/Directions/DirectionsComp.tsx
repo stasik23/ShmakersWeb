@@ -16,42 +16,42 @@ const cardsData: DirectionCardProps[] = [
         id: 1,
         title: "Web Design",
         description: "В цьому напрямку ви дізнаєтесь все про веб розробку. Спробуєте себе в ролі Full Stack розробника та оберете те, що дійсно сподобається. Ми дамо вам не тільки основи Html, Css, JS, а й познайомимо з актуальними фреймворками.",
-        icon: <FaPalette />,
+        icon: <FaPalette className={styles.icon}/>,
         image: "/web-design.svg"
     },
     {
         id: 2,
         title: "Front End",
         description: "В цьому напрямку ви діагностеcь все про веб розробку. Спробуйте себе в ролі Full Stack розробника та оберіть те, що вашій душі стоподобається. Ми даємо вам не тільки основи Html, Css, Js, а й познайомимо з актуальними фреймворками.",
-        icon: <FaCode />,
+        icon: <FaCode className={styles.icon}/>,
         image: "/front-end.svg"
     },
     {
         id: 3,
         title: "Embedded",
         description: "В цьому напрямку ви діагностеcь все про веб розробку. Спробуйте себе в ролі Full Stack розробника та оберіть те, що вашій душі стоподобається. Ми даємо вам не тільки основи Html, Css, Js, а й познайомимо з актуальними фреймворками.",
-        icon: <FaMicrochip />,
+        icon: <FaMicrochip className={styles.icon}/>,
         image: "/embedded.svg"
     },
     {
         id: 4,
         title: "Back End",
         description: "В цьому напрямку ви діагностеcь все про веб розробку. Спробуйте себе в ролі Full Stack розробника та оберіть те, що вашій душі стоподобається. Ми даємо вам не тільки основи Html, Css, Js, а й познайомимо з актуальними фреймворками.",
-        icon: <FaServer />,
+        icon: <FaServer className={styles.icon}/>,
         image: "/back-end.svg"
     },
     {
         id: 5,
         title: "Game Development",
         description: "В цьому напрямку ви діагностеcь все про веб розробку. Спробуйте себе в ролі Full Stack розробника та оберіть те, що вашій душі стоподобається. Ми даємо вам не тільки основи Html, Css, Js, а й познайомимо з актуальними фреймворками.",
-        icon: <FaGamepad />,
+        icon: <FaGamepad className={styles.icon}/>,
         image: "/gamedev.svg"
     },
     {
         id: 6,
         title: "Web Development",
         description: "В цьому напрямку ви діагностеcь все про веб розробку. Спробуйте себе в ролі Full Stack розробника та оберіть те, що вашій душі стоподобається. Ми даємо вам не тільки основи Html, Css, Js, а й познайомимо з актуальними фреймворками.",
-        icon: <FaCog />,
+        icon: <FaCog className={styles.icon}/>,
         image: "/web-design.svg"
     }
 ]
