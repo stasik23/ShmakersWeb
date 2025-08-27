@@ -9,7 +9,7 @@ export const Footer = () => {
         <footer className={styles.footer}>
             <div className={styles.container}>
                 <div className={styles.logo}>
-                    <img src="section.svg" alt="" />
+                    <img className={styles.logoImg} src="section.svg" alt="" />
                 </div>
                 
                 <nav className={styles.navigation}>

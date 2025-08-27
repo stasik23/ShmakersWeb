@@ -271,17 +271,19 @@
         border-radius: 12px 12px 0 0;
     }
 
+    .logo {
+        width: 100px;
+        height: 100px;
+    }
+
     .reviewComment {
         border-radius: 0 0 12px 12px;
-        width: 408px;
         padding: 20px 24px;
         display: none;
-        /* По умолчанию скрыт */
     }
 
     .reviewComment.mobileComment {
         display: flex;
-        /* Показывается только в развернутом состоянии */
         align-items: center;
     }
 
