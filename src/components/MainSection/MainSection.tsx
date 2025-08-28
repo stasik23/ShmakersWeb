@@ -177,7 +177,7 @@ export const MainSection = () => {
             </div>
 
             <div className={styles.navRight}>
-              <a href="#" className={styles.socialIcon} aria-label="Phone">
+              <a href="#" className={`${styles.socialIcon} ${styles.phoneIcon}`} aria-label="Phone">
                 <FaPhone className={styles.phoneIcon} />
               </a>
               <a href="#" className={styles.socialIcon} aria-label="Discord">
@@ -353,20 +353,20 @@ export const MainSection = () => {
             </>
           ) : (
             <>
-              <motion.div
+              <motion.div 
                 className={styles.textContainer}
                 initial={{ opacity: 0, x: -100 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 1, delay: 0.9, ease: "easeOut" }}
               >
-                <motion.h1
+                <motion.h1 
                   className={styles.mainTitle}
                   initial={{ opacity: 0, x: -100 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 1, delay: 0.9, ease: "easeOut" }}
                 >
                   Твоє нове життя починається{' '}
-                  <motion.span
+                  <motion.span 
                     className={styles.highlightText}
                     initial={{ opacity: 0, x: -50 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -377,7 +377,7 @@ export const MainSection = () => {
                 </motion.h1>
               </motion.div>
 
-              <motion.div
+              <motion.div 
                 className={styles.sceneContainer}
                 initial={{ opacity: 0, x: 100, scale: 0.8 }}
                 animate={{ opacity: 1, x: 0, scale: 1 }}
@@ -386,7 +386,7 @@ export const MainSection = () => {
                 <img className={styles.Logo3D} src="/Logo3D.svg" alt="Shmakers 3D Logo" />
               </motion.div>
 
-              <motion.div
+              <motion.div 
                 className={styles.descriptionSection}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -398,7 +398,7 @@ export const MainSection = () => {
                   з вайбом.
                 </p>
 
-                <motion.div
+                <motion.div 
                   className={styles.buttonContainer}
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -409,41 +409,15 @@ export const MainSection = () => {
                   </button>
 
                   <div className={styles.secondaryButtonContainer}>
-                    {!isSecondaryButtonActive ? (
-                      <button 
-                        className={styles.secondaryButton}
-                        onClick={handleSecondaryButtonClick}
-                      >
-                        <svg className={styles.buttonIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                        </svg>
-                        <span>Запитайте менеджера</span>
-                      </button>
-                    ) : (
-                      <form onSubmit={handleInputSubmit} className={styles.inputForm}>
-                        <div className={styles.inputWrapper}>
-                          <svg className={styles.buttonIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                          </svg>
-                          <input
-                            type="text"
-                            value={inputValue}
-                            onChange={handleInputChange}
-                            placeholder="Як записатись на пробний урок?"
-                            className={styles.secondaryInput}
-                            autoFocus
-                          />
-                        </div>
-                        <button type="submit" className={styles.vectorbox}>
-                          <img className={styles.mngVector} src="/Vector.svg" alt="Отправить" />
-                        </button>
-                      </form>
-                    )}
-                    {!isSecondaryButtonActive && (
-                      <button className={styles.vectorbox}>
-                        <img className={styles.mngVector} src="/Vector.svg" alt="Отправить" />
-                      </button>
-                    )}
+                    <button className={styles.secondaryButton}>
+                      <svg className={styles.buttonIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                      </svg>
+                      <span>Запитайте менеджера</span>
+                    </button>
+                    <button className={styles.vectorbox}>
+                      <img className={styles.mngVector} src="/Vector.svg" alt="Отправить" />
+                    </button>
                   </div>
                 </motion.div>
               </motion.div>
