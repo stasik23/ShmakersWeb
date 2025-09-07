@@ -18,7 +18,7 @@ export const NavBar = () => {
 
     const [activeCourse, setActiveCourse] = useState<number | null>(1);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const [isMobile, setIsMobile] = useState(false);
+    const [, setIsMobile] = useState(false);
     const [isMobileCoursesExpanded, setIsMobileCoursesExpanded] = useState(false);
 
     useEffect(() => {

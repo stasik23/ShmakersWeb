@@ -191,7 +191,7 @@ export const MainSection = () => {
 
                   <div className={styles.secondaryButtonContainer}>
                     <button className={styles.secondaryButton}>
-                      <img src="/icon-form.svg" className={styles.buttonIcon}/>
+                      <img src="/icon-form.svg" className={styles.buttonIcon} alt="Отправить" />
                       <span>Запитайте менеджера</span>
                     </button>
                     <button className={styles.vectorbox}>
