@@ -1,16 +1,13 @@
 'use client'
 import { useState, useEffect } from 'react'
-import { FaPhone, FaTimes } from 'react-icons/fa'
 import { motion } from 'framer-motion'
 import styles from './mainsection.module.css'
 
 export const MainSection = () => {
 
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSecondaryButtonActive, setIsSecondaryButtonActive] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const [isMobile, setIsMobile] = useState(false);
-  const [isMobileCoursesExpanded, setIsMobileCoursesExpanded] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -22,14 +19,6 @@ export const MainSection = () => {
 
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
-
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-
-  const toggleMobileCourses = () => {
-    setIsMobileCoursesExpanded(!isMobileCoursesExpanded);
-  };
 
   const handleSecondaryButtonClick = () => {
     setIsSecondaryButtonActive(true);
