@@ -1,23 +1,11 @@
 'use client'
 import { useState, useEffect } from 'react'
-import { FaDiscord, FaPhone, FaTiktok, FaBars, FaTimes } from 'react-icons/fa'
+import { FaPhone, FaTimes } from 'react-icons/fa'
 import { motion } from 'framer-motion'
 import styles from './mainsection.module.css'
 
 export const MainSection = () => {
-  const courses = [
-    'Веб Розробка',
-    'Розробка Ігор',
-    'Робототехніка',
-    '3D Моделювання',
-    'Анімація',
-    'Дизайн',
-    'Англійська Мова',
-    'Математика',
-    'Нейромережі'
-  ];
 
-  const [activeCourse, setActiveCourse] = useState<number | null>(1);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSecondaryButtonActive, setIsSecondaryButtonActive] = useState(false);
   const [inputValue, setInputValue] = useState('');
@@ -34,22 +22,6 @@ export const MainSection = () => {
 
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
-
-  const scrollCourses = (direction: 'left' | 'right') => {
-    const coursesList = document.getElementById('coursesList') as HTMLElement;
-    if (coursesList) {
-      const scrollAmount = 300;
-      if (direction === 'left') {
-        coursesList.scrollLeft -= scrollAmount;
-      } else {
-        coursesList.scrollLeft += scrollAmount;
-      }
-    }
-  };
-
-  const handleCourseClick = (index: number) => {
-    setActiveCourse(activeCourse === index ? null : index);
-  };
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -81,61 +53,6 @@ export const MainSection = () => {
   return (
     <div className={styles.app}>
       <div className={styles.container}>
-
-
-        {isMobileMenuOpen && (
-          <div className={styles.mobileMenu}>
-            <div className={styles.mobileMenuHeader}>
-              <div className={styles.mobileMenuLogo}>
-                <img src="/section.svg" alt="Shmakers Logo" className={styles.mobileMenuLogoIcon} />
-              </div>
-              <div className={styles.mobileMenuIcons}>
-                <a href="#" className={styles.mobileMenuPhone}>
-                  <FaPhone className={styles.phoneIcon} />
-                </a>
-                <button className={styles.mobileMenuClose} onClick={toggleMobileMenu}>
-                  <FaTimes className={styles.mobileMenuCloseIcon} />
-                </button>
-              </div>
-            </div>
-
-            <div className={styles.mobileMenuContent}>
-              <button
-                className={`${styles.mobileMenuButton} ${isMobileCoursesExpanded ? styles.mobileMenuButtonActive : ''}`}
-                onClick={toggleMobileCourses}
-              >
-                <span>Курси</span>
-                <svg
-                  className={`${styles.mobileMenuChevron} ${isMobileCoursesExpanded ? styles.mobileMenuChevronUp : ''}`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-
-              {isMobileCoursesExpanded && (
-                <div className={styles.mobileCoursesGrid}>
-                  <button className={styles.mobileCourseButton}>Веб Розробка</button>
-                  <button className={styles.mobileCourseButton}>Розробка Ігор</button>
-                  <button className={styles.mobileCourseButton}>Дизайн</button>
-                  <button className={styles.mobileCourseButton}>Робототехніка</button>
-                  <button className={styles.mobileCourseButton}>3D Моделювання</button>
-                  <button className={styles.mobileCourseButton}>Анімація</button>
-                  <button className={styles.mobileCourseButton}>Математика</button>
-                  <button className={styles.mobileCourseButton}>Англійська мова</button>
-                  <button className={styles.mobileCourseButton}>Німецька мова</button>
-                </div>
-              )}
-
-              <button className={styles.mobileMenuButton}>Переваги</button>
-              <button className={styles.mobileMenuButton}>Напрямки</button>
-              <button className={styles.mobileMenuButton}>Контакти</button>
-            </div>
-          </div>
-        )}
-
         <div className={styles.mainContent}>
           {!isMobile ? (
             <>
@@ -285,9 +202,7 @@ export const MainSection = () => {
 
                   <div className={styles.secondaryButtonContainer}>
                     <button className={styles.secondaryButton}>
-                      <svg className={styles.buttonIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                      </svg>
+                      <img src="/icon-form.svg" className={styles.buttonIcon}/>
                       <span>Запитайте менеджера</span>
                     </button>
                     <button className={styles.vectorbox}>
