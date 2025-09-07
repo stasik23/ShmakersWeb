@@ -64,9 +64,9 @@
 
 .projectsLayout {
     display: grid;
-    grid-template-columns: 360px 744px;
+    grid-template-columns: 30% 70%;
     gap: 8px;
-    max-width: 1440px;
+    max-width: 100%;
     margin: 0 auto;
     padding: 0;
     border-radius: 20px;
@@ -81,7 +81,6 @@
     overflow-y: scroll;
     overflow-x: hidden;
     padding: 16px;
-    width: 360px;
 }
 
 .projectsList::-webkit-scrollbar {
@@ -159,7 +158,7 @@
     padding: 32px;
     background: none;
     border-radius: 12px;
-    max-height: 720px;
+    max-width: 100vw;
 }
 
 .detailsHeader {
@@ -261,9 +260,11 @@
 }
 
 .previewImage {
-    width: 680px;
+    width: 100%;
+    max-width: 100%;
     height: 382px;
     object-fit: cover;
+    margin: 0 auto;
     background: #f8f9fa;
 }
 
@@ -427,7 +428,7 @@
 /* Mobile Responsive */
 @media (max-width: 440px) {
     .container {
-        padding: 70px 16px 70px 16px;
+        padding: 70px 0;
         width: 100%;
         max-width: 412px;
         height: 634px;
@@ -635,6 +636,7 @@
         gap: 10px;
         top: 0;
         right: 0;
+        left: 0;
     }
 
     .projectLink {
@@ -657,14 +659,29 @@
 
     .projectDescription {
         font-size: 14px;
-        line-height: 1.6;
+        line-height: 100%;
         color: #ffffff;
         margin: 0;
     }
 
     .projectDescription p {
+        padding: 0;
         margin: 0;
-        line-height: 1.5;
+        font-family: "Manrope" , sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 25px;
+        letter-spacing: 2%;
+
+    }
+
+    .projectDescription p:last-child {
+        font-family: "Manrope" , sans-serif;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 25px;
+        letter-spacing: 2%;
+
     }
 }
 

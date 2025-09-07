@@ -8,16 +8,18 @@ import { FeedbackComp } from '@/components/FeedbackComp'
 import { ContactComponent } from '@/components/ContactComponent'
 import { Footer } from '@/components/Footer/Footer'
 import { MainSection } from '@/components/MainSection'
+import { NavBar } from '@/components/Navbar'
 
 export default function Home() {
 
   //TODO АНИМКИ ДЛЯ ОТЗЫВОВ И ПРОКТОВ НЕ ДЕЛАТЬ, ПОКАЧТО + АНИМКИ В ЦЕЛОМ НА ПОТОМ + ДРОПДАУН МЕНЮ ДОПИЛИТЬ + СДЕЛАТЬ FLEXIBLE
   return (
     <div className={styles.app}>
-      <MainSection />
+      <NavBar />
       <div>
-        <StepsGrid />
         <div className={styles.wrapper}>
+          <MainSection />
+          <StepsGrid />
           <DirectionsComp />
           <StudentProjects />
           <FeedbackComp />

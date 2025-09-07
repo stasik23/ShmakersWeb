@@ -81,129 +81,8 @@ export const MainSection = () => {
   return (
     <div className={styles.app}>
       <div className={styles.container}>
-        <motion.div
-          className={styles.banner}
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
-          <div className={styles.marquee}>
-            {Array(6).fill(0).map((_, i) => (
-              <div key={i} className={styles.marqueeContent}>
-                <span className={styles.promoTag}>ВАЙБОВИЙ СТАРТ</span>
-                <span className={styles.bannerText}>
-                  <img
-                    src="/face-smile-upside-down 1.svg"
-                    className={styles.bannerIcon}
-                    alt="Smile icon"
-                  />
-                  За промокодом <span className={styles.promoCode}>VIBE</span> отримай 30% знижку на перший місяць навчання
-                </span>
-              </div>
-            ))}
-          </div>
-        </motion.div>
 
-        <motion.nav
-          className={styles.nav}
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-        >
-          <div className={styles.navContainer}>
-            <div className={styles.navLeft}>
-              <div className={styles.logoContainer}>
-                <img src="/Shmakers2DLogo.svg" alt="Shmakers Logo" className={styles.logo} />
-              </div>
-            </div>
 
-            <div className={styles.navCenter}>
-              <div className={styles.navButton}>
-                <span>Курси</span>
-                <svg
-                  className={styles.dropdownIcon}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-
-                {/* Dropdown горизонтальный */}
-                <div className={styles.dropdownMenu}>
-                  <button
-                    className={styles.scrollButton}
-                    onClick={() => scrollCourses('left')}
-                    type="button"
-                  >
-                    <svg className={styles.scrollIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
-                    </svg>
-                  </button>
-
-                  <div className={styles.coursesWrapper}>
-                    <div className={styles.coursesList} id="coursesList">
-                      {courses.map((course, index) => (
-                        <button
-                          key={index}
-                          className={`${styles.courseButton} ${activeCourse === index ? styles.courseButtonActive : ''}`}
-                          onClick={() => handleCourseClick(index)}
-                        >
-                          <span className={styles.courseButtonText}>{course}</span>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  <button
-                    className={styles.scrollButton}
-                    onClick={() => scrollCourses('right')}
-                    type="button"
-                  >
-                    <svg className={styles.scrollIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-              <a href="#" className={styles.navLink}>Переваги</a>
-              <a href="#" className={styles.navLink}>Напрямки</a>
-              <a href="#" className={styles.navLink}>Контакти</a>
-            </div>
-
-            <div className={styles.navRight}>
-              <a href="#" className={`${styles.socialIcon} ${styles.phoneIcon}`} aria-label="Phone">
-                <FaPhone className={styles.phoneIcon} />
-              </a>
-              <a href="#" className={styles.socialIcon} aria-label="Discord">
-                <FaDiscord className={styles.discordIcon} />
-              </a>
-              <a href="#" className={styles.socialIcon} aria-label="TikTok">
-                <FaTiktok className={styles.tiktokIcon} />
-              </a>
-
-              {/* Mobile menu button */}
-              <button
-                className={styles.burgerMenuButton}
-                onClick={toggleMobileMenu}
-                aria-label="Toggle mobile menu"
-              >
-                {isMobileMenuOpen ?
-                  <FaTimes className={styles.burgerMenuIcon} /> :
-                  <FaBars className={styles.burgerMenuIcon} />
-                }
-              </button>
-            </div>
-
-          </div>
-        </motion.nav>
-
-        {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className={styles.mobileMenu}>
             <div className={styles.mobileMenuHeader}>
@@ -307,17 +186,13 @@ export const MainSection = () => {
                         className={styles.secondaryButton}
                         onClick={handleSecondaryButtonClick}
                       >
-                        <svg className={styles.buttonIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                        </svg>
+                        <img src="/icon-form.svg" alt="Отправить" className={styles.buttonIcon} />
                         <span>Запитайте менеджера</span>
                       </button>
                     ) : (
                       <form onSubmit={handleInputSubmit} className={styles.inputForm}>
                         <div className={styles.inputWrapper}>
-                          <svg className={styles.buttonIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                          </svg>
+                          <img src="/icon-form.svg" alt="Отправить" className={styles.buttonIcon} />
                           <input
                             type="text"
                             value={inputValue}
@@ -353,20 +228,20 @@ export const MainSection = () => {
             </>
           ) : (
             <>
-              <motion.div 
+              <motion.div
                 className={styles.textContainer}
                 initial={{ opacity: 0, x: -100 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 1, delay: 0.9, ease: "easeOut" }}
               >
-                <motion.h1 
+                <motion.h1
                   className={styles.mainTitle}
                   initial={{ opacity: 0, x: -100 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 1, delay: 0.9, ease: "easeOut" }}
                 >
                   Твоє нове життя починається{' '}
-                  <motion.span 
+                  <motion.span
                     className={styles.highlightText}
                     initial={{ opacity: 0, x: -50 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -377,7 +252,7 @@ export const MainSection = () => {
                 </motion.h1>
               </motion.div>
 
-              <motion.div 
+              <motion.div
                 className={styles.sceneContainer}
                 initial={{ opacity: 0, x: 100, scale: 0.8 }}
                 animate={{ opacity: 1, x: 0, scale: 1 }}
@@ -386,7 +261,7 @@ export const MainSection = () => {
                 <img className={styles.Logo3D} src="/Logo3D.svg" alt="Shmakers 3D Logo" />
               </motion.div>
 
-              <motion.div 
+              <motion.div
                 className={styles.descriptionSection}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -398,7 +273,7 @@ export const MainSection = () => {
                   з вайбом.
                 </p>
 
-                <motion.div 
+                <motion.div
                   className={styles.buttonContainer}
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -411,7 +286,7 @@ export const MainSection = () => {
                   <div className={styles.secondaryButtonContainer}>
                     <button className={styles.secondaryButton}>
                       <svg className={styles.buttonIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                       </svg>
                       <span>Запитайте менеджера</span>
                     </button>

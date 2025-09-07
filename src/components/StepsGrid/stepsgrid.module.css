@@ -3,26 +3,27 @@
 
 .wrapper {
     font-family: 'Manrope', sans-serif;
-    padding: 0 156px 120px 156px;
     color: #ffffff;
+    margin-bottom: 120px;
+
 }
 
 .title {
-    position: relative;
-    left: -70px;
-    font-size: clamp(32px, 4vw, 48px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
     font-weight: 600;
     text-align: center;
-    margin-bottom: clamp(24px, 3vw, 40px);
-    height: clamp(40px, 4vw, 59px);
+    margin: 0 auto;
+    margin-bottom: 40px;
+    height: 59px;
     text-transform: uppercase;
     color: #F0E8FF;
     letter-spacing: -0.02em;
-    width: 1284px;
     line-height: 100%;
     font-family: 'Montserrat', sans-serif;
     white-space: nowrap;
-    overflow: hidden;
 }
 
 .container {
@@ -40,12 +41,12 @@
 }
 
 .featureCard {
+    box-shadow: inset 0px 0px 6px 0px #4F1896 inset;
     background: #00000099;
-    box-shadow: inset 10px #4F1896;
     border-radius: 12px;
     padding: 20px;
-    max-width: 360px;
-    max-height: 177px;
+    gap: 12px;
+    min-height: 137px;
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
     position: relative;
