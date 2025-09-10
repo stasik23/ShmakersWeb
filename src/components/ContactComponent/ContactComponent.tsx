@@ -245,7 +245,7 @@ export const ContactComponent = () => {
                                     </div>
                                     <div className={styles.cardBody}>
                                         <div className={styles.pricingInfo}>
-                                            <p className={styles.price}>500 грн. за годину</p>
+                                            <p className={styles.price}>250 грн. за годину</p>
                                             <p className={styles.price}>1 год. тривалість уроку</p>
                                             <p className={styles.price}>4 уроки на місяць</p>
                                         </div>

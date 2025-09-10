@@ -4,7 +4,7 @@
 /* Container */
 .container {
     color: white;
-    overflow: hidden;
+    overflow: visible;
     position: relative;
 }
 
@@ -97,8 +97,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 19px clamp(16px, 10.8vw, 156px);
+    padding: 0 156px;
     position: relative;
+    height: 88px;
 }
 
 .navContainer {
@@ -258,40 +259,41 @@
 
 /* Dropdown Menu */
 .dropdownMenu {
-    position: absolute;
-    top: 100%;
-    left: 15vw;
-    transform: translateX(-50%) translateY(10px);
+    position: fixed;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     align-items: center;
     opacity: 0;
-    visibility: hidden;
-    z-index: 1000;
-    backdrop-filter: blur(8px);
-    width: 90vw;
-    max-width: 1128px;
+    width: 80vw;
+    max-width: 1280px;
     height: 58px;
     border-radius: 4px;
     gap: 8px;
+    z-index: 1000;
+    backdrop-filter: blur(8px);
+    visibility: hidden;
+    pointer-events: none;
 }
 
 .navButton:hover .dropdownMenu,
 .dropdownMenu:hover {
     opacity: 1;
     visibility: visible;
-    transform: translateX(-50%) translateY(10px);
+    transform: translateX(-50%);
     pointer-events: auto;
 }
 
 .coursesWrapper {
-    width: 1128px;
+    flex: 1;
     height: 58px;
     background: #4D4D4D66;
-    flex: 1;
-    gap: 10px;
     display: flex;
     align-items: center;
     border-radius: 4px;
+    overflow: hidden;
+    position: relative;
 }
 
 .coursesWrapper::-webkit-scrollbar {
@@ -370,7 +372,15 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
     align-items: center;
-    padding: 0;
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+    cursor: grab;
+    user-select: none;
+}
+
+.coursesList:active {
+    cursor: grabbing;
 }
 
 .coursesList::-webkit-scrollbar {
@@ -398,6 +408,7 @@
     line-height: 100%;
     letter-spacing: 2%;
     font-family: 'Manrope', sans-serif;
+    flex-shrink: 0;
 }
 
 .courseButtonActive {
@@ -411,6 +422,23 @@
     z-index: 10;
     font-family: 'Manrope', sans-serif;
     line-height: 1.2;
+}
+
+/* Mobile Menu */
+.mobileMenu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 84px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    background: transparent;
 }
 
 /* Hide mobile menu on desktop */
@@ -432,9 +460,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 16px;
+    padding: 9px 16px;
     background: #0f0f1a;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .mobileMenuLogo {
@@ -525,6 +552,8 @@
     opacity: 1;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     animation: slideIn 0.4s ease-out 0.1s both;
+    position: relative;
+    z-index: 100000;
 }
 
 .mobileMenuButton {
@@ -662,7 +691,7 @@
         height: 68px;
         justify-content: space-between;
         opacity: 1;
-        padding: 20px 16px 20px 16px;
+        padding: 0 16px;
         position: relative;
         margin: 0 auto;
         display: flex;

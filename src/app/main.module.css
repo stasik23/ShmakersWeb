@@ -8,6 +8,7 @@
     background-repeat: no-repeat;
     font-family: 'Manrope', sans-serif;
     min-height: 100vh;
+    min-width: 1296px;
     overflow: hidden;
 }
 
@@ -24,6 +25,7 @@
 @media (max-width: 440px) {
     .app {
         background: linear-gradient(180deg, #0B0B1E 0%, #1A0D2E 100%);
+        min-width: 440px;
     }
 
     .wrapper {
