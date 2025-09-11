@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styles from './navbar.module.css'
 import { FaBars, FaDiscord, FaPhone, FaTiktok, FaTimes } from 'react-icons/fa';
 
@@ -20,6 +20,38 @@ export const NavBar = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [, setIsMobile] = useState(false);
     const [isMobileCoursesExpanded, setIsMobileCoursesExpanded] = useState(false);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const menuRef = useRef<HTMLDivElement>(null);
+
+    const isDragging = useRef(false);
+    const startX = useRef(0);
+    const scrollLeft = useRef(0);
+
+    const onMouseDown = (e: React.MouseEvent) => {
+        isDragging.current = true;
+        startX.current = e.pageX - (menuRef.current?.offsetLeft || 0);
+        scrollLeft.current = menuRef.current?.scrollLeft || 0;
+    };
+
+    const onMouseLeave = () => {
+        isDragging.current = false;
+    };
+
+    const onMouseUp = () => {
+        isDragging.current = false;
+    };
+
+    const onMouseMove = (e: React.MouseEvent) => {
+        if (!isDragging.current || !menuRef.current) return;
+        e.preventDefault();
+        const x = e.pageX - menuRef.current.offsetLeft;
+        const walk = (x - startX.current) * 1; // скорость скролла
+        menuRef.current.scrollLeft = scrollLeft.current - walk;
+    };
+
+    const toggleDropdown = () => {
+        setIsDropdownOpen((prev) => !prev);
+    };
 
     useEffect(() => {
         const checkMobile = () => {
@@ -45,7 +77,7 @@ export const NavBar = () => {
     };
 
     const handleCourseClick = (index: number) => {
-        setActiveCourse(activeCourse === index ? null : index);
+        setActiveCourse(index);
     };
 
     const toggleMobileMenu = () => {
@@ -95,7 +127,7 @@ export const NavBar = () => {
                     </div>
 
                     <div className={styles.navCenter}>
-                        <div className={styles.navButton}>
+                        <div className={styles.navButton} onClick={toggleDropdown}>
                             <span>Курси</span>
                             <svg
                                 className={styles.dropdownIcon}
@@ -110,43 +142,49 @@ export const NavBar = () => {
                                     d="M19 9l-7 7-7-7"
                                 />
                             </svg>
+                        </div>
 
-                            {/* Dropdown горизонтальный */}
-                            <div className={styles.dropdownMenu}>
-                                <button
-                                    className={styles.scrollButton}
-                                    onClick={() => scrollCourses('left')}
-                                    type="button"
-                                >
-                                    <svg className={styles.scrollIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
-                                    </svg>
-                                </button>
+                        {/* Дропдаун отдельно */}
+                        <div
+                            ref={menuRef}
+                            className={`${styles.dropdownMenu} ${isDropdownOpen ? styles.open : ''}`}
+                            onMouseDown={onMouseDown}
+                            onMouseLeave={onMouseLeave}
+                            onMouseUp={onMouseUp}
+                            onMouseMove={onMouseMove}>
+                            <button
+                                className={styles.scrollButton}
+                                onClick={() => scrollCourses('left')}
+                                type="button"
+                            >
+                                <svg className={styles.scrollIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+                                </svg>
+                            </button>
 
-                                <div className={styles.coursesWrapper}>
-                                    <div className={styles.coursesList} id="coursesList">
-                                        {courses.map((course, index) => (
-                                            <button
-                                                key={index}
-                                                className={`${styles.courseButton} ${activeCourse === index ? styles.courseButtonActive : ''}`}
-                                                onClick={() => handleCourseClick(index)}
-                                            >
-                                                <span className={styles.courseButtonText}>{course}</span>
-                                            </button>
-                                        ))}
-                                    </div>
+                            <div className={styles.coursesWrapper}>
+                                <div className={styles.coursesList} id="coursesList">
+                                    {courses.map((course, index) => (
+                                        <button
+                                            key={index}
+                                            className={`${styles.courseButton} ${activeCourse === index ? styles.courseButtonActive : ''}`}
+                                            onClick={() => handleCourseClick(index)} // ✅ меню не закроется
+                                        >
+                                            <span className={styles.courseButtonText}>{course}</span>
+                                        </button>
+                                    ))}
                                 </div>
-
-                                <button
-                                    className={styles.scrollButton}
-                                    onClick={() => scrollCourses('right')}
-                                    type="button"
-                                >
-                                    <svg className={styles.scrollIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-                                    </svg>
-                                </button>
                             </div>
+
+                            <button
+                                className={styles.scrollButton}
+                                onClick={() => scrollCourses('right')}
+                                type="button"
+                            >
+                                <svg className={styles.scrollIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </button>
                         </div>
                         <a href="#" className={styles.navLink}>Переваги</a>
                         <a href="#" className={styles.navLink}>Напрямки</a>

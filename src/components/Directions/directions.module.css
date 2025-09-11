@@ -101,7 +101,8 @@
 }
 
 .arrowIcon {
-    display: none; /* Скрываем стрелочку в десктопной версии */
+    display: none;
+    /* Скрываем стрелочку в десктопной версии */
 }
 
 .details {
@@ -161,7 +162,7 @@
 
 /* Mobile Responsive */
 @media (max-width: 440px) {
-    
+
     .heading {
         font-size: 23px;
         font-weight: 600;
@@ -169,13 +170,13 @@
         margin-bottom: 40px;
         text-align: center;
     }
-    
+
     .grid {
         grid-template-columns: 1fr;
         gap: 20px;
         max-width: 100%;
     }
-    
+
     .card {
         width: 408px;
         height: 273px;
@@ -183,31 +184,38 @@
         border-radius: 16px;
         transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    
+
     .card.expanded {
         height: 474px;
     }
-    
+
     .image {
         height: 220px;
     }
-    
+
     .heading_back {
-        padding: 12px 15px;
-        position: relative;
+        height: 25px;
+        justify-content: space-between;
+        opacity: 1;
+        padding-top: 12px;
+        padding-right: 15px;
+        padding-bottom: 15px;
+        padding-left: 15px;
+
     }
-    
+
     .cardTitle {
         font-size: 20px;
         gap: 8px;
     }
-    
+
     .icon {
         font-size: 18px;
     }
-    
+
     .arrowIcon {
-        display: block; /* Показываем стрелочку в мобильной версии */
+        display: block;
+        /* Показываем стрелочку в мобильной версии */
         position: absolute;
         right: 16px;
         top: 50%;
@@ -216,27 +224,29 @@
         font-size: 16px;
         transition: all 0.3s ease;
     }
-    
+
     .details {
-        max-height: 0; /* Скрываем по умолчанию в мобильной версии */
+        max-height: 0;
+        /* Скрываем по умолчанию в мобильной версии */
         overflow: hidden;
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         opacity: 0;
         background: #110A1E;
     }
-    
+
     .showDetails {
-        max-height: 202px; /* Показываем при развертывании в мобильной версии */
+        max-height: 202px;
+        /* Показываем при развертывании в мобильной версии */
         opacity: 1;
     }
-    
+
     .description {
         font-size: 14px;
         line-height: 1.5;
         padding: 16px 20px;
         margin: 0;
     }
-    
+
     .button {
         font-size: 14px;
         padding: 10px 20px;
@@ -251,26 +261,27 @@
         height: 250px;
         transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    
+
     .card.expanded {
         height: 400px;
     }
-    
+
     .image {
         height: 160px;
     }
-    
+
     .heading {
         font-size: 24px;
         margin-bottom: 30px;
     }
-    
+
     .cardTitle {
         font-size: 18px;
     }
-    
+
     .arrowIcon {
-        display: block; /* Показываем стрелочку в мобильной версии */
+        display: block;
+        /* Показываем стрелочку в мобильной версии */
         position: absolute;
         right: 16px;
         top: 50%;
@@ -279,12 +290,12 @@
         font-size: 14px;
         transition: all 0.3s ease;
     }
-    
+
     .description {
         font-size: 13px;
         padding: 14px 16px;
     }
-    
+
     .button {
         font-size: 13px;
         padding: 8px 16px;

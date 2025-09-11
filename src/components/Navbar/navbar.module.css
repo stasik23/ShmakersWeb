@@ -259,8 +259,8 @@
 
 /* Dropdown Menu */
 .dropdownMenu {
-    position: fixed;
-    top: 100px;
+    position: absolute;
+    top: 50px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -275,10 +275,13 @@
     backdrop-filter: blur(8px);
     visibility: hidden;
     pointer-events: none;
+    flex-wrap: wrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
-.navButton:hover .dropdownMenu,
-.dropdownMenu:hover {
+.dropdownMenu.open {
     opacity: 1;
     visibility: visible;
     transform: translateX(-50%);
@@ -292,12 +295,12 @@
     display: flex;
     align-items: center;
     border-radius: 4px;
-    overflow: hidden;
+    overflow-x: auto;
     position: relative;
 }
 
 .coursesWrapper::-webkit-scrollbar {
-    height: 6px;
+    display: none;
 }
 
 .coursesWrapper::-webkit-scrollbar-thumb {
@@ -678,6 +681,7 @@
         width: 24px;
         height: 20px;
     }
+
     .navContainer {
         width: 100%;
         display: flex;
@@ -809,6 +813,7 @@
     .tiktokIcon {
         display: none;
     }
+
     /* Hide course navigation on mobile */
     .courseNavigation {
         display: none;
@@ -860,4 +865,3 @@
         width: 100%;
     }
 }
-
