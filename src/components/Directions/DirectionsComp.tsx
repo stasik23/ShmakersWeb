@@ -65,7 +65,7 @@ export const DirectionsComp = () => {
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
+                transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
             >
                 НАПРЯМКИ ДЛЯ РОЗВИТКУ
             </motion.h2>
@@ -80,9 +80,9 @@ export const DirectionsComp = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.2 }}
                         transition={{ 
-                            duration: 0.6, 
-                            delay: 0.4 + (index * 0.1),
-                            ease: "easeOut" 
+                            duration: 1.0, 
+                            delay: 0.6 + (index * 0.2),
+                            ease: [0.22, 1, 0.36, 1]
                         }}
                     >
                         <div className={styles.content}>

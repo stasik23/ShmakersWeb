@@ -51,14 +51,14 @@ export const MainSection = () => {
                     className={styles.mainTitle}
                     initial={{ opacity: 0, x: -100 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 1, delay: 0.9, ease: "easeOut" }}
+                    transition={{ duration: 1.3, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
                   >
                     Твоє нове життя починається{' '}
                     <motion.span
                       className={styles.highlightText}
                       initial={{ opacity: 0, x: -50 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.8, delay: 2.6, ease: "easeOut" }}
+                      transition={{ duration: 1.1, delay: 2.6, ease: [0.16, 1, 0.3, 1] }}
                     >
                       зараз
                     </motion.span>
@@ -68,7 +68,7 @@ export const MainSection = () => {
                     className={styles.description}
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 3.4, ease: "easeOut" }}
+                    transition={{ duration: 1.1, delay: 3.4, ease: [0.16, 1, 0.3, 1] }}
                   >
                     З нами ти знайдеш свій старт та дійдеш до фінішу. В
                     Shmakers завжди є ті, хто поруч. Прозоро, чесно,
@@ -79,7 +79,7 @@ export const MainSection = () => {
                   className={styles.buttonContainer}
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 4.2, ease: "easeOut" }}
+                  transition={{ duration: 1.1, delay: 4.2, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <button className={styles.primaryButton}>
                     <span className={styles.buttonText}>Обрати напрямок</span>

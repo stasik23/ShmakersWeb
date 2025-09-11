@@ -147,7 +147,7 @@ export const FeedbackComp: React.FC = () => {
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
                 >
                     ВІДГУКИ ПРО НАС
                 </motion.h1>
@@ -162,9 +162,9 @@ export const FeedbackComp: React.FC = () => {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true, amount: 0.3 }}
                             transition={{ 
-                                duration: 0.4, 
+                                duration: 0.8, 
                                 delay: 0.9 + (index * 0.1), 
-                                ease: "easeOut" 
+                                ease: [0.22, 1, 0.36, 1]
                             }}
                         >
                             {category}
@@ -186,7 +186,7 @@ export const FeedbackComp: React.FC = () => {
                                         initial={{ opacity: 0 }}
                                         whileInView={{ opacity: 1 }}
                                         viewport={{ once: true, amount: 0.2 }}
-                                        transition={{ duration: 0.3, delay: 1.7 + (index * 0.1), ease: "easeOut" }}
+                                        transition={{ duration: 0.8, delay: 1.7 + (index * 0.1), ease: [0.22, 1, 0.36, 1] }}
                                     >
                                         {/* На мобильных устройствах показываем либо свернутое, либо развернутое состояние */}
                                         {isMobile ? (
@@ -197,7 +197,7 @@ export const FeedbackComp: React.FC = () => {
                                                     initial={{ opacity: 0, x: -80 }}
                                                     whileInView={{ opacity: 1, x: 0 }}
                                                     viewport={{ once: true, amount: 0.2 }}
-                                                    transition={{ duration: 0.5, delay: 1.7 + (index * 0.1), ease: "easeOut" }}
+                                                    transition={{ duration: 0.9, delay: 1.7 + (index * 0.1), ease: [0.22, 1, 0.36, 1] }}
                                                 >
                                                     <img src={review.avatar} alt={review.name} className={styles.avatar} />
                                                     <div className={styles.reviewInfo}>
@@ -220,7 +220,7 @@ export const FeedbackComp: React.FC = () => {
                                                         initial={{ opacity: 0, y: -20 }}
                                                         animate={{ opacity: 1, y: 0 }}
                                                         exit={{ opacity: 0, y: -20 }}
-                                                        transition={{ duration: 0.3, ease: "easeOut" }}
+                                                        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
                                                     >
                                                         <p>{review.comment}</p>
                                                     </motion.div>
@@ -234,7 +234,7 @@ export const FeedbackComp: React.FC = () => {
                                                     initial={{ opacity: 0, x: -80 }}
                                                     whileInView={{ opacity: 1, x: 0 }}
                                                     viewport={{ once: true, amount: 0.2 }}
-                                                    transition={{ duration: 0.5, delay: 1.7 + (index * 0.1), ease: "easeOut" }}
+                                                    transition={{ duration: 0.8, delay: 1.7 + (index * 0.1), ease: [0.22, 1, 0.36, 1] }}
                                                 >
                                                     <img src={review.avatar} alt={review.name} className={styles.avatar} />
                                                     <div className={styles.reviewInfo}>
@@ -250,7 +250,7 @@ export const FeedbackComp: React.FC = () => {
                                                     initial={{ opacity: 0, x: -80 }}
                                                     whileInView={{ opacity: 1, x: 0 }}
                                                     viewport={{ once: true, amount: 0.2 }}
-                                                    transition={{ duration: 0.4, delay: 1.9 + (index * 0.1), ease: "easeOut" }}
+                                                    transition={{ duration: 0.7, delay: 1.9 + (index * 0.1), ease: [0.22, 1, 0.36, 1] }}
                                                 >
                                                     <p>{review.comment}</p>
                                                 </motion.div>

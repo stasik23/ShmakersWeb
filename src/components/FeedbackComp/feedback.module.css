@@ -47,7 +47,7 @@
     font-weight: 600;
     font-family: 'Manrope', sans-serif;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     backdrop-filter: blur(10px);
     border: none;
 }
@@ -167,6 +167,7 @@
     flex: 1;
     display: flex;
     align-items: center;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reviewComment.even {

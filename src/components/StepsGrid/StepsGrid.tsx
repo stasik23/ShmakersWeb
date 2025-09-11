@@ -79,10 +79,10 @@ export const StepsGrid = () => {
         <div className={styles.wrapper}>
             <motion.h2 
                 className={styles.title}
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
+                transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
             >
                 Що зробить твоє навчання унікальним?
             </motion.h2>
@@ -94,13 +94,13 @@ export const StepsGrid = () => {
                         <motion.div 
                             key={feature.id} 
                             className={styles.featureCard}
-                            initial={{ opacity: 0, x: -100 }}
+                            initial={{ opacity: 0, x: -60 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true, amount: 0.3 }}
                             transition={{ 
-                                duration: 0.6, 
-                                delay: 0.4 + (index * 0.1),
-                                ease: "easeOut" 
+                                duration: 1.6, 
+                                delay: 0.45 + (index * 0.14),
+                                ease: [0.16, 1, 0.3, 1]
                             }}
                         >
                             <div className={styles.cardHeader}>
@@ -138,10 +138,10 @@ export const StepsGrid = () => {
                         <motion.div 
                             key={currentSlide}
                             className={styles.slideCard}
-                            initial={{ opacity: 0, x: -100 }}
+                            initial={{ opacity: 0, x: -60 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true, amount: 0.3 }}
-                            transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+                            transition={{ duration: 1.5, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
                         >
                             <div className={styles.slideHeader}>
                                 <div className={styles.slideIcon}>

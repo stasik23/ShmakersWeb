@@ -105,7 +105,7 @@
     font-weight: 500;
     border: none;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     overflow: hidden;
     font-family: 'Manrope', sans-serif;
     box-shadow: 0 4px 20px rgba(147, 51, 234, 0.3);
@@ -137,7 +137,7 @@
     padding: 8px 12px;
     border-radius: 8px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     font-size: 16px;
     font-weight: 400;
     font-family: 'Roboto Flex', sans-serif;
@@ -172,7 +172,7 @@
     font-weight: 400;
     font-family: 'Roboto Flex', sans-serif;
     outline: none;
-    transition: all 0.3s ease;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     padding: 8px 12px;
     line-height: 100%;
     letter-spacing: 2%;
@@ -210,7 +210,7 @@
 .buttonIcon {
     width: 1.25rem;
     height: 1.25rem;
-    transition: transform 0.3s ease;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .secondaryButtonContainer {
@@ -549,7 +549,7 @@
 
     /* Mobile Navigation - exactly like in design */
     .nav {
-        width: 440px;
+        width: 100%;
         height: 68px;
         justify-content: space-between;
         opacity: 1;
@@ -713,11 +713,13 @@
         text-transform: none;
         color: white;
         min-height: 92px;
-        max-width: 408px;
+        max-width: 100%;
         opacity: 1;
         display: block;
         margin: 0 auto;
-        width: 408px;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0 16px;
     }
 
     .highlightText {
@@ -771,7 +773,7 @@
         margin-top: 28px;
         margin-bottom: 0;
         text-align: start;
-        width: 408px;
+        width: 100%;
         height: auto;
         opacity: 1;
         order: 3;
@@ -781,6 +783,9 @@
         align-items: start;
         justify-content: start;
         flex-shrink: 0;
+        box-sizing: border-box;
+        padding-left: 16px;
+        padding-right: 16px;
     }
 
     .descriptionSection .description {
@@ -793,7 +798,7 @@
         margin-bottom: 0;
         max-width: 100%;
         text-align: start;
-        width: 408px;
+        width: 100%;
         height: 60px;
         opacity: 1;
         display: flex;
@@ -807,7 +812,7 @@
         flex-direction: column;
         align-items: start;
         justify-content: start;
-        width: 408px;
+        width: 100%;
         height: 94px;
         gap: 16px;
         margin-top: 38px;
@@ -821,6 +826,9 @@
         flex-direction: column;
         align-items: start;
         justify-content: start;
+        box-sizing: border-box;
+        padding-left: 16px;
+        padding-right: 16px;
     }
 
     .secondaryButton {
@@ -840,7 +848,7 @@
     }
 
     .secondaryButtonContainer {
-        width: 408px;
+        width: 100%;
         height: 36px;
         display: flex;
         align-items: center;
@@ -848,7 +856,7 @@
     }
 
     .primaryButton {
-        width: 408px;
+        width: 100%;
         height: 42px;
         padding: 10px 16px 10px 16px;
         display: flex;

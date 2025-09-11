@@ -126,7 +126,7 @@ export const ContactComponent = () => {
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
+                transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
             >
                 Залишились запитання?
             </motion.h1>
@@ -137,7 +137,7 @@ export const ContactComponent = () => {
                     initial={{ opacity: 0, x: -100 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, amount: 0.2 }}
-                    transition={{ duration: 0.6, delay: 0.9, ease: "easeOut" }}
+                    transition={{ duration: 1.0, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
                 >
                     <h2 className={styles.formTitle}>Заявка на дзвінок</h2>
                     <form className={styles.formContent} onSubmit={handleSubmit(onSubmit, onInvalid)}>
@@ -216,7 +216,7 @@ export const ContactComponent = () => {
                         initial={{ opacity: 0, x: 100 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true, amount: 0.2 }}
-                        transition={{ duration: 0.6, delay: 0.9, ease: "easeOut" }}
+                        transition={{ duration: 1.0, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
                     >
                         {isMobile ? (
                             <div className={styles.content}>
@@ -270,7 +270,7 @@ export const ContactComponent = () => {
                         initial={{ opacity: 0, x: 100 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true, amount: 0.2 }}
-                        transition={{ duration: 0.6, delay: 1.1, ease: "easeOut" }}
+                        transition={{ duration: 1.0, delay: 1.1, ease: [0.22, 1, 0.36, 1] }}
                     >
                         {isMobile ? (
                             <div className={styles.content}>
