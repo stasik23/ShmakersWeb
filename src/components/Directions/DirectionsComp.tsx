@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import styles from "./directions.module.css";
-import { FaCog, FaCode, FaMicrochip, FaServer, FaGamepad, FaPalette, FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { FaCog, FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { IoBrush } from "react-icons/io5";
 
 interface DirectionCardProps {
     id: number;
@@ -16,42 +17,42 @@ const cardsData: DirectionCardProps[] = [
         id: 1,
         title: "Web Design",
         description: "В цьому напрямку ви дізнаєтесь все про веб розробку. Спробуєте себе в ролі Full Stack розробника та оберете те, що дійсно сподобається. Ми дамо вам не тільки основи Html, Css, JS, а й познайомимо з актуальними фреймворками.",
-        icon: <FaPalette className={styles.icon}/>,
+        icon: <IoBrush className={styles.icon}/>,
         image: "/web-design.svg"
     },
     {
         id: 2,
         title: "Front End",
         description: "В цьому напрямку ви діагностеcь все про веб розробку. Спробуйте себе в ролі Full Stack розробника та оберіть те, що вашій душі стоподобається. Ми даємо вам не тільки основи Html, Css, Js, а й познайомимо з актуальними фреймворками.",
-        icon: <FaCode className={styles.icon}/>,
+        icon: <FaCog className={styles.icon}/>,
         image: "/front-end.svg"
     },
     {
         id: 3,
         title: "Embedded",
         description: "В цьому напрямку ви діагностеcь все про веб розробку. Спробуйте себе в ролі Full Stack розробника та оберіть те, що вашій душі стоподобається. Ми даємо вам не тільки основи Html, Css, Js, а й познайомимо з актуальними фреймворками.",
-        icon: <FaMicrochip className={styles.icon}/>,
+        icon: <FaCog className={styles.icon}/>,
         image: "/embedded.svg"
     },
     {
         id: 4,
         title: "Back End",
         description: "В цьому напрямку ви діагностеcь все про веб розробку. Спробуйте себе в ролі Full Stack розробника та оберіть те, що вашій душі стоподобається. Ми даємо вам не тільки основи Html, Css, Js, а й познайомимо з актуальними фреймворками.",
-        icon: <FaServer className={styles.icon}/>,
+        icon: <FaCog className={styles.icon}/>,
         image: "/back-end.svg"
     },
     {
         id: 5,
         title: "Game Development",
         description: "В цьому напрямку ви діагностеcь все про веб розробку. Спробуйте себе в ролі Full Stack розробника та оберіть те, що вашій душі стоподобається. Ми даємо вам не тільки основи Html, Css, Js, а й познайомимо з актуальними фреймворками.",
-        icon: <FaGamepad className={styles.icon}/>,
+        icon: <FaCog className={styles.icon}/>,
         image: "/gamedev.svg"
     },
     {
         id: 6,
         title: "Web Development",
         description: "В цьому напрямку ви діагностеcь все про веб розробку. Спробуйте себе в ролі Full Stack розробника та оберіть те, що вашій душі стоподобається. Ми даємо вам не тільки основи Html, Css, Js, а й познайомимо з актуальними фреймворками.",
-        icon: <FaCog className={styles.icon}/>,
+        icon: <IoBrush className={styles.icon}/>,
         image: "/web-design.svg"
     }
 ]

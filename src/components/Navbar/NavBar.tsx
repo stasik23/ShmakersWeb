@@ -20,38 +20,35 @@ export const NavBar = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [, setIsMobile] = useState(false);
     const [isMobileCoursesExpanded, setIsMobileCoursesExpanded] = useState(false);
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const menuRef = useRef<HTMLDivElement>(null);
 
-    const isDragging = useRef(false);
-    const startX = useRef(0);
-    const scrollLeft = useRef(0);
+    const [isHoverOpen, setIsHoverOpen] = useState(false);
+    const [hoverTimeout, setHoverTimeout] = useState<ReturnType<typeof setTimeout> | null>(null);
 
-    const onMouseDown = (e: React.MouseEvent) => {
-        isDragging.current = true;
-        startX.current = e.pageX - (menuRef.current?.offsetLeft || 0);
-        scrollLeft.current = menuRef.current?.scrollLeft || 0;
+    const handleMouseEnter = () => {
+        if (hoverTimeout) {
+            clearTimeout(hoverTimeout);
+            setHoverTimeout(null);
+        }
+        setIsHoverOpen(true);
     };
 
-    const onMouseLeave = () => {
-        isDragging.current = false;
+    const handleMouseLeave = () => {
+        const timeout = setTimeout(() => {
+            setIsHoverOpen(false);
+        }, 300);
+        setHoverTimeout(timeout);
     };
 
-    const onMouseUp = () => {
-        isDragging.current = false;
-    };
 
-    const onMouseMove = (e: React.MouseEvent) => {
-        if (!isDragging.current || !menuRef.current) return;
-        e.preventDefault();
-        const x = e.pageX - menuRef.current.offsetLeft;
-        const walk = (x - startX.current) * 1; // скорость скролла
-        menuRef.current.scrollLeft = scrollLeft.current - walk;
-    };
+    useEffect(() => {
+        return () => {
+            if (hoverTimeout) {
+                clearTimeout(hoverTimeout);
+            }
+        };
+    }, [hoverTimeout]);
 
-    const toggleDropdown = () => {
-        setIsDropdownOpen((prev) => !prev);
-    };
 
     useEffect(() => {
         const checkMobile = () => {
@@ -65,13 +62,13 @@ export const NavBar = () => {
     }, []);
 
     const scrollCourses = (direction: 'left' | 'right') => {
-        const coursesList = document.getElementById('coursesList') as HTMLElement;
-        if (coursesList) {
+        const coursesWrapper = document.querySelector(`.${styles.coursesWrapper}`) as HTMLElement;
+        if (coursesWrapper) {
             const scrollAmount = 300;
             if (direction === 'left') {
-                coursesList.scrollLeft -= scrollAmount;
+                coursesWrapper.scrollLeft -= scrollAmount;
             } else {
-                coursesList.scrollLeft += scrollAmount;
+                coursesWrapper.scrollLeft += scrollAmount;
             }
         }
     };
@@ -127,64 +124,68 @@ export const NavBar = () => {
                     </div>
 
                     <div className={styles.navCenter}>
-                        <div className={styles.navButton} onClick={toggleDropdown}>
-                            <span>Курси</span>
-                            <svg
-                                className={styles.dropdownIcon}
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M19 9l-7 7-7-7"
-                                />
-                            </svg>
-                        </div>
-
-                        {/* Дропдаун отдельно */}
                         <div
-                            ref={menuRef}
-                            className={`${styles.dropdownMenu} ${isDropdownOpen ? styles.open : ''}`}
-                            onMouseDown={onMouseDown}
-                            onMouseLeave={onMouseLeave}
-                            onMouseUp={onMouseUp}
-                            onMouseMove={onMouseMove}>
-                            <button
-                                className={styles.scrollButton}
-                                onClick={() => scrollCourses('left')}
-                                type="button"
-                            >
-                                <svg className={styles.scrollIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+                            className={styles.navButtonContainer}
+                            onMouseEnter={handleMouseEnter}
+                            onMouseLeave={handleMouseLeave}
+                        >
+                            <div className={styles.navButton}>
+                                <span>Курси</span>
+                                <svg
+                                    className={styles.dropdownIcon}
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M19 9l-7 7-7-7"
+                                    />
                                 </svg>
-                            </button>
-
-                            <div className={styles.coursesWrapper}>
-                                <div className={styles.coursesList} id="coursesList">
-                                    {courses.map((course, index) => (
-                                        <button
-                                            key={index}
-                                            className={`${styles.courseButton} ${activeCourse === index ? styles.courseButtonActive : ''}`}
-                                            onClick={() => handleCourseClick(index)} // ✅ меню не закроется
-                                        >
-                                            <span className={styles.courseButtonText}>{course}</span>
-                                        </button>
-                                    ))}
-                                </div>
                             </div>
 
-                            <button
-                                className={styles.scrollButton}
-                                onClick={() => scrollCourses('right')}
-                                type="button"
+                            <div
+                                ref={menuRef}
+                                className={`${styles.dropdownMenu} ${isHoverOpen ? styles.open : ''}`}
+                                onMouseEnter={handleMouseEnter} // Дополнительная защита
+                                onMouseLeave={handleMouseLeave}
                             >
-                                <svg className={styles.scrollIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-                                </svg>
-                            </button>
+                                <button
+                                    className={styles.scrollButton}
+                                    onClick={() => scrollCourses('left')}
+                                    type="button"
+                                >
+                                    <svg className={styles.scrollIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+                                    </svg>
+                                </button>
+
+                                <div className={styles.coursesWrapper}>
+                                    <div className={styles.coursesList} id="coursesList">
+                                        {courses.map((course, index) => (
+                                            <button
+                                                key={index}
+                                                className={`${styles.courseButton} ${activeCourse === index ? styles.courseButtonActive : ''}`}
+                                                onClick={() => handleCourseClick(index)}
+                                            >
+                                                <span className={styles.courseButtonText}>{course}</span>
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <button
+                                    className={styles.scrollButton}
+                                    onClick={() => scrollCourses('right')}
+                                    type="button"
+                                >
+                                    <svg className={styles.scrollIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                                    </svg>
+                                </button>
+                            </div>
                         </div>
                         <a href="#" className={styles.navLink}>Переваги</a>
                         <a href="#" className={styles.navLink}>Напрямки</a>

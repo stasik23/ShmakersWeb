@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import './reset.css'
 import { Mulish, Questrial, Roboto, Manrope } from 'next/font/google'
 
 const mulish = Mulish({

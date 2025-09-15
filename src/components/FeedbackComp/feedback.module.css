@@ -14,12 +14,11 @@
     font-size: 48px;
     line-height: 1.23;
     font-weight: 600;
-    letter-spacing: 4%;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     text-align: center;
     margin-bottom: 40px;
     color: #ffffff;
-    letter-spacing: 0.02em;
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -317,36 +316,5 @@
     .star {
         width: 14px;
         height: 14px;
-    }
-}
-
-@media (max-width: 380px) {
-
-    .reviewCard,
-    .reviewComment {
-        width: 360px;
-    }
-
-    .reviewCard {
-        height: 75px;
-        padding: 10px;
-    }
-
-    .avatar {
-        width: 44px;
-        height: 44px;
-    }
-
-    .reviewerName {
-        font-size: 16px;
-    }
-
-    .reviewerDirection {
-        font-size: 11px;
-    }
-
-    .categoryBtn {
-        padding: 6px 12px;
-        font-size: 14px;
     }
 }

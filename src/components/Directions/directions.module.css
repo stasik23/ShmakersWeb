@@ -13,7 +13,7 @@
     font-weight: 600;
     text-align: center;
     margin-bottom: 40px;
-    letter-spacing: -0.5px;
+    letter-spacing: 0.04em;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     font-family: 'Montserrat', sans-serif;
 }
@@ -252,53 +252,5 @@
         padding: 10px 20px;
         margin: 0 20px 20px 20px;
         border-radius: 8px;
-    }
-}
-
-@media (max-width: 380px) {
-    .card {
-        width: 360px;
-        height: 250px;
-        transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .card.expanded {
-        height: 400px;
-    }
-
-    .image {
-        height: 160px;
-    }
-
-    .heading {
-        font-size: 24px;
-        margin-bottom: 30px;
-    }
-
-    .cardTitle {
-        font-size: 18px;
-    }
-
-    .arrowIcon {
-        display: block;
-        /* Показываем стрелочку в мобильной версии */
-        position: absolute;
-        right: 16px;
-        top: 50%;
-        transform: translateY(-50%);
-        color: #ffffff;
-        font-size: 14px;
-        transition: all 0.3s ease;
-    }
-
-    .description {
-        font-size: 13px;
-        padding: 14px 16px;
-    }
-
-    .button {
-        font-size: 13px;
-        padding: 8px 16px;
-        margin: 0 16px 16px 16px;
     }
 }

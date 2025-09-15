@@ -7,7 +7,6 @@
 .container {
     font-family: 'Inter', sans-serif;
     padding: 120px 0;
-    height: 872px;
     color: #ffffff;
 }
 
@@ -15,9 +14,9 @@
     font-size: 48px;
     font-weight: 700;
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
     color: #ffffff;
-    letter-spacing: -0.02em;
+    letter-spacing: 0.04em;
     line-height: 1.2;
 }
 
@@ -64,23 +63,31 @@
 
 .projectsLayout {
     display: grid;
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 31% 69%;
     gap: 8px;
-    max-width: 100%;
+    width: 100%;
+    height: 720px;
     margin: 0 auto;
     padding: 0;
     border-radius: 20px;
     box-shadow: 0px 0px 12px 0px rgba(79, 24, 150, 1) inset;
 }
 
+@media (min-width: 1440px) and (max-width: 1440px) {
+    .projectsLayout {
+        grid-template-columns: 384px 744px;
+    }
+}
+
 .projectsList {
     display: flex;
     flex-direction: column;
     gap: 16px;
+    width: 100%;
     max-height: 720px;
     overflow-y: scroll;
     overflow-x: hidden;
-    padding: 16px;
+    padding: 16px 8px 16px 16px;
 }
 
 .projectsList::-webkit-scrollbar {
@@ -101,8 +108,9 @@
 .projectCard {
     display: flex;
     align-items: center;
-    gap: 16px;
-    padding: 18px 20px;
+    gap: 8px;
+    padding: 8px 12px;
+    width: 100%;
     height: 76px;
     background: #6F1ED71A;
     border-radius: 8px;
@@ -121,6 +129,21 @@
     background: rgb(111, 30, 215);
     border-color: #8b5cf6;
     /* box-shadow: 0 8px 20px rgba(107, 70, 193, 0.2); */
+}
+
+@media (min-width: 1440px) and (max-width: 1440px) {
+    .projectsList {
+        width: 384px;
+        max-width: 384px;
+        max-height: 720px;
+        box-sizing: border-box;
+    }
+
+    .projectCard {
+        width: 100%;
+        max-width: 360px;
+        height: 76px;
+    }
 }
 
 .avatar {
@@ -312,9 +335,9 @@
     line-height: 28px;
     font-family: 'Manrope', sans-serif;
     color: #F0E8FF;
-    letter-spacing: 2%;
+    letter-spacing: 0.02em;
     margin: 0;
-    padding: 20px;
+    padding: 0;
     text-align: justify;
     white-space: normal;
     overflow: visible;
@@ -326,7 +349,7 @@
     font-weight: 400;
     line-height: 28px;
     font-family: 'Manrope', sans-serif;
-    letter-spacing: 2%;
+    letter-spacing: 0.02em;
 
 }
 
@@ -432,9 +455,7 @@
         padding: 70px 0;
         width: 100%;
         max-width: 100%;
-        min-height: 634px;
-        height: auto;
-        margin: 0 auto 160px auto;
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
@@ -444,6 +465,7 @@
         padding: 18px 16px;
         box-shadow: 0px 0px 12px 0px #4F1896 inset;
         box-sizing: border-box;
+        max-height: 634px;
         width: 100%;
     }
 
@@ -479,6 +501,7 @@
         flex-direction: column;
         gap: 20px;
         padding: 0;
+        max-height: 720px;
         box-shadow: none;
         max-width: 100%;
         margin: 0;
@@ -488,10 +511,10 @@
         display: flex;
         flex-direction: column;
         gap: 12px;
-        max-height: 546px;
         overflow-y: auto;
         overflow-x: hidden;
         padding: 0;
+        max-height: 546px;
         padding-bottom: 8px;
         scrollbar-width: none;
         -ms-overflow-style: none;
@@ -504,10 +527,9 @@
     }
 
     .projectCard {
-        width: 100%;
+        width: 372px;
         max-width: 100%;
         background: #6F1ED71A;
-        min-width: auto;
         padding: 16px;
         height: 76px;
         border-radius: 8px;
@@ -685,7 +707,7 @@
     .projectDescription p {
         padding: 0;
         margin: 0;
-        font-family: "Manrope" , sans-serif;
+        font-family: "Manrope", sans-serif;
         font-weight: 400;
         font-size: 14px;
         line-height: 25px;
@@ -694,146 +716,11 @@
     }
 
     .projectDescription p:last-child {
-        font-family: "Manrope" , sans-serif;
+        font-family: "Manrope", sans-serif;
         font-weight: 700;
         font-size: 14px;
         line-height: 25px;
         letter-spacing: 2%;
 
     }
-}
-
-@media (max-width: 380px) {
-    .container {
-        width: 100%;
-        max-width: 100%;
-        min-height: 712px;
-        height: auto;
-        padding: 70px 16px 70px 16px;
-        margin: 0 auto;
-        box-sizing: border-box;
-    }
-
-    .secContainer {
-        padding: 18px 16px;
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    .title {
-        font-size: 22px;
-        margin-bottom: 28px;
-    }
-
-    .categoryBtn {
-        padding: 6px 12px;
-        font-size: 14px;
-    }
-
-    .projectCard {
-        width: 100%;
-        max-width: 100%;
-        padding: 14px;
-        height: 76px;
-        box-sizing: border-box;
-    }
-
-    .avatar {
-        width: 56px;
-        height: 56px;
-    }
-
-    .projectName {
-        font-size: 15px;
-    }
-
-    .projectDescription {
-        font-size: 12px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .projectDetails {
-        padding: 20px 0;
-        height: auto;
-        min-height: 0;
-    }
-
-    .previewImage {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 4 / 3;
-    }
-
-    .headerContainer {
-        width: auto;
-        height: 32px;
-    }
-
-    .backArrow {
-        width: 28px;
-        height: 28px;
-    }
-
-    .projectTitle {
-        font-size: 18px;
-    }
-
-    .projectLink {
-        width: 36px;
-        height: 36px;
-    }
-
-    .linkIcon {
-        width: 18px;
-        height: 18px;
-    }
-
-    .projectTags {
-        height: auto;
-    }
-
-    .tag {
-        font-size: 11px;
-        padding: 5px 8px;
-    }
-}
-
-/* Fine-grained fixes for very narrow widths */
-@media (max-width: 425px) {
-    .linksAndTagsSection { gap: 8px 6px; }
-    .projectTitle { font-size: 22px; }
-    .tag { font-size: 13px; padding: 6px 8px; }
-}
-
-@media (max-width: 400px) {
-    .projectTitle { font-size: 20px; }
-    .tag { font-size: 12px; padding: 5px 8px; }
-}
-
-@media (max-width: 360px) {
-    .previewImage { aspect-ratio: 3 / 2; }
-    .projectLinks { gap: 8px; }
-    .projectLink { width: 36px; height: 36px; }
-    .linkIcon { width: 20px; height: 20px; }
-}
-
-@media (max-width: 340px) {
-    .linksAndTagsSection { gap: 6px; }
-    .projectTags { gap: 6px; }
-    .tag { font-size: 11px; padding: 4px 6px; }
-    .projectTitle { font-size: 18px; }
-}
-
-@media (max-width: 320px) {
-    .projectLink { width: 34px; height: 34px; }
-    .linkIcon { width: 18px; height: 18px; }
-    .projectTitle { font-size: 17px; }
-}
-
-@media (max-width: 305px) {
-    .tag { font-size: 10px; padding: 4px 6px; }
-    .projectTitle { font-size: 16px; }
-    .headerContainer { height: 30px; }
 }
