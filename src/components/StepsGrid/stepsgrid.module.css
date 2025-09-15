@@ -51,7 +51,7 @@
 }
 
 .featureCard {
-    box-shadow: inset 0px 0px 6px 0px #4F1896 inset;
+    box-shadow: 0px 0px 6px 0px #4F1896 inset;
     background: #00000099;
     border-radius: 12px;
     padding: 20px;
@@ -66,7 +66,7 @@
 
 .featureCard:hover {
     transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(147, 51, 234, 0.2);
+    box-shadow: 0 20px 30px rgba(147, 51, 234, 0.2);
 }
 
 .cardHeader {

@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import styles from "./directions.module.css";
@@ -59,6 +60,11 @@ const cardsData: DirectionCardProps[] = [
 
 export const DirectionsComp = () => {
     const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+
+    const cardVariants = {
+        hidden: { opacity: 0, y: 80 },
+        visible: { opacity: 1, y: 0 }
+    };
     return (
         <section className={styles.section}>
             <motion.h2 
@@ -67,6 +73,7 @@ export const DirectionsComp = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
+                style={{ opacity: 0 }}
             >
                 НАПРЯМКИ ДЛЯ РОЗВИТКУ
             </motion.h2>
@@ -77,9 +84,11 @@ export const DirectionsComp = () => {
                         className={`${styles.card} ${hoveredCard == card.id ? styles.expanded : ''}`}
                         onMouseEnter={() => setHoveredCard(card.id)}
                         onMouseLeave={() => setHoveredCard(null)}
-                        initial={{ opacity: 0, y: 80 }}
-                        whileInView={{ opacity: 1, y: 0 }}
+                        variants={cardVariants}
+                        initial="hidden"
+                        whileInView="visible"
                         viewport={{ once: true, amount: 0.2 }}
+                        style={{ opacity: 0 }}
                         transition={{ 
                             duration: 1.0, 
                             delay: 0.6 + (index * 0.2),
