@@ -1,7 +1,10 @@
 /* footer.module.css */
 
 .footer {
-    background: rgba(0, 0, 0, 0.6);
+    border-top: 2px solid;
+    background: #00000099;
+    border-image-source: linear-gradient(180deg, #4F1896 -1.25%, rgba(79, 24, 150, 0) 2.5%);
+    box-shadow: 0px -16px 32px 0px #4F1896;
     padding: 20px 0;
     border-top: 1px solid rgba(139, 92, 246, 0.2);
 }
@@ -55,28 +58,23 @@
 }
 
 .navLink {
-    color: #e2e8f0;
+    color: #F0F0F5;
     text-decoration: none;
     font-size: 16px;
     font-weight: 500;
     transition: all 0.2s ease;
     position: relative;
-}
-
-.navLink::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, #8b5cf6, #a855f7);
-    transition: width 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 12px; /* avoid layout shift on hover */
+    border-radius: 10px;
+    background: transparent;
 }
 
 .navLink:hover {
-    color: #ffffff;
-    transform: translateY(-1px);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #F0F0F5;
 }
 
 .navLink:hover::after {
@@ -101,7 +99,8 @@
 }
 
 .socialLink:hover {
-    color: #ffffff;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.08);
 }
 
 .icon {

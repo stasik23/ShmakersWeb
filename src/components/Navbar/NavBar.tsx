@@ -18,6 +18,7 @@ export const NavBar = () => {
 
     const [activeCourse, setActiveCourse] = useState<number | null>(1);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isPhoneMenuOpen, setIsPhoneMenuOpen] = useState(false);
     const [, setIsMobile] = useState(false);
     const [isMobileCoursesExpanded, setIsMobileCoursesExpanded] = useState(false);
     const menuRef = useRef<HTMLDivElement>(null);
@@ -83,6 +84,11 @@ export const NavBar = () => {
 
     const toggleMobileCourses = () => {
         setIsMobileCoursesExpanded(!isMobileCoursesExpanded);
+    };
+
+    const togglePhoneMenu = (e: React.MouseEvent) => {
+        e.preventDefault();
+        setIsPhoneMenuOpen((prev) => !prev);
     };
 
     return (
@@ -193,9 +199,17 @@ export const NavBar = () => {
                     </div>
 
                     <div className={styles.navRight}>
-                        <a href="#" className={`${styles.socialIcon} ${styles.phoneIcon}`} aria-label="Phone">
-                            <FaPhone className={styles.phoneIcon} />
-                        </a>
+                        <div className={styles.phoneWrapper}>
+                            <a href="#" className={`${styles.socialIcon}`} aria-label="Phone" onClick={togglePhoneMenu}>
+                                <FaPhone className={styles.phoneIcon} />
+                            </a>
+                            {isPhoneMenuOpen && (
+                                <div className={styles.phoneMenu}>
+                                    <a className={styles.phoneItem}>+380635681488</a>
+                                    <a className={styles.phoneItem}>+380993228666</a>
+                                </div>
+                            )}
+                        </div>
                         <a href="#" className={styles.socialIcon} aria-label="Discord">
                             <FaDiscord className={styles.discordIcon} />
                         </a>

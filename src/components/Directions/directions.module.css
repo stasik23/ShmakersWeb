@@ -23,29 +23,34 @@
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
+    gap: 24px;
 }
 
 .card {
     position: relative;
     border-radius: 12px;
     overflow: hidden;
-    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.2s;
     display: flex;
     flex-direction: column;
     box-shadow: inset 0 5px 20px rgba(161, 67, 221, 0.3);
     background: #110A1E;
     backdrop-filter: blur(15px);
-    animation: fadeInUp 0.6s ease forwards;
     opacity: 0;
-    transform: translateY(30px);
+    border: 3px solid transparent;
+    box-sizing: border-box;
+}
+
+.card:hover {
+    border: 3px solid #4F1896;
+    box-shadow: 0px 0px 24px 0px #A143DD inset;
 }
 
 .image {
     width: 100%;
     height: 265px;
     object-fit: cover;
-    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.5s;
     position: relative;
     z-index: 1;
 }
@@ -74,11 +79,7 @@
     position: absolute;
     background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
     opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.card:hover .heading_back::before {
-    opacity: 1;
+    transition: opacity 0.1s ease;
 }
 
 .cardTitle {
@@ -86,7 +87,7 @@
     font-size: 24px;
     font-weight: 700;
     line-height: 100%;
-    letter-spacing: 1%;
+    letter-spacing: 0.01em;
     margin: 0;
     display: flex;
     align-items: center;
@@ -102,7 +103,6 @@
 
 .arrowIcon {
     display: none;
-    /* Скрываем стрелочку в десктопной версии */
 }
 
 .details {
@@ -149,15 +149,12 @@
 }
 
 .button:hover {
-    background-color: #f0f0f0;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    background: #8C849B;
 }
 
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.button:active {
+    background: #2E2D3F;
+    color: #F0F0F5
 }
 
 /* Mobile Responsive */
