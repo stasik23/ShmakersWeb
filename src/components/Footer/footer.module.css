@@ -93,7 +93,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #8b5cf6;
+    color: #9B05FB;
     text-decoration: none;
     transition: all 0.3s ease;
 }
@@ -166,6 +166,8 @@
         font-size: 16px;
         color: #ffffff;
         text-align: center;
+        display: flex;
+        justify-content: center;
         width: 100%;
         padding: 8px 0;
     }

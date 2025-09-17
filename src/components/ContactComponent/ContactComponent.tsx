@@ -220,16 +220,16 @@ export const ContactComponent = () => {
                     >
                         {isMobile ? (
                             <div className={styles.content}>
-                                <img src="/image.svg" alt="Individual classes" className={styles.image} />
+                                <img src="/groupimage.svg" alt="Group classes" className={styles.image} />
                                 <div className={styles.heading_back}>
-                                    <h1 className={styles.cardTitle}>Індивідуальні заняття</h1>
+                                    <h1 className={styles.cardTitle}>Групові заняття</h1>
                                     <div className={styles.arrowIcon}>
                                         {expandedCards.has('group') ? <FaChevronUp /> : <FaChevronDown />}
                                     </div>
                                 </div>
                                 <div className={`${styles.details} ${expandedCards.has('group') ? styles.showDetails : ''}`}>
                                     <div className={styles.pricingInfo}>
-                                        <p className={styles.price}>500 грн. за годину</p>
+                                        <p className={styles.price}>250 грн. за годину</p>
                                         <p className={styles.price}>1 год. тривалість уроку</p>
                                         <p className={styles.price}>4 уроки на місяць</p>
                                     </div>
@@ -254,7 +254,7 @@ export const ContactComponent = () => {
 
                                 <div className={styles.cardImage}>
                                     <img
-                                        src="/image.svg"
+                                        src="/groupimage.svg"
                                         alt="Group classes"
                                         loading="lazy"
                                     />
@@ -274,16 +274,16 @@ export const ContactComponent = () => {
                     >
                         {isMobile ? (
                             <div className={styles.content}>
-                                <img src="/groupimage.svg" alt="Group classes" className={styles.image} />
+                                <img src="/image.svg" alt="Individual classes" className={styles.image} />
                                 <div className={styles.heading_back}>
-                                    <h1 className={styles.cardTitle}>Групові заняття</h1>
+                                    <h1 className={styles.cardTitle}>Індивідуальні заняття</h1>
                                     <div className={styles.arrowIcon}>
                                         {expandedCards.has('individual') ? <FaChevronUp /> : <FaChevronDown />}
                                     </div>
                                 </div>
                                 <div className={`${styles.details} ${expandedCards.has('individual') ? styles.showDetails : ''}`}>
                                     <div className={styles.pricingInfo}>
-                                        <p className={styles.price}>250 грн. за годину</p>
+                                        <p className={styles.price}>500 грн. за годину</p>
                                         <p className={styles.price}>1 год. тривалість уроку</p>
                                         <p className={styles.price}>4 уроки на місяць</p>
                                     </div>
@@ -294,12 +294,12 @@ export const ContactComponent = () => {
                                 <div className={styles.cardText}>
                                     <div className={styles.cardHeader}>
                                         <h3 className={styles.cardTitle}>
-                                            Групові заняття
+                                            Індивідуальні заняття
                                         </h3>
                                     </div>
                                     <div className={styles.cardBody}>
                                         <div className={styles.pricingInfo}>
-                                            <p className={styles.price}>250 грн. за годину</p>
+                                            <p className={styles.price}>500 грн. за годину</p>
                                             <p className={styles.price}>1 год. тривалість уроку</p>
                                             <p className={styles.price}>4 уроки на місяць</p>
                                         </div>

@@ -100,15 +100,15 @@
 }
 
 .reviewCard {
-    background: rgba(79, 24, 150, 1);
-    border-bottom-left-radius: 16px;
-    border-top-left-radius: 16px;
-    padding: 12px 15.5px 0;
+    background: #4F1896;
+    border-bottom-left-radius: 12px;
+    border-top-left-radius: 12px;
+    padding: 12px 12px 0 12px;
     display: flex;
     justify-content: start;
     flex-direction: column;
     align-items: start;
-    box-shadow: inset 0px 5px 20px rgba(161, 67, 221, 1);
+    box-shadow: 0px 0px 12px 0px #A143DD inset;
     width: 264px;
     height: 173px;
     flex-shrink: 0;
@@ -116,7 +116,7 @@
 
 .reviewCard.even {
     background: #6F1ED7;
-    box-shadow: inset 0px 5px 20px #9F68E1;
+    box-shadow: 0px 0px 12px 0px #9F68E1 inset;
 }
 
 .avatar {
@@ -140,8 +140,15 @@
 }
 
 .reviewerDirection {
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.8);
+    font-family: "Manrope", sans-serif;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 15px;
+    line-height: 100%;
+    letter-spacing: 0%;
+
+    font-size: 15px;
+    color: #F0E8FF;
     margin: 0 0 15px 0;
 }
 
@@ -245,18 +252,16 @@
     .reviewItem {
         flex-direction: column;
         gap: 8px;
-        /* Отступ между reviewCard и reviewComment */
     }
 
     .reviewCard {
         border-radius: 12px;
         width: 380px;
-        height: 83px;
-        /* Высота в свернутом состоянии */
+        height: 59px;
         padding: 12px;
         display: flex;
-        flex-direction: row;
-        align-items: center;
+        flex-direction: column;
+        align-items: flex-start;
         justify-content: space-between;
         cursor: pointer;
         transition: all 0.3s ease;
@@ -287,16 +292,32 @@
         align-items: center;
     }
 
+    .mobileCardTop {
+        display: flex;
+        align-items: flex-start;
+        width: 100%;
+        gap: 12px;
+        position: relative;
+    }
+
+    .directionRow {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+
     .reviewInfo {
         flex: 1;
-        margin-right: 12px;
+        margin-right: 0;
     }
 
     .avatar {
-        width: 48px;
-        height: 48px;
+        width: 53px;
+        height: 53px;
         margin-bottom: 0;
-        margin-right: 12px;
+        margin-right: 0;
+        border: 0;
     }
 
     .reviewerName {
@@ -305,7 +326,7 @@
     }
 
     .reviewerDirection {
-        font-size: 12px;
+        font-size: 15px;
         margin-bottom: 8px;
     }
 
@@ -316,5 +337,13 @@
     .star {
         width: 14px;
         height: 14px;
+    }
+
+    .mobileCardTop .rating {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: flex;
+        gap: 2px;
     }
 }

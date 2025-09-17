@@ -200,7 +200,7 @@ export const NavBar = () => {
 
                     <div className={styles.navRight}>
                         <div className={styles.phoneWrapper}>
-                            <a href="#" className={`${styles.socialIcon}`} aria-label="Phone" onClick={togglePhoneMenu}>
+                            <a href="#" className={`${styles.phoneIconLink}`} aria-label="Phone" onClick={togglePhoneMenu}>
                                 <FaPhone className={styles.phoneIcon} />
                             </a>
                             {isPhoneMenuOpen && (
@@ -237,13 +237,8 @@ export const NavBar = () => {
             {isMobileMenuOpen && (
                 <div className={styles.mobileMenu}>
                     <div className={styles.mobileMenuHeader}>
-                        <div className={styles.mobileMenuLogo}>
-                            <img src="/section.svg" alt="Shmakers Logo" className={styles.mobileMenuLogoIcon} />
-                        </div>
+                        <div className={styles.mobileMenuLogo}></div>
                         <div className={styles.mobileMenuIcons}>
-                            <a href="#" className={styles.mobileMenuPhone}>
-                                <FaPhone className={styles.phoneIcon} />
-                            </a>
                             <button className={styles.mobileMenuClose} onClick={toggleMobileMenu}>
                                 <FaTimes className={styles.mobileMenuCloseIcon} />
                             </button>

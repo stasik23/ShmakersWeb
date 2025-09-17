@@ -133,6 +133,7 @@
     align-items: center;
     padding-top: 10px;
     padding-bottom: 10px;
+    z-index: 2001;
     gap: clamp(12px, 2vw, 28px);
     position: relative;
 }
@@ -146,6 +147,7 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    padding: 8px 12px;
     font-size: 16px;
     font-weight: 500;
     font-family: 'Manrope', sans-serif;
@@ -156,6 +158,9 @@
 
 .navButton:hover {
     color: white;
+    background: #4D4D4D66;
+    border-radius: 6px;
+
 }
 
 .navButton:hover .dropdownIcon {
@@ -180,7 +185,7 @@
 
 .navLink:hover {
     border-radius: 6px;
-    background: #555;
+    background: #4D4D4D66;
 }
 
 .navRight {
@@ -216,6 +221,31 @@
     cursor: pointer;
 }
 
+.phoneIconLink {
+    color: #9B05FB;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.phoneIconLink:hover {
+    background: #4D4D4D66;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.phoneIconLink:active {
+    background: #4D4D4D;
+    color: #B880FF;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
 .phoneMenu {
     position: absolute;
     top: 32px;
@@ -223,7 +253,7 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
-    padding: 8px;
+    padding: 5px 0 0 0;
     z-index: 2000;
 }
 
@@ -468,10 +498,17 @@
     flex-shrink: 0;
 }
 
+.courseButton:hover{
+    background: #4F1896;
+}
+
+.courseButton:active{
+    background: #6F1ED7;
+}
+
 .courseButtonActive {
     background-color: #4F1896;
     color: white;
-    box-shadow: 0 2px 8px rgba(79, 24, 150, 0.4);
 }
 
 .courseButtonText {
@@ -518,7 +555,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 9px 16px;
-    background: #0f0f1a;
+    height: 50px;
 }
 
 .mobileMenuLogo {
@@ -534,7 +571,6 @@
 }
 
 .mobileMenuTitle {
-    color: white;
     font-family: 'Manrope', sans-serif;
     font-weight: 600;
     font-size: 18px;
@@ -567,11 +603,6 @@
 .mobileMenuPhone:hover {
     color: #9B05FB;
     transform: scale(1.1);
-}
-
-.phoneIcon {
-    width: 20.83px;
-    height: 20.83px;
 }
 
 .mobileMenuClose {
@@ -636,7 +667,6 @@
 
 .mobileMenuButton:hover {
     background: #6F1ED7;
-    transform: translateY(-1px);
 }
 
 .mobileMenuButtonActive {
@@ -706,9 +736,7 @@
 }
 
 .mobileCourseButton:hover {
-    background: #5A1A7A;
-    transform: translateY(-1px);
-    box-shadow: 0 2px 8px rgba(79, 24, 150, 0.3);
+    background: #9B05FB;
 }
 
 /* MOBILE PLATFORM STYLES - EXACT COPY FROM DESIGN */
@@ -795,16 +823,37 @@
         display: none;
     }
 
-    .navRight .phoneIcon {
+    .navRight .phoneWrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        cursor: pointer;
+    }
+
+    .navRight .phoneWrapper .phoneIconLink {
+        display: flex;
+        color: #9B05FB;
+        min-width: 36px;
+        height: 36px;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+
+    .navRight .phoneWrapper .phoneIconLink:hover {
+        color: #ddd6fe;
+        transform: scale(1.1);
+    }
+
+    .navRight .phoneWrapper .phoneIcon {
         display: flex;
         width: 20.83px;
         height: 20.83px;
         color: #9B05FB;
-    }
-
-    .navRight .phoneIcon:hover {
-        color: #ddd6fe;
-        transform: scale(1.1);
     }
 
     .mobileMenuButton {
@@ -834,28 +883,7 @@
         transition: all 0.3s ease;
     }
 
-    .phoneIcon {
-        width: 20.83px;
-        height: 20.83px;
-        color: #9B05FB;
-    }
 
-    .navRight .socialIcon.phoneIcon {
-        display: flex;
-        color: #9B05FB;
-        min-width: 36px;
-        height: 36px;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        text-decoration: none;
-    }
-
-    .navRight .socialIcon.phoneIcon:hover {
-        color: #ddd6fe;
-        transform: scale(1.1);
-    }
 
     .burgerMenuIcon {
         width: 20px;

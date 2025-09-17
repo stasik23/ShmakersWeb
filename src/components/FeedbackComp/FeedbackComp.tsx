@@ -91,9 +91,11 @@ const reviewsData: Review[] = [
 const categories = [ 'Web Design', 'Game Development', '3D', 'English', 'Embedded', 'Front End', 'Back End'];
 
 export const FeedbackComp: React.FC = () => {
-    const [selectedCategory, setSelectedCategory] = useState<string>('All');
+    const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
     const [expandedReviews, setExpandedReviews] = useState<Set<number>>(new Set());
     const [isMobile, setIsMobile] = useState(false);
+
+    
 
     // Проверяем размер экрана при загрузке и изменении
     React.useEffect(() => {
@@ -107,13 +109,23 @@ export const FeedbackComp: React.FC = () => {
         return () => window.removeEventListener('resize', checkMobile);
     }, []);
 
-    // Filter reviews based on selected category
-    const filteredReviews = selectedCategory === 'All'
+    // Filter reviews based on selected categories
+    const filteredReviews = selectedCategories.length === 0
         ? reviewsData
-        : reviewsData.filter(review => review.direction === selectedCategory);
+        : reviewsData.filter(review => selectedCategories.includes(review.direction));
 
-    const handleCategorySelect = (category: string) => {
-        setSelectedCategory(category);
+    const handleCategoryToggle = (category: string) => {
+        setSelectedCategories(prev => {
+            if (prev.includes(category)) {
+                return prev.filter(cat => cat !== category);
+            } else {
+                return [...prev, category];
+            }
+        });
+    };
+
+    const clearAllCategories = () => {
+        setSelectedCategories([]);
     };
 
     const toggleReviewExpansion = (reviewId: number) => {
@@ -153,17 +165,41 @@ export const FeedbackComp: React.FC = () => {
                 </motion.h1>
 
                 <div className={styles.categories}>
+                    <motion.button
+                        onClick={clearAllCategories}
+                        className={`${styles.categoryBtn} ${selectedCategories.length === 0 ? styles.active : ''}`}
+                        initial={{ opacity: 0, x: -50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                        style={{ 
+                            opacity: 0, 
+                            visibility: 'hidden', 
+                            width: 0, 
+                            height: 0, 
+                            padding: 0, 
+                            margin: 0, 
+                            border: 'none',
+                            position: 'absolute',
+                            left: '-9999px'
+                        }}
+                        transition={{ 
+                            duration: 0.8, 
+                            delay: 0.9, 
+                            ease: [0.22, 1, 0.36, 1]
+                        }}
+                    >
+                    </motion.button>
                     {categories.map((category, index) => (
                         <motion.button
                             key={category}
-                            className={`${styles.categoryBtn} ${selectedCategory === category ? styles.active : ''}`}
-                            onClick={() => handleCategorySelect(category)}
+                            className={`${styles.categoryBtn} ${selectedCategories.includes(category) ? styles.active : ''}`}
+                            onClick={() => handleCategoryToggle(category)}
                             initial={{ opacity: 0, x: -50 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true, amount: 0.3 }}
                             transition={{ 
                                 duration: 0.8, 
-                                delay: 0.9 + (index * 0.1), 
+                                delay: 1.0 + (index * 0.1), 
                                 ease: [0.22, 1, 0.36, 1]
                             }}
                         >
@@ -199,17 +235,20 @@ export const FeedbackComp: React.FC = () => {
                                                     viewport={{ once: true, amount: 0.2 }}
                                                     transition={{ duration: 0.9, delay: 1.7 + (index * 0.1), ease: [0.22, 1, 0.36, 1] }}
                                                 >
-                                                    <img src={review.avatar} alt={review.name} className={styles.avatar} />
-                                                    <div className={styles.reviewInfo}>
-                                                        <h3 className={styles.reviewerName}>{review.name}</h3>
-                                                        <p className={styles.reviewerDirection}>Напрямок: {review.direction}</p>
+                                                    <div className={styles.mobileCardTop}>
+                                                        <img src={review.avatar} alt={review.name} className={styles.avatar} />
+                                                        <div className={styles.reviewInfo}>
+                                                            <h3 className={styles.reviewerName}>{review.name}</h3>
+                                                            <div className={styles.directionRow}>
+                                                                <p className={styles.reviewerDirection}>Напрямок: {review.direction}</p>
+                                                                <div className={styles.expandIcon}>
+                                                                    {isExpanded ? <FaChevronUp /> : <FaChevronDown />}
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                         <div className={styles.rating}>
                                                             {renderStars(review.rating)}
                                                         </div>
-                                                    </div>
-                                                    {/* Иконка для переключения состояния */}
-                                                    <div className={styles.expandIcon}>
-                                                        {isExpanded ? <FaChevronUp /> : <FaChevronDown />}
                                                     </div>
                                                 </motion.div>
                                                 

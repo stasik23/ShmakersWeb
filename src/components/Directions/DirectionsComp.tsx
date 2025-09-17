@@ -59,11 +59,16 @@ const cardsData: DirectionCardProps[] = [
 ]
 
 export const DirectionsComp = () => {
-    const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+    const [, setHoveredCard] = useState<number | null>(null);
+    const [clickedCard, setClickedCard] = useState<number | null>(null);
 
     const cardVariants = {
         hidden: { opacity: 0, y: 80 },
         visible: { opacity: 1, y: 0 }
+    };
+
+    const handleCardClick = (cardId: number) => {
+        setClickedCard(clickedCard === cardId ? null : cardId);
     };
     return (
         <section className={styles.section}>
@@ -80,9 +85,10 @@ export const DirectionsComp = () => {
                 {cardsData.map((card, index) => (
                     <motion.div 
                         key={index} 
-                        className={`${styles.card} ${hoveredCard == card.id ? styles.expanded : ''}`}
+                        className={`${styles.card} ${clickedCard === card.id ? styles.expanded : ''}`}
                         onMouseEnter={() => setHoveredCard(card.id)}
                         onMouseLeave={() => setHoveredCard(null)}
+                        onClick={() => handleCardClick(card.id)}
                         variants={cardVariants}
                         initial="hidden"
                         whileInView="visible"
@@ -99,10 +105,10 @@ export const DirectionsComp = () => {
                             <div className={styles.heading_back}>
                                 <h1 className={styles.cardTitle}>{card.title} {card.icon}</h1>
                                 <div className={styles.arrowIcon}>
-                                    {hoveredCard === card.id ? <FaChevronUp /> : <FaChevronDown />}
+                                    {clickedCard === card.id ? <FaChevronUp /> : <FaChevronDown />}
                                 </div>
                             </div>
-                            <div className={`${styles.details} ${hoveredCard === card.id ? styles.showDetails : ''}`}>
+                            <div className={`${styles.details} ${clickedCard === card.id ? styles.showDetails : ''}`}>
                                 <p className={styles.description}>{card.description}</p>
                                 <button className={styles.button}>Опанувати</button>
                             </div>

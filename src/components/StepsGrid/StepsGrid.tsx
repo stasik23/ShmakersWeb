@@ -66,6 +66,7 @@ const featuresData: FeatureCard[] = [
 
 export const StepsGrid = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
+    const [hasAnimated, setHasAnimated] = useState(false);
 
     const nextSlide = () => {
         setCurrentSlide((prev) => (prev + 1) % featuresData.length);
@@ -136,12 +137,11 @@ export const StepsGrid = () => {
                         </button>
 
                         <motion.div 
-                            key={currentSlide}
                             className={styles.slideCard}
-                            initial={{ opacity: 0, x: -60 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true, amount: 0.3 }}
-                            transition={{ duration: 1.5, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                            initial={hasAnimated ? false : { opacity: 0, x: -60 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            onAnimationComplete={() => setHasAnimated(true)}
+                            transition={hasAnimated ? { duration: 0 } : { duration: 1.5, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
                         >
                             <div className={styles.slideHeader}>
                                 <div className={styles.slideIcon}>
