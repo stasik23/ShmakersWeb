@@ -159,7 +159,7 @@ export const StudentProjects = () => {
 
     return (
         <div className={styles.container}>
-            <motion.h1 
+            <motion.h1
                 className={styles.title}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -176,9 +176,10 @@ export const StudentProjects = () => {
                                 <div className={styles.categories}>
                                     <motion.button
                                         onClick={clearAllCategories}
-                                        initial={{ opacity: 0, x: -50 }}
-                                        whileInView={{ opacity: 1, x: 0 }}
+                                        initial={{ opacity: 0 }}
+                                        whileInView={{ opacity: 0, x: 0 }}
                                         viewport={{ once: true, amount: 0.3 }}
+                                        style={{ padding: 0, margin: 0, border: 'none', background: 'transparent', width: 'auto', height: 'auto', lineHeight: 0, fontSize: 0 }}
                                         transition={{ duration: 0.5, delay: 0.9, ease: "easeOut" }}
                                     >
                                     </motion.button>
@@ -187,13 +188,13 @@ export const StudentProjects = () => {
                                             key={category}
                                             className={`${styles.categoryBtn} ${selectedCategories.includes(category) ? styles.active : ''}`}
                                             onClick={() => handleCategoryToggle(category)}
-                                            initial={{ opacity: 0, x: -50 }}
+                                            initial={{opacity: 0, x: -50 }}
                                             whileInView={{ opacity: 1, x: 0 }}
                                             viewport={{ once: true, amount: 0.3 }}
-                                            transition={{ 
-                                                duration: 0.4, 
-                                                delay: 1.1 + (index * 0.1), 
-                                                ease: "easeOut" 
+                                            transition={{
+                                                duration: 0.4,
+                                                delay: 1.1 + (index * 0.1),
+                                                ease: "easeOut"
                                             }}
                                         >
                                             {category}
@@ -202,7 +203,7 @@ export const StudentProjects = () => {
                                 </div>
                             </div>
 
-                            <motion.div 
+                            <motion.div
                                 className={styles.projectsLayout}
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
@@ -237,8 +238,8 @@ export const StudentProjects = () => {
                         <div className={styles.projectDetails}>
                             <div className={styles.detailsHeader}>
                                 <div className={styles.headerContainer}>
-                                    <FaArrowLeft 
-                                        className={styles.backArrow} 
+                                    <FaArrowLeft
+                                        className={styles.backArrow}
                                         onClick={handleBackToList}
                                         style={{ cursor: 'pointer' }}
                                     />
@@ -292,10 +293,10 @@ export const StudentProjects = () => {
                                         initial={{ opacity: 0, x: -50 }}
                                         whileInView={{ opacity: 1, x: 0 }}
                                         viewport={{ once: true, amount: 0.3 }}
-                                        transition={{ 
-                                            duration: 0.4, 
-                                            delay: 1.1 + (index * 0.1), 
-                                            ease: "easeOut" 
+                                        transition={{
+                                            duration: 0.4,
+                                            delay: 1.1 + (index * 0.1),
+                                            ease: "easeOut"
                                         }}
                                     >
                                         {category}
@@ -304,7 +305,7 @@ export const StudentProjects = () => {
                             </div>
                         </div>
 
-                        <motion.div 
+                        <motion.div
                             className={styles.projectsLayout}
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}

@@ -42,7 +42,7 @@
 
 .formTitle {
     background: #4F1896;
-    color: #ffffff;
+    color: #F0E8FF;
     margin: 0;
     font-size: 20px;
     font-weight: 700;
@@ -62,7 +62,6 @@
     border: none;
     height: 395px;
     box-shadow: 0px 0px 12px 0px #4F1896 inset;
-
     flex-direction: column;
     box-sizing: border-box;
 }
@@ -94,6 +93,12 @@
     transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.input:hover,
+.textarea:hover {
+    cursor: pointer;
+    background: #7A6694;
+}
+
 .input::placeholder,
 .textarea::placeholder {
     color: rgba(255, 255, 255, 0.5);
@@ -102,9 +107,9 @@
 .input:focus,
 .textarea:focus {
     outline: none;
-    border-color: #8b5cf6;
-    background: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+    background: #523E6C;
+    border: 1px solid #F0E8FF;
+    cursor: text;
 }
 
 .inputError,
@@ -206,7 +211,7 @@
 
 .checkboxLabel {
     font-size: 14px;
-    color: #ffffff;
+    color: #F0E8FF;
     font-family: 'Manrope', sans-serif;
     font-weight: 700;
     line-height: 1.5;
@@ -231,7 +236,7 @@
 
 .submitBtn {
     background: #6F1ED7;
-    color: #ffffff;
+    color: #F0E8FF;
     border: none;
     border-radius: 8px;
     padding: 10px 16px;
@@ -250,9 +255,9 @@
     background: #9B05FB;
 }
 
-.submitBtn:active{
+.submitBtn:active {
     background: #4F1896;
-    color:#8C849B
+    color: #8C849B
 }
 
 .submitBtn:disabled {
@@ -290,7 +295,7 @@
 
 .cardTitle {
     background: transparent;
-    color: #ffffff;
+    color: #F0E8FF;
     padding: 0;
     margin: 0;
     gap: 10px;
@@ -318,7 +323,7 @@
     line-height: 100%;
     letter-spacing: 2%;
     font-size: 16px;
-    color: #ffffff;
+    color: #F0E8FF;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -331,7 +336,7 @@
     height: 30px;
     background: #4F1896;
     border-radius: 6px;
-    background-image: url('/coins.svg');
+    background-image: url('/coins.svg?v=1');
     background-size: 18.75px;
     background-repeat: no-repeat;
     background-position: center;
@@ -346,7 +351,7 @@
     height: 30px;
     background: #4F1896;
     border-radius: 6px;
-    background-image: url('/TimeVector.svg');
+    background-image: url('/TimeVector.svg?v=1');
     background-size: 18.75px;
     background-repeat: no-repeat;
     background-position: center;
@@ -361,7 +366,7 @@
     height: 30px;
     background: #4F1896;
     border-radius: 6px;
-    background-image: url('/DataVector.svg');
+    background-image: url('/DataVector.svg?v=1');
     background-size: 18.75px;
     background-repeat: no-repeat;
     background-position: center;

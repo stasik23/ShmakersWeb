@@ -89,7 +89,6 @@
     overflow-x: hidden;
     padding: 16px 8px 16px 16px;
 }
-
 .projectsList::-webkit-scrollbar {
     width: 6px;
     display: none;

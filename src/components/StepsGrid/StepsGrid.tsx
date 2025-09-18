@@ -1,12 +1,4 @@
 import React, { useState } from 'react';
-import {
-    FaUserGraduate,
-    FaLink,
-    FaGlobe,
-    FaFolder,
-    FaRobot,
-    FaUsers,
-} from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import styles from './stepsgrid.module.css';
 import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md';
@@ -22,42 +14,42 @@ interface FeatureCard {
 const featuresData: FeatureCard[] = [
     {
         id: 1,
-        icon: <FaUserGraduate />,
+        icon: <img src="/rod.svg" />,
         step: 'Крок 01',
         title: 'Вміння самонавчатись',
         description: 'Ми дійсно дамо тобі вудочку, а не будемо годувати тебе рибою декілька років.'
     },
     {
         id: 2,
-        icon: <FaLink />,
+        icon: <img src="/link.svg" />,
         step: 'Крок 02',
         title: 'Конект з викладачем',
         description: 'У нас багато спільних тем з учнями, від чого бар\'єри у спілкуванні відсутні.'
     },
     {
         id: 3,
-        icon: <FaGlobe />,
+        icon: <img src="/planet.svg" />,
         step: 'Крок 03',
         title: 'Всесторонній розвиток',
         description: 'Ми фокусуємось на технічних навичках, а також на Soft Skills та інозмених мовах.'
     },
     {
         id: 4,
-        icon: <FaFolder />,
+        icon: <img src="/folder.svg" />,
         step: 'Крок 04',
         title: 'Проєктний підхід',
         description: 'Ми не вчимось по презентаціях, книжках чи відосах. Основа - це твій проєкт.'
     },
     {
         id: 5,
-        icon: <FaRobot />,
+        icon: <img src="/robot.svg" />,
         step: 'Крок 05',
         title: 'AI орієнтованість',
         description: 'Навчимо не бути вайбкодерами, а давати х10 від звичайного результату.'
     },
     {
         id: 6,
-        icon: <FaUsers />,
+        icon: <img src="/network.svg" />,
         step: 'Крок 06',
         title: 'Потужний нетворкінг',
         description: 'Наша спільнота для підлітків - джерело нових тіммейтів на проєктах та в іграх.'
