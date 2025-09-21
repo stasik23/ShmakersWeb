@@ -13,7 +13,7 @@ interface FormData {
 
 export const ContactComponent = () => {
     const [submitStatus, setSubmitStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-    const [errorMessage, setErrorMessage] = useState<string>('');
+    const [, setErrorMessage] = useState<string>('');
     const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set());
     const [isMobile, setIsMobile] = useState(false);
 
@@ -87,11 +87,6 @@ export const ContactComponent = () => {
             }
             return newSet;
         });
-    };
-
-    const handleCloseAlert = () => {
-        setSubmitStatus('idle');
-        setErrorMessage('');
     };
 
     const validationRules = {

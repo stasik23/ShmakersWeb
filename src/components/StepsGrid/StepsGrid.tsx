@@ -14,42 +14,42 @@ interface FeatureCard {
 const featuresData: FeatureCard[] = [
     {
         id: 1,
-        icon: <img src="/rod.svg" />,
+        icon: <img src="/rod.svg" alt='rod' />,
         step: 'Крок 01',
         title: 'Вміння самонавчатись',
         description: 'Ми дійсно дамо тобі вудочку, а не будемо годувати тебе рибою декілька років.'
     },
     {
         id: 2,
-        icon: <img src="/link.svg" />,
+        icon: <img src="/link.svg" alt='link' />,
         step: 'Крок 02',
         title: 'Конект з викладачем',
         description: 'У нас багато спільних тем з учнями, від чого бар\'єри у спілкуванні відсутні.'
     },
     {
         id: 3,
-        icon: <img src="/planet.svg" />,
+        icon: <img src="/planet.svg" alt='planet'/>,
         step: 'Крок 03',
         title: 'Всесторонній розвиток',
         description: 'Ми фокусуємось на технічних навичках, а також на Soft Skills та інозмених мовах.'
     },
     {
         id: 4,
-        icon: <img src="/folder.svg" />,
+        icon: <img src="/folder.svg" alt='folder'/>,
         step: 'Крок 04',
         title: 'Проєктний підхід',
         description: 'Ми не вчимось по презентаціях, книжках чи відосах. Основа - це твій проєкт.'
     },
     {
         id: 5,
-        icon: <img src="/robot.svg" />,
+        icon: <img src="/robot.svg" alt='robot'/>,
         step: 'Крок 05',
         title: 'AI орієнтованість',
         description: 'Навчимо не бути вайбкодерами, а давати х10 від звичайного результату.'
     },
     {
         id: 6,
-        icon: <img src="/network.svg" />,
+        icon: <img src="/network.svg" alt='network'/>,
         step: 'Крок 06',
         title: 'Потужний нетворкінг',
         description: 'Наша спільнота для підлітків - джерело нових тіммейтів на проєктах та в іграх.'
