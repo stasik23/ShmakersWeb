@@ -39,10 +39,10 @@ export const ContactComponent = () => {
         console.log('⛔ Помилки валідації:', err);
         setSubmitStatus('error');
         const firstError = Object.values(err)[0];
-        setErrorMessage(
-            (typeof firstError?.message === 'string' && firstError.message) ||
-            'Перевірте поля форми.'
-        );
+        const message = (typeof firstError?.message === 'string' && firstError.message) ||
+            'Перевірте поля форми.';
+        setErrorMessage(message);
+
     };
 
     const onSubmit = async (data: FormData) => {
@@ -50,7 +50,7 @@ export const ContactComponent = () => {
         setErrorMessage('');
 
         try {
-            const response = await fetch("https://telegram-bot-topaz-one.vercel.app/api/process-form", {
+            const response = await fetch("https://telegram-p06yj2fqi-stasik23s-projects.vercel.app/api/process-form", {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data),
@@ -66,13 +66,14 @@ export const ContactComponent = () => {
             console.log('✅ Form successfully submitted!', result);
 
             setSubmitStatus('success');
-            reset();
 
-            setTimeout(() => setSubmitStatus('idle'), 5000);
+            reset();
         } catch (err) {
             console.error('❌ Error submitting form:', err);
             setSubmitStatus('error');
-            setErrorMessage(err instanceof Error ? err.message : 'Помилка при відправці форми. Спробуйте ще раз.');
+            const message = err instanceof Error ? err.message : 'Помилка при відправці форми. Спробуйте ще раз.';
+            setErrorMessage(message);
+
         }
     };
 
@@ -86,6 +87,11 @@ export const ContactComponent = () => {
             }
             return newSet;
         });
+    };
+
+    const handleCloseAlert = () => {
+        setSubmitStatus('idle');
+        setErrorMessage('');
     };
 
     const validationRules = {
@@ -149,14 +155,12 @@ export const ContactComponent = () => {
                                 // disabled={isSubmitting}
                                 {...register('name', validationRules.name)}
                             />
-                            {errors.name && <span className={styles.error}>{errors.name.message}</span>}
                             <input
-                                className={`${styles.input} ${errors.phone ? styles.inputError : ''}`}
+                                className={`${styles.input} ${errors.name ? styles.inputError : ''}`}
                                 placeholder="Номер Телефону"
                                 // disabled={isSubmitting}
                                 {...register('phone', validationRules.phone)}
                             />
-                            {errors.phone && <span className={styles.error}>{errors.phone.message}</span>}
                             <textarea
                                 className={`${styles.textarea} ${errors.message ? styles.textareaError : ''}`}
                                 rows={3}
@@ -164,7 +168,6 @@ export const ContactComponent = () => {
                                 // disabled={isSubmitting}
                                 {...register('message', validationRules.message)}
                             />
-                            {errors.message && <span className={styles.error}>{errors.message.message}</span>}
                         </div>
 
                         {/* Checkbox and Disclaimer Container */}
@@ -179,9 +182,6 @@ export const ContactComponent = () => {
                                 <label htmlFor="agreeToDataProcessing" className={styles.checkboxLabel}>
                                     Згоден на обробку даних
                                 </label>
-                                {errors.agreeToDataProcessing && (
-                                    <span className={styles.error}>{errors.agreeToDataProcessing.message as string}</span>
-                                )}
                             </div>
                             <p className={styles.disclaimer}>
                                 *Ви можете повернути кошти за перші 4 уроки або продовжити навчання
@@ -192,19 +192,6 @@ export const ContactComponent = () => {
                         <button type="submit" onClick={handleSubmit(onSubmit, onInvalid)} disabled={isSubmitting} className={styles.submitBtn}>
                             {submitStatus === 'loading' ? 'Відправляється...' : 'Надіслати'}
                         </button>
-
-                        {/* Status Messages */}
-                        {submitStatus === 'success' && (
-                            <div className={styles.successMessage}>
-                                ✅ Форма успішно відправлена! Ми зв&apos;яжемося з вами найближчим часом.
-                            </div>
-                        )}
-
-                        {submitStatus === 'error' && (
-                            <div className={styles.errorMessage}>
-                                ❌ {errorMessage || 'Помилка при відправці форми. Спробуйте ще раз.'}
-                            </div>
-                        )}
                     </form>
                 </motion.div>
 
