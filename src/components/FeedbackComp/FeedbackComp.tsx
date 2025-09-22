@@ -215,9 +215,9 @@ export const FeedbackComp: React.FC = () => {
                                 const isEven = index % 2 === 1;
                                 const isExpanded = expandedReviews.has(review.id);
                                 const shouldAnimate = index < 3;
-                                const Wrapper: any = shouldAnimate ? motion.div : 'div';
-                                const Card: any = shouldAnimate ? motion.div : 'div';
-                                const Comment: any = shouldAnimate ? motion.div : 'div';
+                                const Wrapper: React.ElementType = shouldAnimate ? motion.div : 'div';
+                                const Card: React.ElementType = shouldAnimate ? motion.div : 'div';
+                                const Comment: React.ElementType = shouldAnimate ? motion.div : 'div';
 
                                 return (
                                     <Wrapper 
