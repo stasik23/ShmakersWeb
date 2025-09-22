@@ -214,26 +214,33 @@ export const FeedbackComp: React.FC = () => {
                             filteredReviews.map((review, index) => {
                                 const isEven = index % 2 === 1;
                                 const isExpanded = expandedReviews.has(review.id);
-                                
+                                const shouldAnimate = index < 3;
+                                const Wrapper: any = shouldAnimate ? motion.div : 'div';
+                                const Card: any = shouldAnimate ? motion.div : 'div';
+                                const Comment: any = shouldAnimate ? motion.div : 'div';
+
                                 return (
-                                    <motion.div 
+                                    <Wrapper 
                                         key={review.id} 
                                         className={styles.reviewItem}
-                                        initial={{ opacity: 0 }}
-                                        whileInView={{ opacity: 1 }}
-                                        viewport={{ once: true, amount: 0.2 }}
-                                        transition={{ duration: 0.8, delay: 1.7 + (index * 0.1), ease: [0.22, 1, 0.36, 1] }}
+                                        {...(shouldAnimate ? {
+                                            initial: { opacity: 0 },
+                                            whileInView: { opacity: 1 },
+                                            viewport: { once: true, amount: 0.2 },
+                                            transition: { duration: 0.8, delay: 1.7 + (index * 0.1), ease: [0.22, 1, 0.36, 1] }
+                                        } : {})}
                                     >
-                                        {/* На мобильных устройствах показываем либо свернутое, либо развернутое состояние */}
                                         {isMobile ? (
                                             <>
-                                                <motion.div 
+                                                <Card 
                                                     className={`${styles.reviewCard} ${isEven ? styles.even : ''} ${isExpanded ? styles.mobileExpanded : ''}`}
                                                     onClick={() => toggleReviewExpansion(review.id)}
-                                                    initial={{ opacity: 0, x: -80 }}
-                                                    whileInView={{ opacity: 1, x: 0 }}
-                                                    viewport={{ once: true, amount: 0.2 }}
-                                                    transition={{ duration: 0.9, delay: 1.7 + (index * 0.1), ease: [0.22, 1, 0.36, 1] }}
+                                                    {...(shouldAnimate ? {
+                                                        initial: { opacity: 0, x: -80 },
+                                                        whileInView: { opacity: 1, x: 0 },
+                                                        viewport: { once: true, amount: 0.2 },
+                                                        transition: { duration: 0.9, delay: 1.7 + (index * 0.1), ease: [0.22, 1, 0.36, 1] }
+                                                    } : {})}
                                                 >
                                                     <div className={styles.mobileCardTop}>
                                                         <img src={review.avatar} alt={review.name} className={styles.avatar} />
@@ -250,30 +257,31 @@ export const FeedbackComp: React.FC = () => {
                                                             {renderStars(review.rating)}
                                                         </div>
                                                     </div>
-                                                </motion.div>
-                                                
-                                                {/* Комментарий показывается только в развернутом состоянии на мобильных */}
+                                                </Card>
                                                 {isExpanded && (
-                                                    <motion.div 
+                                                    <Comment 
                                                         className={`${styles.reviewComment} ${isEven ? styles.even : ''} ${styles.mobileComment}`}
-                                                        initial={{ opacity: 0, y: -20 }}
-                                                        animate={{ opacity: 1, y: 0 }}
-                                                        exit={{ opacity: 0, y: -20 }}
-                                                        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                                                        {...(shouldAnimate ? {
+                                                            initial: { opacity: 0, y: -20 },
+                                                            animate: { opacity: 1, y: 0 },
+                                                            exit: { opacity: 0, y: -20 },
+                                                            transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] }
+                                                        } : {})}
                                                     >
                                                         <p>{review.comment}</p>
-                                                    </motion.div>
+                                                    </Comment>
                                                 )}
                                             </>
                                         ) : (
-                                            /* На десктопе показываем как было - карточка и комментарий рядом */
                                             <>
-                                                <motion.div 
+                                                <Card 
                                                     className={`${styles.reviewCard} ${isEven ? styles.even : ''}`}
-                                                    initial={{ opacity: 0, x: -80 }}
-                                                    whileInView={{ opacity: 1, x: 0 }}
-                                                    viewport={{ once: true, amount: 0.2 }}
-                                                    transition={{ duration: 0.8, delay: 1.7 + (index * 0.1), ease: [0.22, 1, 0.36, 1] }}
+                                                    {...(shouldAnimate ? {
+                                                        initial: { opacity: 0, x: -80 },
+                                                        whileInView: { opacity: 1, x: 0 },
+                                                        viewport: { once: true, amount: 0.2 },
+                                                        transition: { duration: 0.8, delay: 1.7 + (index * 0.1), ease: [0.22, 1, 0.36, 1] }
+                                                    } : {})}
                                                 >
                                                     <img src={review.avatar} alt={review.name} className={styles.avatar} />
                                                     <div className={styles.reviewInfo}>
@@ -283,19 +291,21 @@ export const FeedbackComp: React.FC = () => {
                                                             {renderStars(review.rating)}
                                                         </div>
                                                     </div>
-                                                </motion.div>
-                                                <motion.div 
+                                                </Card>
+                                                <Comment 
                                                     className={`${styles.reviewComment} ${isEven ? styles.even : ''}`}
-                                                    initial={{ opacity: 0, x: -80 }}
-                                                    whileInView={{ opacity: 1, x: 0 }}
-                                                    viewport={{ once: true, amount: 0.2 }}
-                                                    transition={{ duration: 0.7, delay: 1.9 + (index * 0.1), ease: [0.22, 1, 0.36, 1] }}
+                                                    {...(shouldAnimate ? {
+                                                        initial: { opacity: 0, x: -80 },
+                                                        whileInView: { opacity: 1, x: 0 },
+                                                        viewport: { once: true, amount: 0.2 },
+                                                        transition: { duration: 0.7, delay: 1.9 + (index * 0.1), ease: [0.22, 1, 0.36, 1] }
+                                                    } : {})}
                                                 >
                                                     <p>{review.comment}</p>
-                                                </motion.div>
+                                                </Comment>
                                             </>
                                         )}
-                                    </motion.div>
+                                    </Wrapper>
                                 );
                             })
                         ) : (
