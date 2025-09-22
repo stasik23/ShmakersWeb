@@ -108,6 +108,73 @@ const projectsData: Project[] = [
         liveUrl: 'https://typecraft.com',
         detailDescription: 'TypeCraft - це інтерактивна платформа для вивчення англійської мови з акцентом на типографіку.'
     }
+    ,
+    {
+        id: 9,
+        name: 'DataPulse',
+        description: 'Дашборд для аналітики в реальному часі',
+        category: 'Math',
+        tags: ['Analytics', 'Charts'],
+        image: 'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+        avatar: 'https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80',
+        githubUrl: 'https://github.com',
+        detailDescription: 'DataPulse — модульний дашборд з графіками, фільтрами та стрімінговими оновленнями для бізнес-аналітики.'
+    },
+    {
+        id: 10,
+        name: 'Learnly',
+        description: 'Освітня платформа з мікро-курсами',
+        category: 'English',
+        tags: ['Education', 'UX'],
+        image: 'https://images.unsplash.com/photo-1513258496099-48168024aec0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+        avatar: 'https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80',
+        liveUrl: 'https://learnly.com',
+        detailDescription: 'Learnly — платформа з короткими уроками, трекінгом прогресу та інтерактивними завданнями.'
+    },
+    {
+        id: 11,
+        name: 'ProtoLab',
+        description: 'Сайт-портфоліо з кастомним UI-китом',
+        category: 'Web Design',
+        tags: ['UI Kit', 'Animations'],
+        image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+        avatar: 'https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80',
+        githubUrl: 'https://github.com',
+        detailDescription: 'ProtoLab — набір адаптивних компонентів та анімацій для швидкого прототипування сайтів.'
+    },
+    {
+        id: 12,
+        name: 'TaskFlow',
+        description: 'Веб-додаток для керування задачами',
+        category: 'Web Development',
+        tags: ['Next.js', 'Prisma'],
+        image: 'https://images.unsplash.com/photo-1494173853739-c21f58b16055?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+        avatar: 'https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80',
+        githubUrl: 'https://github.com',
+        liveUrl: 'https://taskflow.app',
+        detailDescription: 'TaskFlow — колаборативний трекер задач з канбан-дошками, тегами та коментарями.'
+    },
+    {
+        id: 13,
+        name: 'PixelPlay',
+        description: 'Міні-гра з лідербордом',
+        category: 'Game Development',
+        tags: ['Canvas', 'Game'],
+        image: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+        avatar: 'https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80',
+        detailDescription: 'PixelPlay — аркадна міні-гра з підрахунком очок, таблицею рекордів і адаптацією під мобільні.'
+    },
+    {
+        id: 14,
+        name: 'IoT Control',
+        description: 'Панель керування розумними пристроями',
+        category: 'Embedded',
+        tags: ['IoT', 'Dashboard'],
+        image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+        avatar: 'https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80',
+        liveUrl: 'https://iot-control.app',
+        detailDescription: 'IoT Control — веб-панель для моніторингу сенсорів, керування пристроями та оновлення прошивок.'
+    }
 ];
 
 const categories = ['Web Design', 'Web Development', 'Game Development', 'Math', 'Embedded', 'English', 'French'];
