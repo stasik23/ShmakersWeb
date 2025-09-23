@@ -176,10 +176,11 @@
 
 .projectDetails {
     padding: 32px;
-    background: #6f1ed71a;
+    background: #6f1ed725;
     overflow: hidden;
     border-radius: 12px;
     max-width: 100vw;
+    box-shadow: 0 4px 20px rgba(111, 30, 215, 0.3);
 }
 
 .detailsHeader {
