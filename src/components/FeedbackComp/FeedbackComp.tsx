@@ -236,7 +236,7 @@ export const FeedbackComp: React.FC = () => {
                                                     className={`${styles.reviewCard} ${isEven ? styles.even : ''} ${isExpanded ? styles.mobileExpanded : ''}`}
                                                     onClick={() => toggleReviewExpansion(review.id)}
                                                     {...(shouldAnimate ? {
-                                                        initial: { opacity: 0, x: -80 },
+                                                        initial: { x: -80 },
                                                         whileInView: { opacity: 1, x: 0 },
                                                         viewport: { once: true, amount: 0.2 },
                                                         transition: { duration: 0.9, delay: 1.7 + (index * 0.1), ease: [0.22, 1, 0.36, 1] }
