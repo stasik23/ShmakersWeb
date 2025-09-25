@@ -74,8 +74,20 @@ export const NavBar = () => {
         }
     };
 
+    const scrollToDirections = () => {
+        const el = document.getElementById('directions');
+        if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    };
+
     const handleCourseClick = (index: number) => {
         setActiveCourse(index);
+        // Close any open menus
+        setIsHoverOpen(false);
+        setIsMobileMenuOpen(false);
+        setIsMobileCoursesExpanded(false);
+        scrollToDirections();
     };
 
     const toggleMobileMenu = () => {
@@ -263,15 +275,15 @@ export const NavBar = () => {
 
                         {isMobileCoursesExpanded && (
                             <div className={styles.mobileCoursesGrid}>
-                                <button className={styles.mobileCourseButton}>Веб Розробка</button>
-                                <button className={styles.mobileCourseButton}>Розробка Ігор</button>
-                                <button className={styles.mobileCourseButton}>Дизайн</button>
-                                <button className={styles.mobileCourseButton}>Робототехніка</button>
-                                <button className={styles.mobileCourseButton}>3D Моделювання</button>
-                                <button className={styles.mobileCourseButton}>Анімація</button>
-                                <button className={styles.mobileCourseButton}>Математика</button>
-                                <button className={styles.mobileCourseButton}>Англійська мова</button>
-                                <button className={styles.mobileCourseButton}>Німецька мова</button>
+                                <button className={styles.mobileCourseButton} onClick={() => { setActiveCourse(0); scrollToDirections(); setIsMobileMenuOpen(false); }}>Веб Розробка</button>
+                                <button className={styles.mobileCourseButton} onClick={() => { setActiveCourse(1); scrollToDirections(); setIsMobileMenuOpen(false); }}>Розробка Ігор</button>
+                                <button className={styles.mobileCourseButton} onClick={() => { setActiveCourse(2); scrollToDirections(); setIsMobileMenuOpen(false); }}>Дизайн</button>
+                                <button className={styles.mobileCourseButton} onClick={() => { setActiveCourse(3); scrollToDirections(); setIsMobileMenuOpen(false); }}>Робототехніка</button>
+                                <button className={styles.mobileCourseButton} onClick={() => { setActiveCourse(4); scrollToDirections(); setIsMobileMenuOpen(false); }}>3D Моделювання</button>
+                                <button className={styles.mobileCourseButton} onClick={() => { setActiveCourse(5); scrollToDirections(); setIsMobileMenuOpen(false); }}>Анімація</button>
+                                <button className={styles.mobileCourseButton} onClick={() => { setActiveCourse(6); scrollToDirections(); setIsMobileMenuOpen(false); }}>Математика</button>
+                                <button className={styles.mobileCourseButton} onClick={() => { setActiveCourse(7); scrollToDirections(); setIsMobileMenuOpen(false); }}>Англійська мова</button>
+                                <button className={styles.mobileCourseButton} onClick={() => { setActiveCourse(8); scrollToDirections(); setIsMobileMenuOpen(false); }}>Німецька мова</button>
                             </div>
                         )}
 

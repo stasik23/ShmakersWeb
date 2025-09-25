@@ -71,7 +71,7 @@ export const DirectionsComp = () => {
         setClickedCard(clickedCard === cardId ? null : cardId);
     };
     return (
-        <section className={styles.section}>
+        <section id="directions" className={styles.section}>
             <motion.h2 
                 className={styles.heading}
                 initial={{ opacity: 0, y: 50 }}
